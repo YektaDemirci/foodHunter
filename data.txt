@@ -1,0 +1,13 @@
+[
+	{
+		restaurant: "McDonald's",
+		product: "Big Mac",
+		ingredients: "beef, lettuce, mayo, cheese, bread"
+	},
+
+	{
+		restaurant: "McDonald's",
+		product: "Chicken McNuggets",
+		ingredients: "chicken"
+	}
+]
