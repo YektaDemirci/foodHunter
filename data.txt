@@ -9,5 +9,17 @@
 		restaurant: "McDonald's",
 		product: "Chicken McNuggets",
 		ingredients: "chicken"
+	},
+
+	{
+		restaurant: "Kinkaku",
+		product: "California Roll",
+		ingredients: "crab, rice, seaweed, avocado, cucumber"
+	},
+
+	{
+		restaurant: "Lazeez",
+		product: "Shawarma Wrap",
+		ingredients: "chicken, pickle, tomato, onion, bread, lettuce"
 	}
 ]
