@@ -21,5 +21,30 @@
 		restaurant: "Lazeez",
 		product: "Shawarma Wrap",
 		ingredients: "chicken, pickle, tomato, onion, bread, lettuce"
+	},
+	
+    {
+		restaurant: "Mucho Burrito",
+		product: "Maple Chipotle",
+		ingredients: "maple-chipotle BBQ sauce, blackbeans, jalapeño, avocado crema, harvest veggie medley, cheese, chicken"
+	},
+
+	{
+		restaurant: "Kim's Kitchen",
+		product: "Deep-Fried Boneless Chicken",
+		ingredients: "chicken, rice"
+	},
+
+	{
+		restaurant: "Ennio's Pasta House",
+		product: "Rustica Pasta",
+		ingredients: " sweet bell peppers, grape tomatoes, sliced roasted chicken"
+	},
+
+	{
+		restaurant: "Ennio's Pasta House",
+		product: "Arrabiata Pasta",
+		ingredients: "sweet bell peppers, tomato sauce, penne noodles."
 	}
+
 ]
