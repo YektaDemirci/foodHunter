@@ -23,7 +23,7 @@
 		ingredients: "chicken, pickle, tomato, onion, bread, lettuce"
 	},
 	
-    {
+	{
 		restaurant: "Mucho Burrito",
 		product: "Maple Chipotle",
 		ingredients: "maple-chipotle BBQ sauce, blackbeans, jalapeño, avocado crema, harvest veggie medley, cheese, chicken"
