@@ -85,5 +85,30 @@
 		restaurant: "Tim Hortons",
 		product: "Chicken Caesar Wrap",
 		ingredients: "chicken,bacon,tomato,lettuce,wrap"
+	},
+
+	{
+	restaurant: "Mucho Burrito",
+	product: "Regular Meat Burrito",
+	ingredients: "meat,beans,rice,jalapeno,cheese,wrap"
+	},
+
+	{
+	restaurant: "Mucho Burrito",
+	product: "Regular Veggie Burrito",
+	ingredients: "veggie,pepper,onion,beans,rice,jalapeno,cheese,wrap"
+	},
+
+	{
+	restaurant: "Gol's Lanzhou Noodle",
+	product: "Beef Tendon Noodle",
+	ingredients: "noodle,beef,cilantro,sesame,scallion,soup"
+	},
+
+	{
+	restaurant: "Gol's Lanzhou Noodle",
+	product: "Vegetable Chow Mein",
+	ingredients: "noodle,veggie,broccoli,pepper,tomato"
 	}
+	
 ]
