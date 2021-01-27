@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * {
@@ -10,6 +11,13 @@
 /* TEMPLATE CITATIONS */
 /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_three_columns */
 /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_searchbar2 */
+
+/* TO RUN ON LOCAL MACHINE
+
+1) Run "python -m http.server" in local project directory via cmd terminal (need Python v3+ installed on local machine)
+2) http://localhost:8000/ in Chrome browser, select "main" HTML file
+ 
+*/
 
 /* Create three equal columns that floats next to each other */
 .column {
@@ -47,10 +55,8 @@ body {
     <h2>What are we craving?</h2>
 
     <div class="search-container">
-        <form action="/action_page.php">
-          <input class="search-bar" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
-          <button type="submit">Submit</button>
-        </form>
+          <input id = "search-bar-id" class="search-bar" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
+          <button type="submit" onclick="food_search()">Submit</button>
     </div>
 
 
@@ -58,13 +64,17 @@ body {
   </div>
   <div class="column" style="background-color:#f6b26b;">
     <h2>What We Found:</h2>
-    <p>Some text..</p>
+    <p id = "results">Some text..</p>
   </div>
   <div class="column" style="background-color:#e69138;">
     <h2>Order Review:</h2>
     <p>Some text..</p>
   </div>
 </div>
+
+<!-- citation for script below (basic template)
+https://www.geeksforgeeks.org/search-bar-using-html-css-and-javascript/ -->
+<script src="./foodSearch.js"></script>
 
 </body>
 </html>
