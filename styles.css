@@ -1,0 +1,29 @@
+/* Check transition property of CSS */
+
+/* Check this out */
+/* CSS transition-timing-function */
+
+
+.box{
+  text-align: center;
+  padding: 5%;
+  transition: width 2s, background-color 0.5s ease-out;
+}
+
+/* Welcoming page inital attributes*/
+.left{
+  width: 80%;
+  background-color: #f4f5db;
+}
+
+/* Suggestion page inital attributes*/
+.mid{
+  width: 10%;
+  background-color: #f8dc81;
+}
+
+/* Ordering page inital attributes*/
+.right{
+  width: 10%;
+  background-color: #f8dc81;
+}
