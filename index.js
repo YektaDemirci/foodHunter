@@ -10,7 +10,7 @@ document.querySelector(".submitLeftNext").addEventListener("click" , function(){
   mid.style.backgroundColor = "#f4f5db";
   var right = document.querySelector(".right")
   right.style.width = "10%";
-  right.style.backgroundColor = "#f4f5db";
+  right.style.backgroundColor = "#f8dc81";
 
 });
 
