@@ -1,0 +1,33 @@
+Test Ideas
+
+Examples from notes
+- The system shall ensure that the data can be accessed only by authorized users (login for wishlist)
+- New user should be able to add ingredients, pick a restaurant and know where to place the order within 5 minutes on their first attempt.
+
+##########
+Format
+----------
+Slide name / panel heading
+Details listed
+##########
+
+What are we craving
+- User input needs to be interpreted correctly in absence of delimiter: i.e. sea-weed/sea weed/seaweed (similarly brown rice)
+- When suggestion items are clicked, they should automatically be filled into the input of the search form.
+- When user has input a valid ingredient, next steps should be evident (in UI mockup, perhaps green arrow is gray at first)
+- If user chooses not to automatically allow for location, they have the ability to manually enter 
+
+What we found
+- Top x food options that have the most matching ingredients are listed.
+- Top x restaurants sorted with the most relevant number of food options ranked
+- Ensure that ingredients selected by the user are visible when on the 'what we found panel'
+- Ensure when returning to ingredients panel, user input is still there
+- Have the ability to load more restaurants and return to previously loaded (assuming implementation of Top x)
+
+Order review
+- Verify ingredients, restaurant / options are visible when on the 'review' page
+- Ensure delivery time takes into account (x factors - gas? weather? traffic?)
+
+All panels
+- Ensure UI includes indicator showing user progress in the steps (Mock up uses background panel colors)
+- Each panel should be clear on how to proceed
