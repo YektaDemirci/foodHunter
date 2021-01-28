@@ -1,70 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-/* TEMPLATE CITATIONS */
-/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_three_columns */
-/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_searchbar2 */
+  <!-- CSS link -->
+  <link rel="stylesheet" href="styles.css">
 
-/* Create three equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 10px;
-  height: 500px; /* Should be removed. Only for demonstration */
-}
+  <!-- Bootstrap CSS links -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-.search-bar{
-    width: 100%;
-}
+  <!-- Bootstrap JS links -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-body {
-
-    font-family: Helvetica, sans-serif;
-
-}
-
-</style>
 </head>
+
 <body>
 
-<h2>Food Hunter</h2>
+  <!-- To enable screen size dependent response -->
+  <div class="container">
 
-<div class="row">
-  <div class="column" style="background-color:#ffe599;">
-    <h2>What are we craving?</h2>
+    <div class="row">
 
-    <div class="search-container">
-        <form action="/action_page.php">
-          <input class="search-bar" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
-          <button type="submit">Submit</button>
-        </form>
+      <!-- Left box, referred as welcoming page in the next sections -->
+      <div class="box left">
+
+            <h2>What are we craving?</h2>
+
+            <div class="search-container">
+                  <input class="search-bar" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
+                  <!-- Button to nagivate to suggestions -->
+                  <button class="submitLeftNext" type="submit">Submit</button>
+            </div>
+
+      </div>
+
+      <!-- Middle box, referred as suggestion page in the next sections -->
+      <div class="box mid">
+        <h2>What We Found:</h2>
+        <p>Some text..</p>
+        <!-- Buttons to navigate between pages -->
+        <button class="submitMidBack" type="submit">Back</button>
+        <button class="submitMidNext" type="submit">Next</button>
+      </div>
+
+      <!-- Right box, referred as ordering page in the next sections -->
+      <div class="box right">
+        <h2>Order Review:</h2>
+        <p>Some text..</p>
+        <!-- Button to navigate to suggestions -->
+        <button class="submitLeftBack" type="submit">Back</button>
+      </div>
+
     </div>
 
+  </div>
 
-    <p>Some text..</p>
-  </div>
-  <div class="column" style="background-color:#f6b26b;">
-    <h2>What We Found:</h2>
-    <p>Some text..</p>
-  </div>
-  <div class="column" style="background-color:#e69138;">
-    <h2>Order Review:</h2>
-    <p>Some text..</p>
-  </div>
-</div>
+  <script src="index.js" charset="utf-utf-8"></script>
 
-</body>
+
+  </body>
+
 </html>
