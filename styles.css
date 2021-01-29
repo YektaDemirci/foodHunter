@@ -2,7 +2,39 @@
 
 /* Check this out */
 /* CSS transition-timing-function */
+#title{
+  background-color: #f4f5db;
+}
+/* f4f5db  */
 
+.navbar-brand{
+  font-family: 'Lobster', cursive;
+  font-size: 4rem !important;
+  color: #335d2d;
+  margin: 1% 15% 1%;
+}
+
+.navbar-brand:hover{
+  font-family: 'Lobster', cursive;
+  font-size: 4rem !important;
+  color: #335d2d;
+}
+
+.navbar-nav{
+  margin-left: 60%;
+}
+
+.nav-link{
+  color: #335d2d;
+  opacity: 0.8;
+  margin-right: 5%;
+  font-size: 1.1rem;
+}
+
+.nav-link:hover{
+  color: #335d2d;
+  opacity: 1;
+}
 
 .box{
   text-align: center;

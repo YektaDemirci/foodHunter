@@ -4,7 +4,7 @@
 document.querySelector(".submitLeftNext").addEventListener("click" , function(){
   var left = document.querySelector(".left");
   left.style.width = "10%";
-  left.style.backgroundColor = "#96bb7c";
+  left.style.backgroundColor = "#335d2d";
   var mid = document.querySelector(".mid")
   mid.style.width = "80%";
   mid.style.backgroundColor = "#f4f5db";
@@ -32,10 +32,10 @@ document.querySelector(".submitMidBack").addEventListener("click" , function(){
 document.querySelector(".submitMidNext").addEventListener("click" , function(){
   var left = document.querySelector(".left");
   left.style.width = "10%";
-  left.style.backgroundColor = "#96bb7c";
+  left.style.backgroundColor = "#335d2d";
   var mid = document.querySelector(".mid");
   mid.style.width = "10%";
-  mid.style.backgroundColor = "#96bb7c";
+  mid.style.backgroundColor = "#335d2d";
   var right = document.querySelector(".right")
   right.style.width = "80%";
   right.style.backgroundColor = "#f4f5db";
@@ -45,7 +45,7 @@ document.querySelector(".submitMidNext").addEventListener("click" , function(){
 document.querySelector(".submitLeftBack").addEventListener("click" , function(){
   var left = document.querySelector(".left");
   left.style.width = "10%";
-  left.style.backgroundColor = "#96bb7c";
+  left.style.backgroundColor = "#335d2d";
   var mid = document.querySelector(".mid");
   mid.style.width = "80%";
   mid.style.backgroundColor = "#f4f5db";
