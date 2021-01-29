@@ -1,0 +1,11 @@
+- User Stories Documentation
+
+- Documented Code for Automated Unit, Integration, and System Testing
+
+- Summary of Git version control logs
+
+- Kanban Board (Perhaps a Board-Report that contains week-to-week changes in the board)
+
+- Summary of Meetings' Notes
+
+- Final Demo of web app functionality

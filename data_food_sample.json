@@ -1,0 +1,114 @@
+[
+	{
+		"restaurant": "McDonald's",
+		"product": "Big Mac",
+		"ingredients": "beef, lettuce, mayo, cheese, bread"
+	},
+
+	{
+		"restaurant": "McDonald's",
+		"product": "Chicken McNuggets",
+		"ingredients": "chicken"
+	},
+
+	{
+		"restaurant": "Kinkaku",
+		"product": "California Roll",
+		"ingredients": "crab, rice, seaweed, avocado, cucumber"
+	},
+
+	{
+		"restaurant": "Lazeez",
+		"product": "Shawarma Wrap",
+		"ingredients": "chicken, pickle, tomato, onion, bread, lettuce"
+	},
+	
+	{
+		"restaurant": "Mucho Burrito",
+		"product": "Maple Chipotle",
+		"ingredients": "maple-chipotle BBQ sauce, blackbeans, jalapeño, avocado crema, harvest veggie medley, cheese, chicken"
+	},
+
+	{
+		"restaurant": "Kim's Kitchen",
+		"product": "Deep-Fried Boneless Chicken",
+		"ingredients": "chicken, rice"
+	},
+
+	{
+		"restaurant": "Ennio's Pasta House",
+		"product": "Rustica Pasta",
+		"ingredients": "sweet bell peppers, grape tomatoes, sliced roasted chicken"
+	},
+
+	{
+		"restaurant": "Ennio's Pasta House",
+		"product": "Arrabiata Pasta",
+		"ingredients": "sweet bell peppers, tomato sauce, penne noodles"
+	},
+	{
+		"restaurant": "Panago Pizza",
+		"product": "Hawaiian Pizza",
+		"ingredients": "tomato sauce,bacon,ham,pineapple,cheese,crust"
+	},
+	{
+		"restaurant": "Panago Pizza",
+		"product": "BBQ Bacon Chicken Pizza",
+		"ingredients": "bbq sauce,chicken,bacon,onion,red pepper,cheese,crust"
+	},
+	{
+		"restaurant": "Boston Pizza",
+		"product": "Tropical Chicken Pizza",
+		"ingredients": "alfredo sauce,cheese,bacon,chicken,pineapple,crust"
+	},
+	{
+		"restaurant": "Boston Pizza",
+		"product": "Bourbon BBQ Chicken Pizza",
+		"ingredients": "bbq sauce,chicken,red onion,cheese,bacon,crust"
+	},
+	{
+		"restaurant": "Starbucks",
+		"product": "Sausage, Cheddar & Egg Sandwich",
+		"ingredients": "sausage,egg,cheese,English muffin"
+	},
+	{
+		"restaurant": "Starbucks",
+		"product": "Classic Oatmeal",
+		"ingredients": "oats,dried fruit,nuts,brown sugar"
+	},
+	{
+		"restaurant": "Tim Hortons",
+		"product": "Ham & Cheddar Sandwich",
+		"ingredients": "ham,cheese,tomato,lettuce,bread"
+	},
+	{
+		"restaurant": "Tim Hortons",
+		"product": "Chicken Caesar Wrap",
+		"ingredients": "chicken,bacon,tomato,lettuce,wrap"
+	},
+
+	{
+		"restaurant": "Mucho Burrito",
+		"product": "Regular Meat Burrito",
+		"ingredients": "meat,beans,rice,jalapeno,cheese,wrap"
+	},
+
+	{
+		"restaurant": "Mucho Burrito",
+		"product": "Regular Veggie Burrito",
+		"ingredients": "veggie,pepper,onion,beans,rice,jalapeno,cheese,wrap"
+	},
+
+	{
+		"restaurant": "Gol's Lanzhou Noodle",
+		"product": "Beef Tendon Noodle",
+		"ingredients": "noodle,beef,cilantro,sesame,scallion,soup"
+	},
+
+	{
+		"restaurant": "Gol's Lanzhou Noodle",
+		"product": "Vegetable Chow Mein",
+		"ingredients": "noodle,veggie,broccoli,pepper,tomato"
+	}
+	
+]
