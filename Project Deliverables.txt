@@ -1,6 +1,10 @@
+- Google Docs Link: https://docs.google.com/document/d/1m4P72mEWMOFuYeFYwZJ_oI3kuN3esT0YQKT4SmbTejI/edit?usp=sharing
+
 - User Stories Documentation
 
 - Documented Code for Automated Unit, Integration, and System Testing
+
+- Requirements
 
 - Summary of Git version control logs
 
