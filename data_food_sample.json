@@ -2,113 +2,133 @@
 	{
 		"restaurant": "McDonald's",
 		"product": "Big Mac",
-		"ingredients": "beef, lettuce, mayo, cheese, bread"
+		"ingredients": "beef, lettuce, mayo, cheese, bread",
+		"tags": "nonveg, fast food"
 	},
 
 	{
 		"restaurant": "McDonald's",
 		"product": "Chicken McNuggets",
-		"ingredients": "chicken"
+		"ingredients": "chicken",
+		"tags": "nonveg, fast food"
 	},
 
 	{
 		"restaurant": "Kinkaku",
 		"product": "California Roll",
-		"ingredients": "crab, rice, seaweed, avocado, cucumber"
+		"ingredients": "crab, rice, seaweed, avocado, cucumber",
+		"tags": "nonveg, seafood, sushi, japanese"
 	},
 
 	{
 		"restaurant": "Lazeez",
 		"product": "Shawarma Wrap",
-		"ingredients": "chicken, pickle, tomato, onion, bread, lettuce"
+		"ingredients": "chicken, pickle, tomato, onion, bread, lettuce",
+		"tags": "nonveg, middle eastern"
 	},
 	
 	{
 		"restaurant": "Mucho Burrito",
 		"product": "Maple Chipotle",
-		"ingredients": "maple-chipotle BBQ sauce, blackbeans, jalapeño, avocado crema, harvest veggie medley, cheese, chicken"
+		"ingredients": "maple-chipotle BBQ sauce, blackbeans, jalapeño, avocado crema, harvest veggie medley, cheese, chicken",
+		"tags": "nonveg, mexican"
 	},
 
 	{
 		"restaurant": "Kim's Kitchen",
 		"product": "Deep-Fried Boneless Chicken",
-		"ingredients": "chicken, rice"
+		"ingredients": "chicken, rice",
+		"tags": "nonveg"
 	},
 
 	{
 		"restaurant": "Ennio's Pasta House",
 		"product": "Rustica Pasta",
-		"ingredients": "sweet bell peppers, grape tomatoes, sliced roasted chicken"
+		"ingredients": "sweet bell peppers, grape tomatoes, sliced roasted chicken, pasta",
+		"tags": "nonveg, italian"
 	},
 
 	{
 		"restaurant": "Ennio's Pasta House",
 		"product": "Arrabiata Pasta",
-		"ingredients": "sweet bell peppers, tomato sauce, penne noodles"
+		"ingredients": "sweet bell peppers, tomato sauce, penne noodles, pasta",
+		"tags": "vegetarian, italian"
 	},
 	{
 		"restaurant": "Panago Pizza",
 		"product": "Hawaiian Pizza",
-		"ingredients": "tomato sauce,bacon,ham,pineapple,cheese,crust"
+		"ingredients": "tomato sauce,bacon,ham,pineapple,cheese,crust",
+		"tags": "nonveg, italian"
 	},
 	{
 		"restaurant": "Panago Pizza",
 		"product": "BBQ Bacon Chicken Pizza",
-		"ingredients": "bbq sauce,chicken,bacon,onion,red pepper,cheese,crust"
+		"ingredients": "bbq sauce,chicken,bacon,onion,red pepper,cheese,crust",
+		"tags": "nonveg, italian"
 	},
 	{
 		"restaurant": "Boston Pizza",
 		"product": "Tropical Chicken Pizza",
-		"ingredients": "alfredo sauce,cheese,bacon,chicken,pineapple,crust"
+		"ingredients": "alfredo sauce,cheese,bacon,chicken,pineapple,crust",
+		"tags": "nonveg, italian"
 	},
 	{
 		"restaurant": "Boston Pizza",
 		"product": "Bourbon BBQ Chicken Pizza",
-		"ingredients": "bbq sauce,chicken,red onion,cheese,bacon,crust"
+		"ingredients": "bbq sauce,chicken,red onion,cheese,bacon,crust",
+		"tags": "nonveg, italian"
 	},
 	{
 		"restaurant": "Starbucks",
 		"product": "Sausage, Cheddar & Egg Sandwich",
-		"ingredients": "sausage,egg,cheese,English muffin"
+		"ingredients": "sausage,egg,cheese,English muffin",
+		"tags": "nonveg, fast food, breakfast"
 	},
 	{
 		"restaurant": "Starbucks",
 		"product": "Classic Oatmeal",
-		"ingredients": "oats,dried fruit,nuts,brown sugar"
+		"ingredients": "oats,dried fruit,nuts,brown sugar",
+		"tags": "vegetarian, fast food, breakfast"
 	},
 	{
 		"restaurant": "Tim Hortons",
 		"product": "Ham & Cheddar Sandwich",
-		"ingredients": "ham,cheese,tomato,lettuce,bread"
+		"ingredients": "ham,cheese,tomato,lettuce,bread",
+		"tags": "nonveg, fast food"
 	},
 	{
 		"restaurant": "Tim Hortons",
 		"product": "Chicken Caesar Wrap",
-		"ingredients": "chicken,bacon,tomato,lettuce,wrap"
+		"ingredients": "chicken,bacon,tomato,lettuce,wrap",
+		"tags": "nonveg, fast food"
 	},
 
 	{
 		"restaurant": "Mucho Burrito",
 		"product": "Regular Meat Burrito",
-		"ingredients": "meat,beans,rice,jalapeno,cheese,wrap"
+		"ingredients": "meat,beans,rice,jalapeno,cheese,wrap",
+		"tags": "nonveg, mexican"
 	},
 
 	{
 		"restaurant": "Mucho Burrito",
 		"product": "Regular Veggie Burrito",
-		"ingredients": "veggie,pepper,onion,beans,rice,jalapeno,cheese,wrap"
+		"ingredients": "veggie,pepper,onion,beans,rice,jalapeno,cheese,wrap",
+		"tags": "vegetarian, mexican"
 	},
 
 	{
 		"restaurant": "Gol's Lanzhou Noodle",
 		"product": "Beef Tendon Noodle",
-		"ingredients": "noodle,beef,cilantro,sesame,scallion,soup"
+		"ingredients": "noodle,beef,cilantro,sesame,scallion,soup",
+		"tags": "nonveg, chinese"
 	},
 
 	{
 		"restaurant": "Gol's Lanzhou Noodle",
 		"product": "Vegetable Chow Mein",
-		"ingredients": "noodle,veggie,broccoli,pepper,tomato"
+		"ingredients": "noodle,veggie,broccoli,pepper,tomato",
+		"tags": "vegetarian, chinese"
 	}
 	
 ]
