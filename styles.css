@@ -59,3 +59,10 @@
   width: 10%;
   background-color: #f8dc81;
 }
+
+.step2, .step3{
+  background-color: #f8dc81;
+}
+.step1{
+  background-color:green;
+}
