@@ -2,113 +2,141 @@
 	{
 		"restaurant": "McDonald's",
 		"product": "Big Mac",
-		"ingredients": "beef, lettuce, mayo, cheese, bread"
+		"ingredients": "beef,lettuce,mayo,cheese,bread",
+		"address": "362 King St N, Waterloo, ON N2J 2Z2"
 	},
 
 	{
 		"restaurant": "McDonald's",
 		"product": "Chicken McNuggets",
-		"ingredients": "chicken"
+		"ingredients": "chicken",
+		"address": "362 King St N, Waterloo, ON N2J 2Z2"
 	},
 
 	{
 		"restaurant": "Kinkaku",
 		"product": "California Roll",
-		"ingredients": "crab, rice, seaweed, avocado, cucumber"
+		"ingredients": "crab,rice,seaweed,avocado,cucumber",
+		"address": "217 King St W, Kitchener, ON N2G 1B1"
 	},
 
 	{
 		"restaurant": "Lazeez",
 		"product": "Shawarma Wrap",
-		"ingredients": "chicken, pickle, tomato, onion, bread, lettuce"
+		"ingredients": "chicken,pickle,tomato,onion,bread,lettuce",
+		"address": "170 University Ave W, Waterloo, ON N2L 3E9"
 	},
 	
 	{
 		"restaurant": "Mucho Burrito",
 		"product": "Maple Chipotle",
-		"ingredients": "maple-chipotle BBQ sauce, blackbeans, jalapeño, avocado crema, harvest veggie medley, cheese, chicken"
+		"ingredients": "maple-chipotle BBQ sauce,blackbeans,jalapeño,avocado crema,harvest veggie medley,cheese,chicken",
+		"address": "220 King St N, Waterloo, ON N2J 2Y7"
 	},
 
 	{
 		"restaurant": "Kim's Kitchen",
 		"product": "Deep-Fried Boneless Chicken",
-		"ingredients": "chicken, rice"
+		"ingredients": "chicken,rice",
+		"address": "258 King St N Unit #2, Waterloo, ON N2J 2Y9"
 	},
 
 	{
 		"restaurant": "Ennio's Pasta House",
 		"product": "Rustica Pasta",
-		"ingredients": "sweet bell peppers, grape tomatoes, sliced roasted chicken"
+		"ingredients": "sweet bell peppers,grape tomatoes,sliced roasted chicken",
+		"address": "384 King St N, Waterloo, ON N2J 2Z3"
 	},
 
 	{
 		"restaurant": "Ennio's Pasta House",
 		"product": "Arrabiata Pasta",
-		"ingredients": "sweet bell peppers, tomato sauce, penne noodles"
+		"ingredients": "sweet bell peppers,tomato sauce,penne noodles",
+		"address": "384 King St N, Waterloo, ON N2J 2Z3"
 	},
+	
 	{
 		"restaurant": "Panago Pizza",
 		"product": "Hawaiian Pizza",
-		"ingredients": "tomato sauce,bacon,ham,pineapple,cheese,crust"
+		"ingredients": "tomato sauce,bacon,ham,pineapple,cheese,pizza",
+		"address": "668 Erb St W, Waterloo, ON N2T 2Z7"
 	},
+
 	{
 		"restaurant": "Panago Pizza",
 		"product": "BBQ Bacon Chicken Pizza",
-		"ingredients": "bbq sauce,chicken,bacon,onion,red pepper,cheese,crust"
+		"ingredients": "bbq sauce,chicken,bacon,onion,red pepper,cheese,pizza",
+		"address": "668 Erb St W, Waterloo, ON N2T 2Z7"
 	},
+
 	{
 		"restaurant": "Boston Pizza",
 		"product": "Tropical Chicken Pizza",
-		"ingredients": "alfredo sauce,cheese,bacon,chicken,pineapple,crust"
+		"ingredients": "alfredo sauce,cheese,bacon,chicken,pineapple,pizza",
+		"address": "597 King St N, Waterloo, ON N2V 2N3"
 	},
+
 	{
 		"restaurant": "Boston Pizza",
 		"product": "Bourbon BBQ Chicken Pizza",
-		"ingredients": "bbq sauce,chicken,red onion,cheese,bacon,crust"
+		"ingredients": "bbq sauce,chicken,red onion,cheese,bacon,pizza",
+		"address": "597 King St N, Waterloo, ON N2V 2N3"
 	},
+
 	{
 		"restaurant": "Starbucks",
 		"product": "Sausage, Cheddar & Egg Sandwich",
-		"ingredients": "sausage,egg,cheese,English muffin"
+		"ingredients": "sausage,egg,cheese,English muffin",
+		"address": "200 University Ave W, Waterloo, ON N2L 3G1"
 	},
+
 	{
 		"restaurant": "Starbucks",
 		"product": "Classic Oatmeal",
-		"ingredients": "oats,dried fruit,nuts,brown sugar"
+		"ingredients": "oats,dried fruit,nuts,brown sugar",
+		"address": "200 University Ave W, Waterloo, ON N2L 3G1"
 	},
+
 	{
 		"restaurant": "Tim Hortons",
 		"product": "Ham & Cheddar Sandwich",
-		"ingredients": "ham,cheese,tomato,lettuce,bread"
+		"ingredients": "ham,cheese,tomato,lettuce,bread",
+		"address": "200 University Ave W, Waterloo, ON N2C 3G1"
 	},
+
 	{
 		"restaurant": "Tim Hortons",
 		"product": "Chicken Caesar Wrap",
-		"ingredients": "chicken,bacon,tomato,lettuce,wrap"
+		"ingredients": "chicken,bacon,tomato,lettuce,wrap",
+		"address": "200 University Ave W, Waterloo, ON N2C 3G1"
 	},
 
 	{
 		"restaurant": "Mucho Burrito",
 		"product": "Regular Meat Burrito",
-		"ingredients": "meat,beans,rice,jalapeno,cheese,wrap"
+		"ingredients": "meat,beans,rice,jalapeno,cheese,wrap",
+		"address": "220 King St N, Waterloo, ON N2J 2Y7"
 	},
 
 	{
 		"restaurant": "Mucho Burrito",
 		"product": "Regular Veggie Burrito",
-		"ingredients": "veggie,pepper,onion,beans,rice,jalapeno,cheese,wrap"
+		"ingredients": "veggie,pepper,onion,beans,rice,jalapeno,cheese,wrap",
+		"address": "220 King St N, Waterloo, ON N2J 2Y7"
 	},
 
 	{
 		"restaurant": "Gol's Lanzhou Noodle",
 		"product": "Beef Tendon Noodle",
-		"ingredients": "noodle,beef,cilantro,sesame,scallion,soup"
+		"ingredients": "noodle,beef,cilantro,sesame,scallion,soup",
+		"address": "150 University Ave W Unit 6B, Waterloo, ON N2L 3E4"
 	},
 
 	{
 		"restaurant": "Gol's Lanzhou Noodle",
 		"product": "Vegetable Chow Mein",
-		"ingredients": "noodle,veggie,broccoli,pepper,tomato"
+		"ingredients": "noodle,veggie,broccoli,pepper,tomato",
+		"address": "150 University Ave W Unit 6B, Waterloo, ON N2L 3E4"
 	}
 	
 ]
