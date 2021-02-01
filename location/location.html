@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Address</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./location.js"></script>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div>
+        <h2>Address Search:</h2>
+        <div>
+            <button id="location-button" class="custom-map-control-button">Get Current Location</button>
+        </div>
+        <iframe id="my-map" frameborder="0" src=""></iframe>
+        <div id="status"></div>
+    </div>
+    <div>
+        <h2>Restaurants:</h2>
+        <div id="restaurant-container">
+          <p id="restaurant-name"></p>
+          <iframe id="restaurant-map" frameborder="0" src=""></iframe>
+        </div>
+    </div>
+    <script>
+        initMap();
+        initRestaurant();
+    </script>
+  </body>
+</html>
