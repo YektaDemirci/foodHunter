@@ -3,6 +3,7 @@
   background-color: #f4f5db;
 }
 
+
 .navbar-brand{
   font-family: 'Lobster', cursive;
   font-size: 4rem !important;
@@ -33,25 +34,24 @@
 }
 
 .box{
-  text-align: center;
-  padding: 5%;
+  height: 70vh;
   transition: width 2s, background-color 0.5s ease-out;
 }
 
 /* Welcoming page inital attributes*/
 .left{
-  width: 80%;
+  width: 70%;
   background-color: #f4f5db;
 }
 
 /* Suggestion page inital attributes*/
 .mid{
-  width: 10%;
+  width: 15%;
   background-color: #f8dc81;
 }
 
 /* Ordering page inital attributes*/
 .right{
-  width: 10%;
+  width: 15%;
   background-color: #f8dc81;
 }
