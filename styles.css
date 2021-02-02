@@ -35,6 +35,8 @@
 
 .box{
   height: 70vh;
+  display: flex;
+  align-items: center;
   transition: width 2s, background-color 0.5s ease-out;
 }
 
@@ -54,4 +56,8 @@
 .right{
   width: 15%;
   background-color: #f8dc81;
+}
+
+.foundings{
+  text-align: center;
 }
