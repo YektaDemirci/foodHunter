@@ -60,9 +60,18 @@
   background-color: #f8dc81;
 }
 
-.step2, .step3{
-  background-color: #f8dc81;
+/* Footer styling */
+/* color names */
+:root {
+  --footer-bg-color:#f8dc81;
+  --footer-active-color: #f4f5db;
+  --footer-active-text-color: darkgreen;
 }
-.step1{
-  background-color:green;
+
+.bg-step{
+  background-color: var(--footer-bg-color);
+
+}
+.current-step{
+  background-color: var(--footer-active-color);
 }
