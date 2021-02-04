@@ -53,3 +53,33 @@ document.querySelector(".submitLeftBack").addEventListener("click" , function(){
   right.style.width = "15%";
   right.style.backgroundColor = "#f8dc81";
 });
+
+///////////////////////////////////////////////////////////////////////////
+
+// Responsive Navbar (Copied from above)
+const footerIDSteps = ['step1', 'step2', 'step3'];
+function updateFooter(activeStepID) {
+    footerIDSteps.forEach(step => {
+      if(step == activeStepID){
+        let stepNode = document.getElementById(step);
+        stepNode.className = "col-md current-step";
+      } 
+      else {
+        let stepNode = document.getElementById(step);
+        stepNode.className = "col-md bg-step";
+      }
+    })
+  }
+
+// If you click to submit on the welcoming page, it moves to suggestions page
+document.querySelector(".submitLeftNext").addEventListener("click", function() {
+  updateFooter("step2"); });
+// If you click to back on the suggestion page, it goes back to welcoming page
+document.querySelector(".submitMidBack").addEventListener("click", function() {
+  updateFooter("step1"); });
+// // If you click to next on the suggestion page, it moves to ordering page
+document.querySelector(".submitMidNext").addEventListener("click", function() {
+  updateFooter("step3"); });
+// // If you click to back on the ordering page, it moves to suggestion page
+document.querySelector(".submitLeftBack").addEventListener("click", function() {
+  updateFooter("step2"); });
