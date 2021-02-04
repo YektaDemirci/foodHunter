@@ -6,66 +6,101 @@
 
 const API_key = "AIzaSyCh_nAkklDfea8cKEhEmplXqXz7yxl2yGA"
 
-/********** My geolocation **********/
-let locButton, myMap, statusDiv;
-
-function initMap() {
-  locButton = document.getElementById("location-button");
-  myMap = document.getElementById("my-map");
-  statusDiv = document.getElementById("status");
-  
+function init() {
   // hide map
+  const myMap = document.getElementById("location-map");
   myMap.style.display = "none";
-
-  locButton.addEventListener("click", () => {
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          myMap.src = "https://www.google.com/maps/embed/v1/place?key="+API_key
-            +"&q=+"+pos.lat+"+,+"+pos.lng+"+";
-          myMap.style.display = "block";
-          statusDiv.innerHTML = "";
-        },
-        () => {
-          handleLocationError(true, statusDiv);
-        }
-      );
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, statusDiv);
-    }
-  });
+  $(document).ready(function() {
+    // ask for permission to get geolocation
+    initGeolocation();
+  })
 }
 
-function handleLocationError(browserHasGeolocation) {
+/********** My geolocation **********/
+
+function initGeolocation() {
+  const myMap = document.getElementById("location-map");
+  const statusDiv = document.getElementById("status");
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        // no status message
+        statusDiv.innerHTML = "";
+        // show geolocation on map
+        myMap.src = "https://www.google.com/maps/embed/v1/place?key="+API_key
+          +"&q=+"+pos.lat+"+,+"+pos.lng+"+";
+        myMap.style.display = "block";
+      },
+      () => {
+        handleLocationError(true, statusDiv, myMap);
+      }
+    );
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, statusDiv, myMap);
+  }
+}
+
+function handleLocationError(browserHasGeolocation, statusDiv, myMap) {
+  // show error message
   statusDiv.innerHTML = 
     browserHasGeolocation
       ? "Error: The Geolocation service failed."
       : "Error: Your browser doesn't support geolocation."
   ;
-  locButton.disabled = true;
+  // hide map
   myMap.style.display = "none";
   myMap.src = "";
+}
+
+function initSearch() {
+  const myMap = document.getElementById("location-map");
+  const input = document.getElementById("location-input");
+  const options = {
+    componentRestrictions: { country: ["ca","us"] }
+  };
+  const autocomplete = new google.maps.places.Autocomplete(input, options);
+  google.maps.event.addListener(autocomplete, 'place_changed', function () {
+    let place = autocomplete.getPlace();
+    //console.log(place.name, place.geometry.location.lat(),place.geometry.location.lng());
+    let lat = place.geometry.location.lat();
+    let lng = place.geometry.location.lng();
+    // show geolocation on map
+    myMap.src = "https://www.google.com/maps/embed/v1/place?key="+API_key
+    +"&q=+"+lat+"+,+"+lng+"+";
+    myMap.style.display = "block";
+  });
 }
 
 /********** Restaurant location **********/
 
 function initRestaurant() {
-    let businessName = "McDonald's";
-    let address = "362 King St N, Waterloo, ON N2J 2Z2";
+  $(document).ready(function() {
+    $.getJSON("../data_food_sample.json", function(result) {
+      let i = 4;
+      // get restaurant name and address
+      let businessName = result[i].restaurant;
+      let address = result[i].address;
 
-    let restName = document.getElementById("restaurant-name");
-    let restMap = document.getElementById("restaurant-map");
-
-    restName.innerHTML = businessName;
-
-    businessName = businessName.replace(/ /g, "%20");
-    address = address.replace(/ /g, "%20");
-    restMap.src = "https://www.google.com/maps/embed/v1/place?key="+API_key
-        +"&q="+address+"+("+businessName+")";
+      const restContainer = document.getElementById("restaurant-container");
+      let restName = document.createElement("p");
+      let restMap = document.createElement("iframe");
+      restMap.frameborder = "0";
+      restContainer.appendChild(restName);
+      restContainer.appendChild(restMap);
+      // show restaurant name
+      restName.innerHTML = businessName;
+      // show restaurant on map
+      businessName = businessName.replace(/ /g, "%20");
+      address = address.replace(/ /g, "%20");
+      restMap.src = "https://www.google.com/maps/embed/v1/place?key="+API_key
+          +"&q="+address+"+("+businessName+")";
+    });
+  });
 }
