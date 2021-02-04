@@ -66,12 +66,49 @@
   --footer-bg-color:#f8dc81;
   --footer-active-color: #f4f5db;
   --footer-active-text-color: darkgreen;
+  --footer-bg-text-color:gray;
+  --footer-height: 50px;
+}
+
+.bg-step, .current-step{
+  display:inline-flex;
+  flex-direction:row;
+  justify-content:center;
+  align-content:center;
+  height:var(--footer-height);
 }
 
 .bg-step{
   background-color: var(--footer-bg-color);
-
 }
+
 .current-step{
   background-color: var(--footer-active-color);
+}
+
+.bg-step p, .current-step p{
+  margin:auto 10px auto 0px;
+  padding:auto 10px auto 10px;
+}
+
+.bg-step p{
+  color:var(--footer-bg-text-color);
+}
+
+.current-step p{
+  color:var(--footer-active-text-color);
+  font-weight: bold;
+}
+
+.circle{
+  border-style:solid;
+  border-width:3px;
+
+  align-content:baseline;
+  justify-items:center;
+
+  border-radius:50%;
+  height:40px;
+  width:40px;
+  padding-top:6px;
 }
