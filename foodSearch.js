@@ -15,8 +15,9 @@ function food_search() {
 
         if (!input) {
             result_list_str = "you forgot to type something into the search bar!";
+            document.getElementById('message_submit').innerHTML  = "No input found";
         }
-        
+
         else {
 
             for (i = 0; i < jsonFood.length; i++) {
