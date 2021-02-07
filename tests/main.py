@@ -18,6 +18,10 @@ class FirstPageUI(unittest.TestCase):
         mainPage = page.MainPage(self.driver)
         assert mainPage.is_submit_empty()
 
+    def test_one_input(self):
+        mainPage = page.MainPage(self.driver)
+        assert mainPage.is_output()
+
     def tearDown(self):
         self.driver.close()
 

@@ -28,3 +28,18 @@ class MainPage(BasePage):
         element2 = self.driver.find_element(*MainPageLocators.SUBMIT_MESSAGE).text
         err_message = True if element2 else False
         return err_message
+
+    def is_output(self):
+        element = self.driver.find_element(*MainPageLocators.SEARCH_BAR)
+        element.send_keys("chicken")
+        element2 = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY).click()
+        time.sleep(5)
+        element3 = self.driver.find_element(*MainPageLocators.RESULTS).text
+        if element3:
+            if element3 != 'we could not find anything, sorry.':
+                return True
+            else:
+                return False
+        else:
+            return False
+
