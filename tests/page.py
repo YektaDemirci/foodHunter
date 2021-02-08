@@ -42,7 +42,32 @@ class MainPage(BasePage):
                 return False
         else:
             return False
+    
+    def is_output_spacing(self):
+        element = self.driver.find_element(*MainPageLocators.SEARCH_BAR)
+        element.send_keys("  beef , cheese   ")
+        element2 = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY).click()
+        time.sleep(5)
+        element3 = self.driver.find_element(*MainPageLocators.RESULTS).text
+        if element3:
+            if element3 != 'we could not find anything, sorry.':
+                return True
+            else:
+                return False
+        else:
+            return False
 
-    # test idea - input = "beef , cheese   " - i.e. VALUES THAT EXIST IN SAMPLE DATA, BUT WITH ABNORMAL SPACING
-    # test idea - input = "asdfgh" - i.e. VALUE THAT IS CONFIRMED TO NOT EXIST IN SAMPLE DATA TO CHECK HOW IT'S HANDLED
+    def is_output_err(self):
+        element = self.driver.find_element(*MainPageLocators.SEARCH_BAR)
+        element.send_keys("asdfgh")
+        element2 = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY).click()
+        time.sleep(5)
+        element3 = self.driver.find_element(*MainPageLocators.RESULTS).text
+        if element3:
+            if element3 == 'we could not find anything, sorry.':
+                return True
+            else:
+                return False
+        else:
+            return False
 
