@@ -93,13 +93,14 @@
 }
 
 .done-step{
-  background-color: var(--footer-active-color);
-  color: var(--footer-undone-text-color);
+  background-color: var(--footer-done-color);
+  color: var(--footer-done-text-color);
   width:var(--footer-done-width);
 }
 
 .current-step{
   background-color: var(--footer-active-color);
+  color: var(--footer-active-text-color);
   font-weight: bold;
   width:var(--footer-active-width);
 }
@@ -108,7 +109,6 @@
   margin:auto 10px auto 0px;
   padding:auto 10px auto 10px;
 }
-
 
 .circle{
   border-style:solid;
