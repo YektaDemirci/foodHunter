@@ -6,10 +6,15 @@ class MainPageLocators(object):
     FOOTER_STEP2 = (By.ID, "footer-step2")
     FOOTER_STEP3 = (By.ID, "footer-step3")
 
+    SEARCH_BOX = (By.CLASS_NAME, "search-bar")
+    SUBMIT_BUTTON = (By.CLASS_NAME, "submitLeftNext")
+
     # Should constants be in the 'locators.py' file or another file?
     FOOTER_ACTIVE_STYLE = "current-step"
     FOOTER_DONE_STYLE = "done-step"
     FOOTER_UNDONE_STYLE = "undone-step"
+
+    SAMPLE_INGREDIENT = "chicken"
 
     # Should these kind of const's be in another file?
     STEP_1_HIGHLIGHTED = [ 

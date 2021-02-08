@@ -1,6 +1,8 @@
 from locator import MainPageLocators
 from element import BasePageElement
 
+import time
+
 class SearchFooterElement(BasePageElement):
     locator = "step1"
 
@@ -31,7 +33,13 @@ class MainPage(BasePage):
         return( self.isFooterStylingCorrect(MainPageLocators.STEP_1_HIGHLIGHTED) )
 
     def is_footer_step2_highlighted(self):
-        pass
+        searchElement = self.driver.find_element(*MainPageLocators.SEARCH_BOX)
+        searchElement.send_keys(MainPageLocators.SAMPLE_INGREDIENT)
+
+        submitElement = self.driver.find_element(*MainPageLocators.SUBMIT_BUTTON)
+        submitElement.click()
+
+        return( self.isFooterStylingCorrect(MainPageLocators.STEP_2_HIGHLIGHTED) )
 
     def is_footer_step3_highlighted(self):
         pass

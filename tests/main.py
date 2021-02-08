@@ -13,9 +13,13 @@ class FooterUI(unittest.TestCase):
         self.driver = webdriver.Firefox()
         self.driver.get(PATH)
 
-    def test_footerStep(self):
+    def test_footerStep1(self):
         mainPage = page.MainPage(self.driver)
-        assert mainPage.is_footer_step1_highlighted()
+        assert mainPage.is_footer_step1_highlighted(), "\nInitial styling of footer is incorrect"
+
+    def test_footerStep2(self):
+        mainPage = page.MainPage(self.driver)
+        assert mainPage.is_footer_step2_highlighted(), "\nStyling for second step is incorrect"
 
     def tearDown(self):
         self.driver.close()
