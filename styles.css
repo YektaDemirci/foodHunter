@@ -69,11 +69,16 @@
   --footer-active-text-color: darkgreen;
   --footer-undone-text-color:gray;
   --footer-done-text-color:white;
+
   --footer-height: 50px;
+
+  --footer-active-width:70%;
+  --footer-undone-width:15%;
+  --footer-done-width:15%;
 }
 
 .undone-step, .done-step, .current-step{
-  display:inline-flex;
+  display:flex;
   flex-direction:row;
   justify-content:center;
   align-content:center;
@@ -83,17 +88,20 @@
 
 .undone-step{
   background-color: var(--footer-undone-color);
-  color: gray;
+  color: var(--footer-undone-text-color);
+  width:var(--footer-undone-width);
 }
 
 .done-step{
   background-color: var(--footer-active-color);
-  color: #335d2d;
+  color: var(--footer-undone-text-color);
+  width:var(--footer-done-width);
 }
 
 .current-step{
   background-color: var(--footer-active-color);
   font-weight: bold;
+  width:var(--footer-active-width);
 }
 
 .done-step p, .undone-step p, .current-step p{

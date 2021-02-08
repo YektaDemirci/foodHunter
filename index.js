@@ -6,17 +6,17 @@ function updateFooter(activeStepID, activeBox) {
       if(step < activeStepID){
         let stepNode = document.querySelectorAll("."+step);
         stepNode[0].className = "box doneBox "+step;
-        stepNode[1].className = "col-md done-step "+step;
+        stepNode[1].className = "done-step "+step;
       }
       else if (step == activeStepID){
         let stepNode = document.querySelectorAll("."+step);
         stepNode[0].className = "box activeBox "+step;
-        stepNode[1].className = "col-md current-step "+step;
+        stepNode[1].className = "current-step "+step;
       }
       else {
           let stepNode = document.querySelectorAll("."+step);
           stepNode[0].className = "box undoneBox "+step;
-          stepNode[1].className = "col-md undone-step "+step;
+          stepNode[1].className = "undone-step "+step;
       }
     })
   }
