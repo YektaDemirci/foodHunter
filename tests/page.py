@@ -12,16 +12,29 @@ class BasePage(object):
 
 class MainPage(BasePage):
 
-    search_footer_element = SearchFooterElement()
+    # This was in selenium official tutorial, dont understand 
+    # search_footer_element = SearchFooterElement()
+
+    # Should the following 2 helper functions go in another file? 
+    def isStepHighlighted(self,step,style):
+        element = self.driver.find_element(*step)
+        className = element.get_attribute("class")
+        return style in className
+
+    def isFooterStylingCorrect(self, array):
+        correctStyle = []
+        for testCase in array:
+            correctStyle.append( self.isStepHighlighted(testCase[0], testCase[1]) )
+        return True if False not in correctStyle else False
 
     def is_footer_step1_highlighted(self):
-        elementActive = self.driver.find_element(*MainPageLocators.FOOTER_STEP1)
-        classNameActive = elementActive.get_attribute("class")
+        return( self.isFooterStylingCorrect(MainPageLocators.STEP_1_HIGHLIGHTED) )
 
-        elementPassive1 = self.driver.find_element(*MainPageLocators.FOOTER_STEP2)
-        classNamePassive1 = elementPassive1.get_attribute("class")
+    def is_footer_step2_highlighted(self):
+        pass
 
-        elementPassive2 = self.driver.find_element(*MainPageLocators.FOOTER_STEP3)
-        classNamePassive2 = elementPassive2.get_attribute("class")
+    def is_footer_step3_highlighted(self):
+        pass
 
-        return (("current-step" in classNameActive) and ("undone-step" in classNamePassive1 and "undone-step" in classNamePassive2))
+
+    
