@@ -63,42 +63,44 @@
 /* Footer styling */
 /* color names */
 :root {
-  --footer-bg-color:#f8dc81;
+  --footer-done-color:#335d2d;
+  --footer-undone-color:#f8dc81;
   --footer-active-color: #f4f5db;
   --footer-active-text-color: darkgreen;
-  --footer-bg-text-color:gray;
+  --footer-undone-text-color:gray;
+  --footer-done-text-color:white;
   --footer-height: 50px;
 }
 
-.bg-step, .current-step{
+.undone-step, .done-step, .current-step{
   display:inline-flex;
   flex-direction:row;
   justify-content:center;
   align-content:center;
   height:var(--footer-height);
+  transition: width 2s, background-color 0.5s ease-out;
 }
 
-.bg-step{
-  background-color: var(--footer-bg-color);
+.undone-step{
+  background-color: var(--footer-undone-color);
+  color: gray;
+}
+
+.done-step{
+  background-color: var(--footer-active-color);
+  color: #335d2d;
 }
 
 .current-step{
   background-color: var(--footer-active-color);
+  font-weight: bold;
 }
 
-.bg-step p, .current-step p{
+.done-step p, .undone-step p, .current-step p{
   margin:auto 10px auto 0px;
   padding:auto 10px auto 10px;
 }
 
-.bg-step p{
-  color:var(--footer-bg-text-color);
-}
-
-.current-step p{
-  color:var(--footer-active-text-color);
-  font-weight: bold;
-}
 
 .circle{
   border-style:solid;
