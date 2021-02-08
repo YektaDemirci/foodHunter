@@ -1,4 +1,4 @@
-// Responsive Navbar (Copied from above)
+// Repetition is fixed.
 const footerIDSteps = ["step1", "step2", "step3"];
 
 function updateFooter(activeStepID, activeBox) {
