@@ -21,15 +21,15 @@ function updateFooter(activeStepID, activeBox) {
     })
   }
 
-// If you click to submit on the welcoming page, it moves to suggestions page
-document.querySelector(".submitLeftNext").addEventListener("click", function() {
-  updateFooter("step2"); });
-// If you click to back on the suggestion page, it goes back to welcoming page
-document.querySelector(".submitMidBack").addEventListener("click", function() {
-  updateFooter("step1"); });
-// // If you click to next on the suggestion page, it moves to ordering page
-document.querySelector(".submitMidNext").addEventListener("click", function() {
-  updateFooter("step3"); });
-// // If you click to back on the ordering page, it moves to suggestion page
-document.querySelector(".submitLeftBack").addEventListener("click", function() {
-  updateFooter("step2"); });
+// // If you click to submit on the welcoming page, it moves to suggestions page
+// document.querySelector(".submitLeftNext").addEventListener("click", function() {
+//   updateFooter("step2"); });
+// // If you click to back on the suggestion page, it goes back to welcoming page
+// document.querySelector(".submitMidBack").addEventListener("click", function() {
+//   updateFooter("step1"); });
+// // // If you click to next on the suggestion page, it moves to ordering page
+// document.querySelector(".submitMidNext").addEventListener("click", function() {
+//   updateFooter("step3"); });
+// // // If you click to back on the ordering page, it moves to suggestion page
+// document.querySelector(".submitLeftBack").addEventListener("click", function() {
+//   updateFooter("step2"); });
