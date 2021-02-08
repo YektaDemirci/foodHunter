@@ -43,3 +43,6 @@ class MainPage(BasePage):
         else:
             return False
 
+    # test idea - input = "beef , cheese   " - i.e. VALUES THAT EXIST IN SAMPLE DATA, BUT WITH ABNORMAL SPACING
+    # test idea - input = "asdfgh" - i.e. VALUE THAT IS CONFIRMED TO NOT EXIST IN SAMPLE DATA TO CHECK HOW IT'S HANDLED
+

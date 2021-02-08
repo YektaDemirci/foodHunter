@@ -30,7 +30,7 @@
 	{
 		"restaurant": "Mucho Burrito",
 		"product": "Maple Chipotle",
-		"ingredients": "maple-chipotle BBQ sauce, blackbeans, jalapeño, avocado crema, harvest veggie medley, cheese, chicken",
+		"ingredients": "maple chipotle BBQ sauce, blackbeans, jalapeno, avocado crema, harvest veggie medley, cheese, chicken",
 		"tags": "nonveg, mexican"
 	},
 
@@ -81,7 +81,7 @@
 	{
 		"restaurant": "Starbucks",
 		"product": "Sausage, Cheddar & Egg Sandwich",
-		"ingredients": "sausage,egg,cheese,English muffin",
+		"ingredients": "sausage,egg,cheese,english muffin",
 		"tags": "nonveg, fast food, breakfast"
 	},
 	{
