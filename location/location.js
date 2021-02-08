@@ -4,7 +4,8 @@
 // failed.", it means you probably did not give permission for the browser to
 // locate you.
 
-const API_key = "AIzaSyCh_nAkklDfea8cKEhEmplXqXz7yxl2yGA"
+const API_key = "AIzaSyCh_nAkklDfea8cKEhEmplXqXz7yxl2yGA";
+const embed_map_url_key = "https://www.google.com/maps/embed/v1/place?key="+API_key;
 
 function init() {
   // hide map
@@ -69,11 +70,12 @@ function initSearch() {
   google.maps.event.addListener(autocomplete, 'place_changed', function () {
     let place = autocomplete.getPlace();
     //console.log(place.name, place.geometry.location.lat(),place.geometry.location.lng());
-    let lat = place.geometry.location.lat();
-    let lng = place.geometry.location.lng();
+    //myMap.src = "https://www.google.com/maps/embed/v1/place?key="+API_key
+    //  +"&q=+"+lat+"+,+"+lng+"+";
     // show geolocation on map
-    myMap.src = "https://www.google.com/maps/embed/v1/place?key="+API_key
-    +"&q=+"+lat+"+,+"+lng+"+";
+    let placeAddress = place.formatted_address.replace(/ /g, "%20");
+    console.log(place.name);
+    myMap.src = embed_map_url_key+"&q="+placeAddress;
     myMap.style.display = "block";
   });
 }
@@ -86,7 +88,7 @@ function initRestaurant() {
       let i = 4;
       // get restaurant name and address
       let businessName = result[i].restaurant;
-      let address = result[i].address;
+      let businessAddress = result[i].address;
 
       const restContainer = document.getElementById("restaurant-container");
       let restName = document.createElement("p");
@@ -98,9 +100,8 @@ function initRestaurant() {
       restName.innerHTML = businessName;
       // show restaurant on map
       businessName = businessName.replace(/ /g, "%20");
-      address = address.replace(/ /g, "%20");
-      restMap.src = "https://www.google.com/maps/embed/v1/place?key="+API_key
-          +"&q="+address+"+("+businessName+")";
+      businessAddress = businessAddress.replace(/ /g, "%20");
+      restMap.src = embed_map_url_key+"&q="+businessAddress+"+("+businessName+")";
     });
   });
 }
