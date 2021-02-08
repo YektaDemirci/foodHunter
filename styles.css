@@ -40,20 +40,19 @@
   transition: width 2s, background-color 0.5s ease-out;
 }
 
-/* Welcoming page inital attributes*/
-.left{
+/* Active box color*/
+.activeBox{
   width: 70%;
   background-color: #f4f5db;
 }
 
 /* Suggestion page inital attributes*/
-.mid{
+.doneBox{
   width: 15%;
-  background-color: #f8dc81;
+  background-color: #335d2d;
 }
 
-/* Ordering page inital attributes*/
-.right{
+.undoneBox{
   width: 15%;
   background-color: #f8dc81;
 }

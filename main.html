@@ -29,7 +29,6 @@
     <div class="container-fluid">
 
       <!-- Nav Bar -->
-      <!-- Nav Bar -->
       <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="">Food Hunter</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +60,7 @@
     <div class="row">
 
       <!-- Left box, referred as welcoming page in the next sections -->
-      <div class="box left">
+      <div class="box activeBox step1">
 
             <h2>What are we craving?</h2>
 
@@ -74,7 +73,7 @@
       </div>
 
       <!-- Middle box, referred as suggestion page in the next sections -->
-      <div class="box mid">
+      <div class="box undoneBox step2">
 
         <div class="container">
           <div class="row">
@@ -93,7 +92,7 @@
       </div>
 
       <!-- Right box, referred as ordering page in the next sections -->
-      <div class="box right">
+      <div class="box undoneBox step3">
         <div class="container">
           <div class="row">
             <!-- Button to navigate to suggestions -->
@@ -119,13 +118,13 @@
     <div class="page-footer text-center fixed-bottom">
       <!-- Footer -->
       <div class="container-fluid row m-0 p-0">
-        <div class = "col-md current-step" id="step1">
+        <div class = "col-md current-step step1">
           <p class='circle'>1</p><p>Put in ingredients <br>Then click submit </p>
         </div>
-        <div class = "col-md bg-step" id="step2">
+        <div class = "col-md bg-step step2">
           <p class="circle">2</p><p> Pick a restaurant</p>
         </div>
-        <div class = "col-md bg-step" id="step3">
+        <div class = "col-md bg-step step3">
           <p class = 'circle'>3</p><p> Eat!</p>
         </div>
       </div>
