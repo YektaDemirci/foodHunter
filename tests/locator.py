@@ -8,6 +8,7 @@ class MainPageLocators(object):
 
     SEARCH_BOX = (By.CLASS_NAME, "search-bar")
     SUBMIT_BUTTON = (By.CLASS_NAME, "submitLeftNext")
+    MID_NEXT_BUTTON = (By.CLASS_NAME, "submitMidNext")
 
     # Should constants be in the 'locators.py' file or another file?
     FOOTER_ACTIVE_STYLE = "current-step"
@@ -28,7 +29,7 @@ class MainPageLocators(object):
         [FOOTER_STEP3, FOOTER_UNDONE_STYLE] ]
 
     STEP_3_HIGHLIGHTED = [ 
-        [FOOTER_STEP1, FOOTER_UNDONE_STYLE],
-        [FOOTER_STEP2, FOOTER_UNDONE_STYLE],
-        [FOOTER_STEP3, FOOTER_DONE_STYLE] ]
+        [FOOTER_STEP1, FOOTER_DONE_STYLE],
+        [FOOTER_STEP2, FOOTER_DONE_STYLE],
+        [FOOTER_STEP3, FOOTER_ACTIVE_STYLE] ]
     

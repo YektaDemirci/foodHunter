@@ -21,6 +21,10 @@ class FooterUI(unittest.TestCase):
         mainPage = page.MainPage(self.driver)
         assert mainPage.is_footer_step2_highlighted(), "\nStyling for second step is incorrect"
 
+    def test_footerStep3(self):
+        mainPage = page.MainPage(self.driver)
+        assert mainPage.is_footer_step3_highlighted(), "\nStyling for final step is incorrect"
+
     def tearDown(self):
         self.driver.close()
 
