@@ -25,11 +25,14 @@ function food_search() {
                 var ingredient_list_despaced = jsonFood[i].ingredients.replaceAll(" ", "");
                 var ingredient_list = ingredient_list_despaced.split(",");
 
+                var foodTag_list_despaced = jsonFood[i].tags.replaceAll(" ", "");
+                var foodTag_list = foodTag_list_despaced.split(",");
+
                 var ingredient_count = 0;
                 
                 input_split.forEach(function (ingredientVal) {
 
-                    if(ingredient_list.indexOf(ingredientVal) >= 0){
+                    if(ingredient_list.indexOf(ingredientVal) >= 0 || foodTag_list.indexOf(ingredientVal) >= 0){
                         ingredient_count++;
                     }
 
