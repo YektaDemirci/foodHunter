@@ -1,7 +1,8 @@
-
 #title{
   background-color: #f4f5db;
 }
+
+html,body { height:100%; }
 
 
 .navbar-brand{
@@ -34,7 +35,7 @@
 }
 
 .box{
-  height: 70vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   transition: width 2s, background-color 0.5s ease-out;
