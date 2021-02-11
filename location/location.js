@@ -63,6 +63,7 @@ function handleLocationError(browserHasGeolocation, statusDiv, myMap) {
 function initSearch() {
   const myMap = document.getElementById("location-map");
   const input = document.getElementById("location-input");
+  // limit to Canada & US
   const options = {
     componentRestrictions: { country: ["ca","us"] }
   };
@@ -70,8 +71,7 @@ function initSearch() {
   google.maps.event.addListener(autocomplete, 'place_changed', function () {
     let place = autocomplete.getPlace();
     //console.log(place.name, place.geometry.location.lat(),place.geometry.location.lng());
-    //myMap.src = "https://www.google.com/maps/embed/v1/place?key="+API_key
-    //  +"&q=+"+lat+"+,+"+lng+"+";
+    //myMap.src = embed_map_url_key+"&q=+"+lat+"+,+"+lng+"+";
     // show geolocation on map
     let placeAddress = place.formatted_address.replace(/ /g, "%20");
     console.log(place.name);
