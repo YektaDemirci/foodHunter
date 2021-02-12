@@ -14,10 +14,25 @@ class BasePage(object):
 
 class MainPage(BasePage):
 
-    # This was in selenium official tutorial, dont understand 
+    def is_footer_step1_highlighted(self):
+        return ( self.isFooterStylingCorrect(MainPageLocators.STEP_1_HIGHLIGHTED) )
+    
+    def is_footer_step2_highlighted(self):
+        self.inputIngredientAndClickSubmit()
+        return ( self.isFooterStylingCorrect(MainPageLocators.STEP_2_HIGHLIGHTED) )
+
+    def is_footer_step3_highlighted(self):
+        self.inputIngredientAndClickSubmit()
+        nextButtonElement = self.driver.find_element(*MainPageLocators.MID_NEXT_BUTTON)
+        nextButtonElement.click()
+        return ( self.isFooterStylingCorrect(MainPageLocators.STEP_3_HIGHLIGHTED) )
+
+    # This was in selenium official tutorial, dont understand purpose of following function:
     # search_footer_element = SearchFooterElement()
 
-    # Should the following 2 helper functions go in another file? 
+#########################
+####### HELPER FUNCTIONS
+#########################
     def isStepHighlighted(self,step,style):
         element = self.driver.find_element(*step)
         className = element.get_attribute("class")
@@ -29,25 +44,14 @@ class MainPage(BasePage):
             correctStyle.append( self.isStepHighlighted(testCase[0], testCase[1]) )
         return True if False not in correctStyle else False
 
-    def is_footer_step1_highlighted(self):
-        return ( self.isFooterStylingCorrect(MainPageLocators.STEP_1_HIGHLIGHTED) )
-
     def inputIngredientAndClickSubmit(self):
         searchElement = self.driver.find_element(*MainPageLocators.SEARCH_BOX)
         searchElement.send_keys(MainPageLocators.SAMPLE_INGREDIENT)
 
         submitElement = self.driver.find_element(*MainPageLocators.SUBMIT_BUTTON)
         submitElement.click()
-    
-    def is_footer_step2_highlighted(self):
-        self.inputIngredientAndClickSubmit()
-        return ( self.isFooterStylingCorrect(MainPageLocators.STEP_2_HIGHLIGHTED) )
 
-    def is_footer_step3_highlighted(self):
-        self.inputIngredientAndClickSubmit()
-        nextButtonElement = self.driver.find_element(*MainPageLocators.MID_NEXT_BUTTON)
-        nextButtonElement.click()
-        return ( self.isFooterStylingCorrect(MainPageLocators.STEP_3_HIGHLIGHTED) )
+
 
 
     
