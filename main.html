@@ -55,22 +55,22 @@
   </section>
 
   <!-- To enable screen size dependent response -->
-  <div class="container-fluid">
+  <div class="container-fluid" >
 
     <div class="row">
 
       <!-- Left box, referred as welcoming page in the next sections -->
       <div class="box activeBox step1" id="box-step1">
 
-        <form>
-            <h2>What are we craving?</h2>
+        <div class="search-container">
 
-            <div class="search-container">
-                  <input class="search-bar" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
-                  <!-- Button to nagivate to suggestions -->
-                  <button class="submitLeftNext btn btn-light" type="submit">Submit</button>
-            </div>
-        </form>
+          <h2>What are we craving?</h2>
+          <input class="search-bar" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
+          <!-- Button to nagivate to suggestions -->
+          <button class="submitLeftNext btn btn-light" type="submit">Submit</button>
+
+        </div>
+
 
       </div>
 
@@ -117,7 +117,7 @@
 
   <!-- Footer: Updates based on what panel you're on -->
   <footer>
-    <div class="page-footer text-center fixed-bottom">
+    <div class="page-footer text-center">
       <!-- Footer -->
       <div class="container-fluid row m-0 p-0">
         <div class = "current-step step1" id="footer-step1">
