@@ -6,7 +6,10 @@ from selenium import webdriver
 import page
 import os
 
-path_parent = os.path.dirname(os.getcwd())
+# path_parent = os.path.dirname(os.getcwd())
+# alternate implementation (os.getcwd was giving me 1 folder extra up the ladder)
+path_parent = os.path.dirname(__file__)
+path_parent = os.path.join(path_parent, os.pardir)
 os.chdir(path_parent)
 
 PATH = "file://"+os.getcwd()+"/main.html"
@@ -52,6 +55,7 @@ class FooterUI(unittest.TestCase):
 
     def tearDown(self):
         self.driver.close()
+        self.driver.quit()
 
 if __name__ == "__main__":
     unittest.main()

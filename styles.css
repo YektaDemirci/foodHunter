@@ -1,10 +1,24 @@
 /* Modelling after #39 "Rich and Powerful"
 https://visme.co/blog/website-color-schemes/
  */
+ :root {
+  --done-color:#335d2d;
+  --undone-color:#f8dc81;
+  --active-color: #f4f5db;
 
+  --active-text-color: darkgreen;
+  --undone-text-color:gray;
+  --done-text-color:white;
+
+  --footer-height: 50px;
+
+  --active-width:60%;
+  --undone-width:20%;
+  --done-width:20%;
+}
 
 #title{
-  background-color: #f4f5db;
+  background-color: var(--active-color);
 }
 
 html,body { height:100%; }
@@ -13,14 +27,14 @@ html,body { height:100%; }
 .navbar-brand{
   font-family: 'Lobster', cursive;
   font-size: 4rem !important;
-  color: #335d2d;
+  color: var(--done-color);
   margin: 1% 15% 1%;
 }
 
 .navbar-brand:hover{
   font-family: 'Lobster', cursive;
   font-size: 4rem !important;
-  color: #335d2d;
+  color: var(--done-color);
 }
 
 .navbar-nav{
@@ -28,14 +42,14 @@ html,body { height:100%; }
 }
 
 .nav-link{
-  color: #335d2d;
+  color: var(--done-color);
   opacity: 0.8;
   margin-right: 5%;
   font-size: 1.1rem;
 }
 
 .nav-link:hover{
-  color: #335d2d;
+  color: var(--done-color);
   opacity: 1;
 }
 
@@ -44,44 +58,33 @@ html,body { height:100%; }
   display: flex;
   align-items: center;
   transition: width 2s, background-color 0.5s ease-out;
+  text-align:center;
+  justify-content:center;
 }
 
 /* Active box color*/
 .activeBox{
-  width: 70%;
-  background-color: #f4f5db;
+  width: var(--active-width);
+  background-color: var(--active-color);
 }
 
 /* Suggestion page inital attributes*/
 .doneBox{
-  width: 15%;
-  background-color: #335d2d;
+  width: var(--done-width);
+  background-color: var(--done-color);
 }
 
 .undoneBox{
-  width: 15%;
-  background-color: #f8dc81;
+  width: var(--undone-width);
+  background-color: var(--undone-color);
 }
 
 .foundings{
   text-align: center;
 }
+
 /* Footer styling */
 /* color names */
-:root {
-  --footer-done-color:#335d2d;
-  --footer-undone-color:#f8dc81;
-  --footer-active-color: #f4f5db;
-  --footer-active-text-color: darkgreen;
-  --footer-undone-text-color:gray;
-  --footer-done-text-color:white;
-
-  --footer-height: 50px;
-
-  --footer-active-width:70%;
-  --footer-undone-width:15%;
-  --footer-done-width:15%;
-}
 
 .undone-step, .done-step, .current-step{
   display:flex;
@@ -93,22 +96,22 @@ html,body { height:100%; }
 }
 
 .undone-step{
-  background-color: var(--footer-undone-color);
-  color: var(--footer-undone-text-color);
-  width:var(--footer-undone-width);
+  background-color: var(--undone-color);
+  color: var(--undone-text-color);
+  width:var(--undone-width);
 }
 
 .done-step{
-  background-color: var(--footer-done-color);
-  color: var(--footer-done-text-color);
-  width:var(--footer-done-width);
+  background-color: var(--done-color);
+  color: var(--done-text-color);
+  width:var(--done-width);
 }
 
 .current-step{
-  background-color: var(--footer-active-color);
-  color: var(--footer-active-text-color);
+  background-color: var(--active-color);
+  color: var(--active-text-color);
   font-weight: bold;
-  width:var(--footer-active-width);
+  width:var(--active-width);
 }
 
 .done-step p, .undone-step p, .current-step p{
