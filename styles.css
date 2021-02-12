@@ -1,73 +1,115 @@
-/* Modelling after #39 "Rich and Powerful"
+/* Modelling color pallette after #39 "Rich and Powerful"
 https://visme.co/blog/website-color-schemes/
  */
  :root {
-  --done-color:#335d2d;
+  --font-family:'Lobster', cursive;
+
+  --done-color:black;
   --undone-color:#f8dc81;
   --active-color: #f4f5db;
 
-  --active-text-color: darkgreen;
-  --undone-text-color:gray;
+  --header-color:#ececec;
+  --step1-color:#f3d250;
+  --step2-color:#90ccf4;
+  --step3-color:#f78888;
+
+  --active-text-color: black;
+  --undone-text-color:#ffffff70;
   --done-text-color:white;
 
-  --header-height:10vh;
-  --panels-height:80vh;
+  --header-height:12vh;
+  --panels-height:78vh;
   --footer-height: 10vh;
 
-  --active-width:70%;
-  --undone-width:15%;
-  --done-width:15%;
+  --active-width:60%;
+  --undone-width:20%;
+  --done-width:20%;
+
+  --sliding-transition:width 2s, background-color 0.5s ease-out;
+
+  /* TODO: Need help centering logo img and putting food hunter relative to it */
+  --header-logo-position: -5%;
+
+  --logo-text-size:8vh;
+  --logo-img-size:10vh;
+
+  --footer-font-size:1.5vw;
 }
 
+#box-step1, #footer-step1{ background-color:var(--step1-color); }
+#box-step2, #footer-step2{ background-color:var(--step2-color); }
+#box-step3, #footer-step3{ background-color:var(--step3-color); }
+
 #title{
-  background-color: var(--active-color);
+  background-color:var(--header-color);
   height:var(--header-height);
+}
+
+.navbar-container{
+  height:var(--header-height);
+  display:flex;
+  justify-content:center;
+}
+
+.navbar{
+  display:flex;
+  height:var(--header-height);
+  margin-right:var(--header-logo-position);
+}
+
+.navbar p{
+  padding:0 1vh 0 1vh;
+}
+
+.navbar-brand{
+  display:flex;
+  padding:auto auto auto auto;
+}
+
+#logo{
+  height:var(--logo-img-size);
+  border-radius:50%;
+  box-shadow: 0 0 4px 4px #9494947e;
 }
 
 footer{
   height:var(--footer-height);
 }
 
-#box-step1{
-  min-height:100%;
-}
-
 html,body { height:100%; }
 
 .navbar-brand{
-  font-family: 'Lobster', cursive;
-  font-size: 4rem !important;
+  line-height:var(--logo-text-size);
+  font-family: var(--font-family);
   color: var(--done-color);
-  margin: 1% 15% 1%;
+  font-size:var(--logo-text-size);
 }
 
 .navbar-brand:hover{
-  font-family: 'Lobster', cursive;
-  font-size: 4rem !important;
   color: var(--done-color);
 }
 
-.navbar-nav{
+/* .navbar-nav{
   margin-left: 60%;
-}
+} */
 
-.nav-link{
+/* .nav-link{
   color: var(--done-color);
   opacity: 0.8;
   margin-right: 5%;
   font-size: 1.1rem;
-}
+} */
 
-.nav-link:hover{
+/* .nav-link:hover{
   color: var(--done-color);
   opacity: 1;
-}
+} */
 
 .box{
   height:var(--panels-height);
   display: flex;
   align-items: center;
-  transition: width 2s, background-color 0.5s ease-out;
+  transition: var(--sliding-transition);
   text-align:center;
   justify-content:center;
 }
@@ -80,13 +122,12 @@ html,body { height:100%; }
 /* Active box color*/
 .activeBox{
   width: var(--active-width);
-  background-color: var(--active-color);
+  background-color:var(--step1-color)
 }
 
 /* Suggestion page inital attributes*/
 .doneBox{
   width: var(--done-width);
-  background-color: var(--done-color);
 }
 
 .undoneBox{
@@ -99,7 +140,6 @@ html,body { height:100%; }
 }
 
 /* Footer styling */
-/* color names */
 
 .undone-step, .done-step, .current-step{
   display:flex;
@@ -107,7 +147,11 @@ html,body { height:100%; }
   justify-content:center;
   align-content:center;
   height:var(--footer-height);
-  transition: width 2s, background-color 0.5s ease-out;
+  transition: var(--sliding-transition);
+}
+
+#footer-step1, #footer-step2, #footer-step3{
+  font-size:var(--footer-font-size);
 }
 
 .undone-step{
@@ -123,7 +167,8 @@ html,body { height:100%; }
 }
 
 .current-step{
-  background-color: var(--active-color);
+  /* background-color: var(--active-color); */
+  opacity:0.75;
   color: var(--active-text-color);
   font-weight: bold;
   width:var(--active-width);
@@ -138,11 +183,10 @@ html,body { height:100%; }
   border-style:solid;
   border-width:3px;
 
-  align-content:baseline;
   justify-items:center;
 
   border-radius:50%;
-  height:40px;
-  width:40px;
-  padding-top:6px;
+  height:3vw;
+  width:3vw;
+  padding-top:0.1em;
 }
