@@ -17,9 +17,12 @@ https://visme.co/blog/website-color-schemes/
   --undone-text-color:#ffffff70;
   --done-text-color:white;
 
-  --header-height:12vh;
-  --panels-height:78vh;
-  --footer-height: 10vh;
+  --arrow-color:white;
+  --arrow-size:4vh;
+
+  --header-height:13vh;
+  --panels-height:77vh;
+  --footer-height:10vh;
 
   --active-width:60%;
   --undone-width:20%;
@@ -27,13 +30,30 @@ https://visme.co/blog/website-color-schemes/
 
   --sliding-transition:width 2s, background-color 0.5s ease-out;
 
-  /* TODO: Need help centering logo img and putting food hunter relative to it */
+  /* TODO: Need help centering logo img and putting text food hunter relative to it */
   --header-logo-position: -5%;
 
   --logo-text-size:8vh;
   --logo-img-size:10vh;
 
   --footer-font-size:1.5vw;
+}
+
+/* TODO: Unable to remove clicked boundry-box of arrows */
+.arrow{
+  color:var(--arrow-color);
+  font-size:var(--arrow-size);
+}
+
+#step2-left-arrow, #step3-left-arrow{
+  display:flex;
+  justify-content:left;
+  padding-left:0;
+}
+#step2-right-arrow{
+  display:flex;
+  justify-content:right;
+  padding-right:0;
 }
 
 #box-step1, #footer-step1{ background-color:var(--step1-color); }
@@ -57,9 +77,7 @@ https://visme.co/blog/website-color-schemes/
   margin-right:var(--header-logo-position);
 }
 
-.navbar p{
-  padding:0 1vh 0 1vh;
-}
+.navbar p{ padding:0 1vh 0 1vh; }
 
 .navbar-brand{
   display:flex;
@@ -72,9 +90,7 @@ https://visme.co/blog/website-color-schemes/
   box-shadow: 0 0 4px 4px #9494947e;
 }
 
-footer{
-  height:var(--footer-height);
-}
+footer{ height:var(--footer-height); }
 
 html,body { height:100%; }
 
@@ -85,9 +101,7 @@ html,body { height:100%; }
   font-size:var(--logo-text-size);
 }
 
-.navbar-brand:hover{
-  color: var(--done-color);
-}
+.navbar-brand:hover{ color: var(--done-color); }
 
 /* .navbar-nav{
   margin-left: 60%;
@@ -120,24 +134,14 @@ html,body { height:100%; }
 }
 
 /* Active box color*/
-.activeBox{
-  width: var(--active-width);
-  background-color:var(--step1-color)
-}
+.activeBox{ width: var(--active-width); }
 
 /* Suggestion page inital attributes*/
-.doneBox{
-  width: var(--done-width);
-}
+.doneBox{ width: var(--done-width); }
 
-.undoneBox{
-  width: var(--undone-width);
-  background-color: var(--undone-color);
-}
+.undoneBox{ width: var(--undone-width); }
 
-.foundings{
-  text-align: center;
-}
+.foundings{ text-align: center; }
 
 /* Footer styling */
 
@@ -155,19 +159,16 @@ html,body { height:100%; }
 }
 
 .undone-step{
-  background-color: var(--undone-color);
   color: var(--undone-text-color);
   width:var(--undone-width);
 }
 
 .done-step{
-  background-color: var(--done-color);
   color: var(--done-text-color);
   width:var(--done-width);
 }
 
 .current-step{
-  /* background-color: var(--active-color); */
   opacity:0.75;
   color: var(--active-text-color);
   font-weight: bold;
