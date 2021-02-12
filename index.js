@@ -31,5 +31,5 @@ document.querySelector(".submitMidBack").addEventListener("click", function() {
 document.querySelector(".submitMidNext").addEventListener("click", function() {
   updateFooter("step3"); });
 // // If you click to back on the ordering page, it moves to suggestion page
-document.querySelector(".submitLeftBack").addEventListener("click", function() {
+document.querySelector(".submitRightBack").addEventListener("click", function() {
   updateFooter("step2"); });
