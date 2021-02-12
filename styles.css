@@ -12,9 +12,9 @@ https://visme.co/blog/website-color-schemes/
 
   --footer-height: 50px;
 
-  --active-width:60%;
-  --undone-width:20%;
-  --done-width:20%;
+  --active-width:70%;
+  --undone-width:15%;
+  --done-width:15%;
 }
 
 #title{
@@ -22,7 +22,6 @@ https://visme.co/blog/website-color-schemes/
 }
 
 html,body { height:100%; }
-
 
 .navbar-brand{
   font-family: 'Lobster', cursive;
@@ -60,6 +59,11 @@ html,body { height:100%; }
   transition: width 2s, background-color 0.5s ease-out;
   text-align:center;
   justify-content:center;
+}
+
+.row{
+  display:flex;
+  align-items:center;
 }
 
 /* Active box color*/
