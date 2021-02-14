@@ -1,0 +1,5 @@
+node_modules/
+chromedriver.exe
+package-lock.json
+tests/geckodriver
+**/__pycache__

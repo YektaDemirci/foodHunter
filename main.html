@@ -3,12 +3,13 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
 
-/* TEMPLATE CITATIONS */
+<!-- CSS link -->
+<link rel="stylesheet" href="styles.css">
+
+<!-- 
+  
+TEMPLATE CITATIONS */
 /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_three_columns */
 /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_searchbar2 */
 
@@ -18,34 +19,8 @@
 2) Run "python -m http.server" in local project directory via CMD terminal (need Python v3+ installed on local machine)
 3) http://localhost:8000/ in Chrome browser, select "main" HTML file
  
-*/
+-->
 
-/* Create three equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 10px;
-  height: 500px; /* Should be removed. Only for demonstration */
-}
-
-.search-bar{
-    width: 100%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-body {
-
-    font-family: Helvetica, sans-serif;
-
-}
-
-</style>
 </head>
 <body>
 
@@ -54,14 +29,15 @@ body {
 <div class="row">
   <div class="column" style="background-color:#ffe599;">
     <h2>What are we craving?</h2>
+    <h3>Please enter your list of items, separated by comma</h3>
 
     <div class="search-container">
-          <input id = "search-bar-id" class="search-bar" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
-          <button type="submit" onclick="food_search()">Submit</button>
+          <input id = "search-bar-id" class="search-bar" type="text" placeholder="Type ingredients and tags here. e.g. seaweed, shrimp, nonveg.." name="search">
+          <button id = "submit_one" type="submit" onclick="food_search()">Submit</button>
     </div>
 
 
-    <p>Some text..</p>
+    <p id="message_submit"></p>
   </div>
   <div class="column" style="background-color:#f6b26b;">
     <h2>What We Found:</h2>
