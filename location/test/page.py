@@ -40,37 +40,26 @@ class MainPage(BasePage):
 
     location_search_text_element = LocationSearchTextElement()
 
-    def switch_driver(self, driver_geo_option_arg):
-        #self.driver_original = self.driver
-        self.driver = webdriver.Firefox( \
-            executable_path=geckodriver_path, \
-            options=getDriverGeoOption(driver_geo_option_arg))
-        self.driver.get(base_url)
-
-    def close_driver(self):
-        self.driver.quit()
-        #self.driver = self.driver_original
-        #delattr(MainPage, 'driver_original')
-
     def get_status(self):
-        return self.driver.find_element(*MainPageLocators.STATUS_DIV).get_attribute("innerHTML")
+        return self.driver.find_element(*MainPageLocators.STATUS_DIV) \
+            .get_attribute("innerHTML")
 
     def get_location_map_place_name_and_address(self):
-        location_iframe = self.driver.find_element(*MainPageLocators.LOCATION_IFRAME)
-        self.driver.switch_to.frame(location_iframe)
-        placeName = self.driver.find_elements_by_class_name("place-name")[0] \
+        locationIframe = self.driver.find_element(*MainPageLocators.LOCATION_IFRAME)
+        self.driver.switch_to.frame(locationIframe)
+        placeName = self.driver.find_element(*MainPageLocators.LOCATION_IFRAME_PLACE_NAME) \
             .get_attribute("innerHTML")
-        placeAddress = self.driver.find_elements_by_class_name("address")[0] \
+        placeAddress = self.driver.find_element(*MainPageLocators.LOCATION_IFRAME_PLACE_ADDRESS) \
             .get_attribute("innerHTML")
         self.driver.switch_to.default_content()
         return (placeName, placeAddress)
 
     def get_first_dropdown_item_name_and_address(self):
-        dropdownItems = self.driver.find_elements_by_class_name("pac-container")[0] \
-            .find_elements_by_class_name("pac-item")
-        firstItem = dropdownItems[0]
-        placeName = firstItem.find_element_by_class_name("pac-item-query").text
-        placeAddress = firstItem.text.replace(placeName,"")
+        firstDropdownItem = self.driver.find_element(*MainPageLocators.LOCATION_DROPDOWN) \
+            .find_element(*MainPageLocators.LOCATION_DROPDOWN_ITEM)
+        placeName = firstDropdownItem \
+            .find_element(*MainPageLocators.LOCATION_DROPDOWN_ITEM_PLACE_INFO).text
+        placeAddress = firstDropdownItem.text.replace(placeName,"")
         return (placeName, placeAddress)
 
     def click_first_dropdown_item(self):
