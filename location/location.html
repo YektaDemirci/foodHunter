@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Location</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./util.js"></script>
     <script src="./location.js"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh_nAkklDfea8cKEhEmplXqXz7yxl2yGA&callback=initSearch&libraries=places&v=weekly"
-      defer
-    ></script>
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
@@ -20,13 +18,11 @@
         </div>
         <iframe id="location-map" frameborder="0" src=""></iframe>
     </div>
-    <div>
-        <h2>Restaurants:</h2>
-        <div id="restaurant-container"></div>
-    </div>
+    <form action="./restaurants.html">
+      <input type="submit" value="Confirm" />
+    </form>
     <script>
         init();
-        initRestaurant();
     </script>
   </body>
 </html>
