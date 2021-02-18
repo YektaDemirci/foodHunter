@@ -3,3 +3,6 @@ chromedriver.exe
 package-lock.json
 tests/geckodriver
 **/__pycache__
+*.log
+__pycache__
+scrap.py

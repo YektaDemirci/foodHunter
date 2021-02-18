@@ -1,57 +1,144 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- CSS link -->
-<link rel="stylesheet" href="styles.css">
+  <!-- Bootstrap CSS links -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<!-- 
-  
-TEMPLATE CITATIONS */
-/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_three_columns */
-/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_searchbar2 */
+  <!-- Bootstrap JS links -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-/* TO RUN ON LOCAL MACHINE
+  <!-- CSS link (Moved after Bootstrap to override functions)-->
+  <link rel="stylesheet" href="styles.css">
 
-1) Go to local project directory in CMD terminal
-2) Run "python -m http.server" in local project directory via CMD terminal (need Python v3+ installed on local machine)
-3) http://localhost:8000/ in Chrome browser, select "main" HTML file
- 
--->
+  <!-- Font for the brand name -->
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+
+  <!-- Font awesome link -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
 </head>
+
 <body>
 
-<h2>Food Hunter</h2>
+  <!-- Title section -->
+  <section id="title">
+    <div class="container-fluid navbar-container">
 
-<div class="row">
-  <div class="column" style="background-color:#ffe599;">
-    <h2>What are we craving?</h2>
-    <h3>Please enter your list of items, separated by comma</h3>
+      <!-- Nav Bar -->
+      <!-- <nav class="navbar navbar-expand-lg"> -->
+        <nav class="navbar">
+          <p><a class="navbar-brand" href="">Food</p><p><img src="./pics/logo651v1.png" id="logo"></p><p>Hunter</a></p>
+        
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> -->
+          
+          <!-- <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+        </button> -->
 
-    <div class="search-container">
-          <input id = "search-bar-id" class="search-bar" type="text" placeholder="Type ingredients and tags here. e.g. seaweed, shrimp, nonveg.." name="search">
-          <button id = "submit_one" type="submit" onclick="food_search()">Submit</button>
+        <!-- On smaller screen the bar collapses, could be an overkill -->
+
+        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="#pricing">Pricing</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#footnote">Contact</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#cta">Download</a>
+              </li>
+          </ul>
+       </div> -->
+
+      </nav>
+      
     </div>
+  </section>
+
+  <!-- To enable screen size dependent response -->
+  <div class="container-fluid" >
+
+    <div class="row">
+
+      <!-- Left box, referred as welcoming page in the next sections -->
+      <div class="box activeBox step1" id="box-step1">
+
+        <div class="search-container">
+
+          <h2>What are we craving?</h2>
+          <input class="search-bar" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
+          <!-- Button to nagivate to suggestions -->
+          <button class="submitLeftNext btn btn-light" type="submit">Submit</button>
+
+        </div>
 
 
-    <p id="message_submit"></p>
+      </div>
+
+      <!-- Middle box, referred as suggestion page in the next sections -->
+      <div class="box undoneBox step2" id="box-step2">
+        <div class="container">
+          <div class="row flex-nowrap">
+            <div class="col-3 align-middle leftArrow" id="step2-left-arrow">
+              <button class="submitMidBack btn arrow" type="submit"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <div class="col-6 foundings">
+              <h2>What We Found:</h2>
+              <p>Some text..</p>
+            </div>
+            <div class="col-3 rightArrow" id="step2-right-arrow">
+              <button class="submitMidNext btn arrow" type="submit"><i class="fas fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right box, referred as ordering page in the next sections -->
+      <div class="box undoneBox step3" id="box-step3">
+        <div class="container">
+          <div class="row flex-nowrap">
+            <!-- Button to navigate to suggestions -->
+            <div class="col-3 leftArrow" id="step3-left-arrow">
+              <button class="submitRightBack btn arrow" type="submit"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <div class="col-9">
+              <h2>Order Review:</h2>
+              <p>Some text..</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    <!-- End of sliding bar div row -->
+    </div>
+  <!-- End of sliding bar div container -->
   </div>
-  <div class="column" style="background-color:#f6b26b;">
-    <h2>What We Found:</h2>
-    <p id = "results">Some text..</p>
-  </div>
-  <div class="column" style="background-color:#e69138;">
-    <h2>Order Review:</h2>
-    <p>Some text..</p>
-  </div>
-</div>
 
-<!-- citation for script below (basic template)
-https://www.geeksforgeeks.org/search-bar-using-html-css-and-javascript/ -->
-<script src="./foodSearch.js"></script>
+  <!-- Footer: Updates based on what panel you're on -->
+  <footer>
+    <div class="page-footer text-center">
+      <!-- Footer -->
+      <div class="container-fluid row m-0 p-0">
+        <div class = "current-step step1" id="footer-step1">
+          <p class='circle'>1</p><p>Put in ingredients <br>Then click submit </p>
+        </div>
+        <div class = "undone-step step2" id="footer-step2">
+          <p class="circle">2</p><p> Pick a restaurant</p>
+        </div>
+        <div class = "undone-step step3" id="footer-step3">
+          <p class = 'circle'>3</p><p> Eat!</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-</body>
+  <script src="index.js" charset="utf-utf-8"></script>
+
+  </body>
+
 </html>
