@@ -4,14 +4,12 @@ https://visme.co/blog/website-color-schemes/
  :root {
   --font-family:'Lobster', cursive;
 
-  --done-color:black;
-  --undone-color:#f8dc81;
-  --active-color: #f4f5db;
-
   --header-color:#ececec;
   --step1-color:#f3d250;
   --step2-color:#90ccf4;
   --step3-color:#f78888;
+
+  --logo-shadow-color:#9494947e;
 
   --active-text-color: black;
   --undone-text-color:#ffffff70;
@@ -87,7 +85,7 @@ https://visme.co/blog/website-color-schemes/
 #logo{
   height:var(--logo-img-size);
   border-radius:50%;
-  box-shadow: 0 0 4px 4px #9494947e;
+  box-shadow: 0 0 4px 4px var(--logo-shadow-color);
 }
 
 footer{ height:var(--footer-height); }
@@ -97,11 +95,11 @@ html,body { height:100%; }
 .navbar-brand{
   line-height:var(--logo-text-size);
   font-family: var(--font-family);
-  color: var(--done-color);
+  color: var(--active-text-color);
   font-size:var(--logo-text-size);
 }
 
-.navbar-brand:hover{ color: var(--done-color); }
+.navbar-brand:hover{ color: var(--active-text-color); }
 
 /* .navbar-nav{
   margin-left: 60%;
