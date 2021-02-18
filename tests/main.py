@@ -2,7 +2,7 @@ import unittest
 from BackendTest import FirstPageUI
 from FrontendTest import FooterUI
 
-# get all tests from SearchText and HomePageTest class
+# get all tests from backend and frontend
 search_text = unittest.TestLoader().loadTestsFromTestCase(FirstPageUI)
 footer_test = unittest.TestLoader().loadTestsFromTestCase(FooterUI)
 
