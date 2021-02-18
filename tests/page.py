@@ -195,8 +195,3 @@ class MainPage(BasePage):
 
         submitElement = self.driver.find_element(*MainPageLocators.SUBMIT_BUTTON)
         submitElement.click()
-
-    
-
-
-    
