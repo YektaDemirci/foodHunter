@@ -6,4 +6,4 @@ geckodriver.exe
 **/__pycache__
 *.log
 __pycache__
-scrap.py
+**/scrap.py
