@@ -21,10 +21,14 @@ os.chdir(path_parent)
 
 PATH = "file://"+os.getcwd()+"/main.html"
 
+from selenium.webdriver.firefox.options import Options
+options = Options()
+options.headless = True
+
 class FirstPageUI(unittest.TestCase):
     @classmethod
     def setUp(self):
-        self.driver = webdriver.Firefox(executable_path=r'tests/geckodriver', service_log_path = os.path.devnull)
+        self.driver = webdriver.Firefox(options=options, executable_path=r'tests/geckodriver', service_log_path = os.path.devnull)
         # self.driver = webdriver.Firefox(executable_path="/usr/local/bin/geckodriver", service_log_path=os.path.devnull)
         self.driver.get(PATH)
 
