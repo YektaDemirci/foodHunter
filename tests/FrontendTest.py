@@ -25,7 +25,8 @@ class FooterUI(unittest.TestCase):
 
     @classmethod
     def setUp(self):
-        self.driver = webdriver.Firefox(executable_path=r'tests/geckodriver')
+        # self.driver = webdriver.Firefox(executable_path=r'tests/geckodriver')
+        self.driver = webdriver.Firefox()
         self.driver.get(PATH)
 
     def test_footerStep1(self):
