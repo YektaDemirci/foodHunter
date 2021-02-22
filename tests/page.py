@@ -76,7 +76,7 @@ class MainPage(BasePage):
         time.sleep(5)
         element3 = self.driver.find_element(*MainPageLocators.RESULTS).text
         counter = 0
-        with open("../data_food_sample.json", "r") as file:
+        with open("data_food_sample.json", "r") as file:
             data = json.load(file)
             for entry in data:
                 ingredients = entry['ingredients'].split(",")
