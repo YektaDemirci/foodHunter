@@ -39,7 +39,7 @@ function food_search() {
                 });
 
                 if(ingredient_count == input_split_len){
-                    result_list_str = result_list_str + jsonFood[i].product + " at " + jsonFood[i].restaurant + "<br>";
+                    result_list_str = result_list_str + "<div class=\"result-div\">" + jsonFood[i].product + "<br>Location: " + jsonFood[i].restaurant + "<br>Address: " + jsonFood[i].address +  "</div>";
                 }
             }
         }
