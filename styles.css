@@ -197,6 +197,13 @@ html,body { height:100%; }
   margin: 10px;
 }
 
+.selection-div-class{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border:4px solid black;
+  margin: 10px;
+}
+
 #results{
   overflow-y: scroll;
   max-height: 500px;

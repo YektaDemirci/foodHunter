@@ -39,7 +39,7 @@ function food_search() {
                 });
 
                 if(ingredient_count == input_split_len){
-                    result_list_str = result_list_str + "<div class=\"result-div\">" + jsonFood[i].product + "<br>Location: " + jsonFood[i].restaurant + "<br>Address: " + jsonFood[i].address +  "</div>";
+                    result_list_str = result_list_str + "<div class=\"result-div\">" + jsonFood[i].product + "<br>Location: " + jsonFood[i].restaurant + "<br>Address: " + jsonFood[i].address +  "<br><button type='button' onclick='food_selection(\"" + jsonFood[i].product + "??" + jsonFood[i].restaurant.replace("'", "[single-quote]") + "??" + jsonFood[i].address  + "\")'>Select Option</button></div>";
                 }
             }
         }
