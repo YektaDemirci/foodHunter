@@ -12,3 +12,10 @@ function food_selection(value) {
     }
 
 }
+
+function clear_selections(value){
+
+    document.getElementById('selections').innerHTML = "";
+
+
+}

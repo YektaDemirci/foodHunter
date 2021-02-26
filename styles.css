@@ -208,3 +208,8 @@ html,body { height:100%; }
   overflow-y: scroll;
   max-height: 500px;
 }
+
+#selections{
+  overflow-y: scroll;
+  max-height: 500px;
+}
