@@ -24,6 +24,8 @@ function updateFooter(activeStepID, activeBox) {
   function removeGifs(){
     document.getElementById("box-step2").style.backgroundImage = "none"; 
     document.getElementById("box-step3").style.backgroundImage = "none";
+    var vanishedText = document.getElementsByClassName("vanished-text");
+    for (var i=0; i<vanishedText.length;i++) { vanishedText[i].style.display="block";}
   }
 
 // If you click to submit on the welcoming page, it moves to suggestions page

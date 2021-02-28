@@ -74,6 +74,10 @@ https://visme.co/blog/website-color-schemes/
   background-position:center;
 }
 
+.vanished-text{
+  display:none;
+}
+
 #title{
   background-color:var(--header-color);
   height:var(--header-height);
