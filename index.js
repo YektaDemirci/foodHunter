@@ -25,7 +25,9 @@ function updateFooter(activeStepID, activeBox) {
     document.getElementById("box-step2").style.backgroundImage = "none"; 
     document.getElementById("box-step3").style.backgroundImage = "none";
     var vanishedText = document.getElementsByClassName("vanished-text");
+    var arrows = document.getElementsByClassName('arrow');
     for (var i=0; i<vanishedText.length;i++) { vanishedText[i].style.display="block";}
+    for (var i=0; i<arrows.length;i++) { arrows[i].style.display="inline-block";}
   }
 
 // If you click to submit on the welcoming page, it moves to suggestions page
