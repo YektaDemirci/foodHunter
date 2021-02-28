@@ -6,8 +6,11 @@ https://visme.co/blog/website-color-schemes/
 
   --header-color:#ececec;
   --step1-color:#f3d250;
-  --step2-color:#90ccf4;
-  --step3-color:#f78888;
+  /* --step2-color:#90ccf4; */
+  /* Temporary color 2 (unable to make gif background transparent */
+  --step2-color:#7DCDBA;
+  /* --step3-color:#f78888; */
+  --step3-color:#C6E4E4;
 
   --logo-shadow-color:#9494947e;
 
@@ -57,6 +60,19 @@ https://visme.co/blog/website-color-schemes/
 #box-step1, #footer-step1{ background-color:var(--step1-color); }
 #box-step2, #footer-step2{ background-color:var(--step2-color); }
 #box-step3, #footer-step3{ background-color:var(--step3-color); }
+
+#box-step2 {
+  background-image: url('./pics/coffee2.gif');
+  background-repeat: no-repeat;
+  background-size:100%;
+  background-position:bottom;
+}
+#box-step3 {
+  background-image: url('./pics/noodleanimation.gif');
+  background-repeat: no-repeat;
+  background-size:200%;
+  background-position:center;
+}
 
 #title{
   background-color:var(--header-color);
@@ -125,6 +141,10 @@ html,body { height:100%; }
   text-align:center;
   justify-content:center;
 }
+
+/* #coffee-gif{
+  background-image: cover;
+} */
 
 .row{
   display:flex;
