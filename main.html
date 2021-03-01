@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -77,8 +78,14 @@
           <input class="search-bar" id="search-bar-id" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
           <!-- Button to nagivate to suggestions -->
           <button class="submitLeftNext btn btn-light" id = "submit_one" type="submit" onclick="food_search()">Submit</button>
-          <h2>Enter Your Location</h2>
-          <div id="user-loc-div">Div for user location entry, map, etc.</div>
+          <div id="user-loc-div">
+            <h2>Enter Your Location</h2>
+            <div id="location-status"></div>
+            <div class="search-bar">
+                <input class="search-bar" id="location-input" type="text" placeholder="Enter an address" />
+            </div>
+            <iframe id="location-map" frameborder="0" src=""></iframe>
+          </div>
 
         </div>
 
@@ -146,7 +153,11 @@
 
   <script src="index.js" charset="utf-utf-8"></script>
   <script src="./foodSearch.js"></script>
-
+  <script src="./util.js"></script>
+  <script src="./location.js"></script>
+  <script>
+    init();
+  </script>
   </body>
 
 </html>

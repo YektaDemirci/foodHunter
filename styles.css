@@ -189,3 +189,21 @@ html,body { height:100%; }
   width:3vw;
   padding-top:0.1em;
 }
+
+/* Location styling */
+
+#user-loc-div{
+  margin-top: 10px;
+}
+
+.search-bar{
+  padding: 4px 0 5px 0;
+}
+
+#location-input{
+  width: 100%;
+}
+
+#location-map{
+  width: 100%;
+}
