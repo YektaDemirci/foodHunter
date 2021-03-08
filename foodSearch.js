@@ -11,14 +11,23 @@ function food_search() {
     let input_split = input.split(",");
     let input_split_len = input_split.length;
 
-    $.getJSON("data_food_sample.json", function(jsonFood) {
+    let user_geolocation = getSessionGeolocation();
 
+    console.log(user_geolocation);
+
+    $.getJSON("data_food_sample.json", function(jsonFood) {
+        // check ingredient input
         if (!input || input == null) {
             result_list_str = "you forgot to type something into the search bar!";
-            document.getElementById('message_submit').innerHTML  = "No input found";
+            document.getElementById('message_submit').innerHTML = "No input found";
         }
-
+        // check location input
+        else if (user_geolocation.lat==undefined || user_geolocation.lon==undefined) {
+            result_list_str = "you forgot to enter your location!";
+        }
         else {
+            result_list_str = "";
+            document.getElementById('message_submit').innerHTML = "";
 
             for (i = 0; i < jsonFood.length; i++) {
             

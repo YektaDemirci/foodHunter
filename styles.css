@@ -204,6 +204,11 @@ html,body { height:100%; }
   width: 100%;
 }
 
+#location-status{
+  font-size: small;
+}
+
 #location-map{
   width: 100%;
+  min-height: 200px;
 }

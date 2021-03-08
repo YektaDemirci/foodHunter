@@ -4,6 +4,8 @@
  */
 
 function init() {
+    sessionStorage.clear();
+
     // hide map
     const myMap = document.getElementById("location-map");
     myMap.style.display = "none";
@@ -66,7 +68,9 @@ function init() {
   
   function initLocationSearch() {
     const myMap = document.getElementById("location-map");
+    const statusDiv = document.getElementById("location-status");
     const input = document.getElementById("location-input");
+    
     // limit to Canada & US
     const options = {
       componentRestrictions: { country: ["ca","us"] }
