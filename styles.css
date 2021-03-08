@@ -62,16 +62,19 @@ https://visme.co/blog/website-color-schemes/
 #box-step2, #footer-step2{ background-color:var(--step2-color); }
 #box-step3, #footer-step3{ background-color:var(--step3-color); }
 
+/* GIF URL: https://www.pinterest.ca/pin/478648266628052540/ */
 #box-step2 {
   background-image: url('./pics/coffee2.gif');
   background-repeat: no-repeat;
   background-size:100%;
-  background-position:bottom;
+  background-position: center;
 }
+
+/* GIF URL: https://dribbble.com/shots/2866160-Noodlez */
 #box-step3 {
   background-image: url('./pics/noodleanimation.gif');
   background-repeat: no-repeat;
-  background-size:200%;
+  background-size:100%;
   background-position:center;
 }
 

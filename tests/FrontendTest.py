@@ -25,7 +25,9 @@ class FooterUI(unittest.TestCase):
 
     @classmethod
     def setUp(self):
-        self.driver = webdriver.Firefox(executable_path=r'tests/geckodriver')
+        # Geckodriver in folder doesnt work for me (I think its computer architecture specific)
+        self.driver = webdriver.Firefox()
+        # self.driver = webdriver.Firefox(executable_path=r'tests/geckodriver')
         self.driver.get(PATH)
 
     def test_footerStep1(self):
@@ -60,6 +62,13 @@ class FooterUI(unittest.TestCase):
         mainPage = page.MainPage(self.driver)
         assert mainPage.is_box_step1_rehighlighted(), "\nStyling for box 1st re-step is incorrect"
 
+    def test_gifsPresent(self):
+        mainPage = page.MainPage(self.driver)
+        assert mainPage.is_gifsPresent(), "\nGifs are not present when page is loaded"
+
+    def test_gifsDisappear(self):
+        mainPage = page.MainPage(self.driver)
+        assert mainPage.is_gifsDisappear(), "\nGifs do not disappear when ingredients are input"
     @classmethod
     def tearDown(self):
         self.driver.close()

@@ -24,7 +24,9 @@ PATH = "file://"+os.getcwd()+"/main.html"
 class FirstPageUI(unittest.TestCase):
     @classmethod
     def setUp(self):
-        self.driver = webdriver.Firefox(executable_path=r'tests/geckodriver')
+        # Geckodriver in folder doesnt work for me (I think its computer architecture specific)
+        self.driver = webdriver.Firefox()
+        # self.driver = webdriver.Firefox(executable_path=r'tests/geckodriver')
         self.driver.get(PATH)
 
     def test_search_bar(self):
