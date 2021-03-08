@@ -2,6 +2,7 @@ import unittest
 from selenium import webdriver
 import page
 import os
+from selenium.webdriver.firefox.options import Options
 
 #PATH = r"file:///Users/arshdeepkaurbal/Downloads/ece-651-project-search-bar-rahul 2/main.html"
 #PATH = r"http://localhost:8000/main.html"
@@ -21,11 +22,14 @@ os.chdir(path_parent)
 
 PATH = "file://"+os.getcwd()+"/main.html"
 
-class FooterUI(unittest.TestCase):
+options = Options()
+options.headless = True
 
+class FooterUI(unittest.TestCase):
     @classmethod
     def setUp(self):
-        self.driver = webdriver.Firefox(executable_path=r'tests/geckodriver')
+        # self.driver = webdriver.Firefox(executable_path=r'tests/geckodriver', service_log_path = os.path.devnull)
+        self.driver = webdriver.Firefox(options=options, executable_path="/usr/local/bin/geckodriver", service_log_path = '/dev/null')
         self.driver.get(PATH)
 
     def test_footerStep1(self):
