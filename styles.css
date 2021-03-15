@@ -206,10 +206,10 @@ html,body { height:100%; }
 
 #results{
   overflow-y: scroll;
-  max-height: 500px;
+  max-height: 350px;
 }
 
 #selections{
   overflow-y: scroll;
-  max-height: 500px;
+  max-height: 350px;
 }
