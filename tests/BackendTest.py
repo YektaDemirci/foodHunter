@@ -2,30 +2,37 @@ import unittest
 import time
 import os
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 import warnings
 import page
 
-#PATH = r"file:///Users/arshdeepkaurbal/Downloads/ece-651-project-search-bar-rahul 2/main.html"
-#PATH = r"http://localhost:8000/main.html"
-# when running the web app using python http server, use above PATH value
 
-# Tried to follow these docs:
-# https://selenium-python.readthedocs.io/page-objects.html
+def getDriver(driver_geo_option_arg):
+    path_parent = os.path.dirname(__file__)
+    path_parent = os.path.join(path_parent, os.pardir)
+    os.chdir(path_parent)
 
+    PATH = "file://"+os.getcwd()+"/main.html"
 
-# path_parent = os.path.dirname(os.getcwd())
-# alternate implementation (os.getcwd was giving me 1 folder extra up the ladder)
-path_parent = os.path.dirname(__file__)
-path_parent = os.path.join(path_parent, os.pardir)
-os.chdir(path_parent)
+    driver = webdriver.Firefox( \
+        options=getDriverOption(driver_geo_option_arg), \
+        executable_path='tests/geckodriver', \
+        service_log_path='/dev/null')
+    driver.get(PATH)
+    driver.implicitly_wait(3)
+    warnings.filterwarnings(action="ignore", message="unclosed", category=ResourceWarning)
+    return driver
 
-PATH = "file://"+os.getcwd()+"/main.html"
 
 class FirstPageUI(unittest.TestCase):
     @classmethod
     def setUp(self):
-        #self.driver = webdriver.Firefox(executable_path=r'tests/geckodriver')
-        #self.driver.get(PATH)
+        # Geckodriver in tests folder doesnt work for me (I think its computer architecture specific)
+        '''
+        Might be due to different executable_path for geckodriver. 
+        Should be solved now because test/geckodriver is on gitlab.
+        '''
+        # self.driver = webdriver.Firefox(options=options, executable_path="/usr/local/bin/geckodriver", service_log_path = '/dev/null')
         self.driver = getDriver("allowed")
 
     def test_search_bar(self):
@@ -84,6 +91,7 @@ class FirstPageUI(unittest.TestCase):
     @classmethod
     def tearDown(self):
         self.driver.close()
+        self.driver.quit()
 
 
 class FirstPageUI_GeoDenied(unittest.TestCase):
@@ -112,6 +120,7 @@ class FirstPageUI_GeoDenied(unittest.TestCase):
     @classmethod
     def tearDown(self):
         self.driver.close()
+        self.driver.quit()
 
 
 class FirstPageUI_GeoDisabled(unittest.TestCase):
@@ -128,31 +137,25 @@ class FirstPageUI_GeoDisabled(unittest.TestCase):
     @classmethod
     def tearDown(self):
         self.driver.close()
+        self.driver.quit()
 
 
-def getDriver(driver_geo_option_arg):
-    driver = webdriver.Firefox( \
-        executable_path=r'tests/geckodriver', \
-        options=getDriverGeoOption(driver_geo_option_arg))
-    driver.get(PATH)
-    driver.implicitly_wait(3)
-    warnings.filterwarnings(action="ignore", message="unclosed", category=ResourceWarning)
-    return driver
-
-def getDriverGeoOption(argument):
-    geoOption = webdriver.FirefoxOptions()
+def getDriverOption(argument):
+    option = Options()
+    option.add_argument('-headless')
     if argument == "disabled":
-        geoOption.set_preference("geo.enabled", False)
+        option.set_preference("geo.enabled", False)
     elif argument == "denied":
-        geoOption.set_preference("geo.prompt.testing", True)
-        geoOption.set_preference("geo.prompt.testing.allow", False)
+        option.set_preference("geo.prompt.testing", True)
+        option.set_preference("geo.prompt.testing.allow", False)
     elif argument == "allowed":
-        geoOption.set_preference('geo.prompt.testing', True)
-        geoOption.set_preference('geo.prompt.testing.allow', True)
+        option.set_preference('geo.prompt.testing', True)
+        option.set_preference('geo.prompt.testing.allow', True)
         # set mock geolocation to University of Waterloo Station
-        geoOption.set_preference('geo.provider.network.url',
+        option.set_preference('geo.provider.network.url',
             'data:application/json,{"location": {"lat": 43.4733, "lng": -80.5410}, "accuracy": 100.0}')
-    return geoOption
+    return option
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

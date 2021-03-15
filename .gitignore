@@ -1,10 +1,9 @@
 node_modules/
 chromedriver.exe
-package-lock.json
-tests/geckodriver
 geckodriver.exe
+package-lock.json
+scrap.py
 *.log
 __pycache__
-scrap.py
 *.pyc
 .DS_Store

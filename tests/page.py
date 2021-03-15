@@ -23,8 +23,15 @@ class BasePage(object):
 
 class MainPage(BasePage):
 
-    search_bar_element = SearchBarElement()
     location_search_bar_element = LocationSearchBarElement()
+    # This was in selenium official tutorial, dont understand purpose of following function:
+    '''
+    This is only used for search bar (defined in element.py):
+    search_bar_element = "USER_INPUT" <==> search_bar_element.send_keys("USER_INPUT")
+    user_input = search_bar_element <==> user_input = search_bar_element.get_attribute("value")
+    '''
+    # search_bar_element = SearchBarElement()
+    # search_footer_element = SearchFooterElement()
 
     # ingredient
     def is_search_bar_empty(self):
@@ -214,8 +221,17 @@ class MainPage(BasePage):
         self.driver.find_element(*MainPageLocators.MID_BACK_BUTTON).click()
         return ( self.isStylingCorrect(MainPageLocators.STEP_1_BOX) )
 
-    # This was in selenium official tutorial, dont understand purpose of following function:
-    # search_footer_element = SearchFooterElement()
+    def is_gifsPresent(self):
+        step2Gif = ( self.driver.find_element(*MainPageLocators.BOX_STEP2).value_of_css_property("background-image") != "none" )
+        step3Gif = ( self.driver.find_element(*MainPageLocators.BOX_STEP3).value_of_css_property("background-image") != "none" )
+        return ( step2Gif and step3Gif )
+
+    def is_gifsDisappear(self):
+        self.inputIngredientAndClickSubmit()
+        step2Gif = ( self.driver.find_element(*MainPageLocators.BOX_STEP2).value_of_css_property("background-image") == "none" )
+        step3Gif = ( self.driver.find_element(*MainPageLocators.BOX_STEP3).value_of_css_property("background-image") == "none" )
+        return ( step2Gif and step3Gif )
+
 
 #########################
 ####### HELPER FUNCTIONS
