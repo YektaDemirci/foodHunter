@@ -13,7 +13,7 @@ function food_search() {
 
     $.getJSON("data_food_sample.json", function(jsonFood) {
 
-        if (!input) {
+        if (!input || input == null) {
             result_list_str = "you forgot to type something into the search bar!";
             document.getElementById('message_submit').innerHTML  = "No input found";
         }

@@ -76,7 +76,7 @@ class MainPage(BasePage):
         time.sleep(5)
         element3 = self.driver.find_element(*MainPageLocators.RESULTS).text
         counter = 0
-        with open("../data_food_sample.json", "r") as file:
+        with open("data_food_sample.json", "r") as file:
             data = json.load(file)
             for entry in data:
                 ingredients = entry['ingredients'].split(",")
@@ -172,6 +172,17 @@ class MainPage(BasePage):
         self.driver.find_element(*MainPageLocators.MID_BACK_BUTTON).click()
         return ( self.isStylingCorrect(MainPageLocators.STEP_1_BOX) )
 
+    def is_gifsPresent(self):
+        step2Gif = ( self.driver.find_element(*MainPageLocators.BOX_STEP2).value_of_css_property("background-image") != "none" )
+        step3Gif = ( self.driver.find_element(*MainPageLocators.BOX_STEP3).value_of_css_property("background-image") != "none" )
+        return ( step2Gif and step3Gif )
+
+    def is_gifsDisappear(self):
+        self.inputIngredientAndClickSubmit()
+        step2Gif = ( self.driver.find_element(*MainPageLocators.BOX_STEP2).value_of_css_property("background-image") == "none" )
+        step3Gif = ( self.driver.find_element(*MainPageLocators.BOX_STEP3).value_of_css_property("background-image") == "none" )
+        return ( step2Gif and step3Gif )
+
     # This was in selenium official tutorial, dont understand purpose of following function:
     # search_footer_element = SearchFooterElement()
 
@@ -195,8 +206,3 @@ class MainPage(BasePage):
 
         submitElement = self.driver.find_element(*MainPageLocators.SUBMIT_BUTTON)
         submitElement.click()
-
-    
-
-
-    
