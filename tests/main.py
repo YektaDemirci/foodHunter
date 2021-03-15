@@ -1,6 +1,6 @@
 import unittest
-from BackendTest import FirstPageUI
-from FrontendTest import FooterUI, FirstPageUI_GeoDenied, FirstPageUI_GeoDisabled
+from BackendTest import FirstPageUI, FirstPageUI_GeoDenied, FirstPageUI_GeoDisabled
+from FrontendTest import FooterUI
 
 # get all tests from backend and frontend
 search_text = unittest.TestLoader().loadTestsFromTestCase(FirstPageUI)
