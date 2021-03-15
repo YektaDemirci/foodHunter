@@ -29,8 +29,8 @@ class FirstPageUI(unittest.TestCase):
     def setUp(self):
         # Geckodriver in tests folder doesnt work for me (I think its computer architecture specific)
         '''
-        Might be due to different executable_path for geckodriver. 
-        Should be solved now because test/geckodriver is on gitlab.
+        Might be just due to different executable_path for geckodriver. 
+        Should be solved now because test/geckodriver is not in gitignore.
         '''
         # self.driver = webdriver.Firefox(options=options, executable_path="/usr/local/bin/geckodriver", service_log_path = '/dev/null')
         self.driver = getDriver("allowed")
