@@ -1,40 +1,38 @@
 import unittest
-from selenium import webdriver
-import page
 import os
+from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
-
-#PATH = r"file:///Users/arshdeepkaurbal/Downloads/ece-651-project-search-bar-rahul 2/main.html"
-#PATH = r"http://localhost:8000/main.html"
-# when running the web app using python http server, use above PATH value
-
-if __name__ == "__main__":
-    unittest.main(verbosity=2)
-# Tried to follow these docs:
-# https://selenium-python.readthedocs.io/page-objects.html
+import page
 
 
-# path_parent = os.path.dirname(os.getcwd())
-# alternate implementation (os.getcwd was giving me 1 folder extra up the ladder)
-path_parent = os.path.dirname(__file__)
-path_parent = os.path.join(path_parent, os.pardir)
-os.chdir(path_parent)
+def getDriver():
+    path_parent = os.path.dirname(__file__)
+    path_parent = os.path.join(path_parent, os.pardir)
+    os.chdir(path_parent)
 
-PATH = "file://"+os.getcwd()+"/main.html"
+    PATH = "file://"+os.getcwd()+"/main.html"
 
-options = Options()
-options.headless = True
+    options = Options()
+    options.headless = True
+
+    driver = webdriver.Firefox( \
+        options=options, \
+        executable_path='tests/geckodriver', \
+        service_log_path='/dev/null')
+    driver.get(PATH)
+    return driver
+
 
 class FooterUI(unittest.TestCase):
     @classmethod
     def setUp(self):
         # Geckodriver in tests folder doesnt work for me (I think its computer architecture specific)
-
-        # self.driver = webdriver.Firefox(executable_path=r'tests/geckodriver', service_log_path = os.path.devnull)
-        self.driver = webdriver.Firefox(options=options, executable_path="/usr/local/bin/geckodriver", service_log_path = '/dev/null')
-        # self.driver = webdriver.Firefox()
-        # self.driver = webdriver.Firefox(executable_path=r'tests/geckodriver')
-        self.driver.get(PATH)
+        '''
+        Might be due to different executable_path for geckodriver. 
+        Should be solved now because test/geckodriver is on gitlab.
+        '''
+        # self.driver = webdriver.Firefox(options=options, executable_path="/usr/local/bin/geckodriver", service_log_path = '/dev/null')
+        self.driver = getDriver()
 
     def test_footerStep1(self):
         mainPage = page.MainPage(self.driver)
@@ -75,7 +73,12 @@ class FooterUI(unittest.TestCase):
     def test_gifsDisappear(self):
         mainPage = page.MainPage(self.driver)
         assert mainPage.is_gifsDisappear(), "\nGifs do not disappear when ingredients are input"
+    
     @classmethod
     def tearDown(self):
         self.driver.close()
         self.driver.quit()
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)
