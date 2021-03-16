@@ -16,12 +16,15 @@
   document.head.appendChild(autocompleteScript);
 
   $(document).ready(function() {
-    // ask for permission to get geolocation
+    // ask for permission to get geolocation (lat&lng)
     initGeolocation();
   })
 }
 
-
+/*
+ * Get user geolocation (lat&lng) if user permitted;
+ * otherwise, display error message.
+ */
 function initGeolocation() {
   const myMap = document.getElementById("location-map");
   const statusDiv = document.getElementById("status");
@@ -32,13 +35,13 @@ function initGeolocation() {
       (position) => {
         const pos = {
           lat: position.coords.latitude,
-          lon: position.coords.longitude
+          lng: position.coords.longitude
         };
-        setSessionGeolocation(pos.lat,pos.lon);
+        setSessionGeolocation(pos.lat,pos.lng);
         // no status message
         statusDiv.innerHTML = "";
         // show geolocation on map
-        myMap.src = MAPS_EMBED_API_URL+"&q=+"+pos.lat+"+,+"+pos.lon+"+";
+        myMap.src = MAPS_EMBED_API_URL+"&q=+"+pos.lat+"+,+"+pos.lng+"+";
         myMap.style.display = "block";
       },
       () => {
@@ -63,7 +66,9 @@ function initGeolocation() {
   }
 }
 
-
+/*
+ * Initialize Autocomplete for location search
+ */
 function initLocationSearch() {
   const myMap = document.getElementById("location-map");
   const input = document.getElementById("location-input");
@@ -71,6 +76,7 @@ function initLocationSearch() {
   const options = {
     componentRestrictions: { country: ["ca","us"] }
   };
+  // Place API for autocomplete: allow user to set location
   const autocomplete = new google.maps.places.Autocomplete(input, options);
   google.maps.event.addListener(autocomplete, 'place_changed', function () {
     let place = autocomplete.getPlace();

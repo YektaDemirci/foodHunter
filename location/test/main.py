@@ -36,7 +36,7 @@ class TestLocation(unittest.TestCase):
         self.assertEqual(placeName, '''43°39'11.5"N 79°22'59.5"W''')
         self.driver.quit()
         time.sleep(3)
-        # case 3: access disallowed
+        # case 3: access disabled
         self.driver = getDriver("disabled")
         mainPage = page.MainPage(self.driver)
         self.driver.implicitly_wait(1)

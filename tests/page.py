@@ -1,10 +1,16 @@
-from locator import MainPageLocators
-from element import BasePageElement
 import time
 import json
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from locator import MainPageLocators
+from element import BasePageElement
 
 class SearchBarElement(BasePageElement):
     locator = "search-bar-id"
+
+class LocationSearchBarElement(BasePageElement):
+    def __init__(self):
+        self.locator = MainPageLocators.LOCATION_INPUT
 
 class SearchFooterElement(BasePageElement):
     locator = "step1"
@@ -17,13 +23,21 @@ class BasePage(object):
 
 class MainPage(BasePage):
 
-    search_bar_element = SearchBarElement()
+    location_search_bar_element = LocationSearchBarElement()
+    # This was in selenium official tutorial, dont understand purpose of following function:
+    '''
+    This is only used for search bar (defined in element.py):
+    search_bar_element = "USER_INPUT" <==> search_bar_element.send_keys("USER_INPUT")
+    user_input = search_bar_element <==> user_input = search_bar_element.get_attribute("value")
+    '''
+    # search_bar_element = SearchBarElement()
+    # search_footer_element = SearchFooterElement()
 
+    # ingredient
     def is_search_bar_empty(self):
         element = self.driver.find_element(*MainPageLocators.SEARCH_BAR)
         search_bar_text = element.get_attribute("text")
         return not(search_bar_text)
-
 
     def is_submit_empty(self):
         element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
@@ -123,6 +137,41 @@ class MainPage(BasePage):
                 return False
         else:
             return False
+
+    # location
+    def get_location_status(self):
+        return self.driver.find_element(*MainPageLocators.LOCATION_STATUS_DIV) \
+            .get_attribute("innerHTML")
+
+    def get_location_map_place_name_and_address(self):
+        locationIframe = self.driver.find_element(*MainPageLocators.LOCATION_IFRAME)
+        self.driver.switch_to.frame(locationIframe)
+        # due to container size, map may not display full place card
+        try:
+            placeNameElement = self.driver.find_element(*MainPageLocators.LOCATION_IFRAME_PLACE_NAME)
+            placeName = placeNameElement.get_attribute("innerHTML")
+        except:
+            placeName = None
+        try:
+            placeAddressElement = self.driver.find_element(*MainPageLocators.LOCATION_IFRAME_PLACE_ADDRESS)
+            placeAddress = placeAddressElement.get_attribute("innerHTML")
+        except:
+            placeAddress = None
+        self.driver.switch_to.default_content()
+        return (placeName, placeAddress)
+
+    def get_location_first_dropdown_item_name_and_address(self):
+        firstDropdownItem = self.driver.find_element(*MainPageLocators.LOCATION_DROPDOWN) \
+            .find_element(*MainPageLocators.LOCATION_DROPDOWN_ITEM)
+        placeName = firstDropdownItem \
+            .find_element(*MainPageLocators.LOCATION_DROPDOWN_ITEM_PLACE_INFO).text
+        placeAddress = firstDropdownItem.text.replace(placeName,"")
+        return (placeName, placeAddress)
+
+    def click_location_first_dropdown_item(self):
+        location_input = self.driver.find_element(*MainPageLocators.LOCATION_INPUT)
+        location_input.send_keys(Keys.DOWN)
+        location_input.send_keys(Keys.RETURN)
 
 # define 1 class for 1 page or 3 classes for 3 panels?
 

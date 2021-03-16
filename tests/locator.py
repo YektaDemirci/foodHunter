@@ -1,10 +1,23 @@
 from selenium.webdriver.common.by import By
 
 class MainPageLocators(object):
+    # ingredient
     SEARCH_BAR = (By.ID, "search-bar-id")
     SUBMIT_EMPTY = (By.ID, "submit_one")
     SUBMIT_MESSAGE = (By.ID, "message_submit")
     RESULTS = (By.ID, "results")
+
+    # location
+    LOCATION_INPUT = (By.ID, "location-input")
+    LOCATION_IFRAME = (By.ID, "location-map")
+    LOCATION_STATUS_DIV = (By.ID, "location-status")
+    # class name assigned by Google API
+    LOCATION_DROPDOWN = (By.CLASS_NAME, "pac-container")
+    LOCATION_DROPDOWN_ITEM = (By.CLASS_NAME, "pac-item")
+    LOCATION_DROPDOWN_ITEM_PLACE_INFO = (By.CLASS_NAME, "pac-item-query")
+    LOCATION_IFRAME_PLACE_NAME = (By.CLASS_NAME, "place-name")
+    LOCATION_IFRAME_PLACE_ADDRESS = (By.CLASS_NAME, "address")
+
     # footer prefixes because step# by className returned panel divs instead of footer
     FOOTER_STEP1 = (By.ID, "footer-step1")
     FOOTER_STEP2 = (By.ID, "footer-step2")
