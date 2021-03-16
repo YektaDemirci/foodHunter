@@ -58,6 +58,22 @@ https://visme.co/blog/website-color-schemes/
   padding-right:0;
 }
 
+#step2-right-arrow-button{
+  transform: scale(1);
+}
+@keyframes pulse { 
+  0% { 
+    transform: scale (1);
+  }
+  30% {
+    transform: scale(1.2);
+    color:rgb(210, 253, 145);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 #box-step1, #footer-step1{ background-color:var(--step1-color); }
 #box-step2, #footer-step2{ background-color:var(--step2-color); }
 #box-step3, #footer-step3{ background-color:var(--step3-color); }

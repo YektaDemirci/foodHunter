@@ -30,16 +30,34 @@ function updateFooter(activeStepID, activeBox) {
     for (var i=0; i<arrows.length;i++) { arrows[i].style.display="inline-block";}
   }
 
+  function pulseArrow(pulse){
+    if (pulse==true){
+      document.getElementById("step2-right-arrow-button").style.animation = "pulse 3s infinite";
+      document.getElementById("step2-right-arrow-button").style.animationDelay = '5s';
+    }
+    else {
+      document.getElementById("step2-right-arrow-button").style.animation = "None";
+    }
+  }
+
 // If you click to submit on the welcoming page, it moves to suggestions page
 document.querySelector(".submitLeftNext").addEventListener("click", function() {
   updateFooter("step2");
-  removeGifs(); });
+  removeGifs(); 
+  pulseArrow(true);
+});
 // If you click to back on the suggestion page, it goes back to welcoming page
 document.querySelector(".submitMidBack").addEventListener("click", function() {
-  updateFooter("step1"); });
+  updateFooter("step1");
+  pulseArrow(false); 
+});
 // // If you click to next on the suggestion page, it moves to ordering page
 document.querySelector(".submitMidNext").addEventListener("click", function() {
-  updateFooter("step3"); });
+  updateFooter("step3"); 
+  pulseArrow(false);
+});
 // // If you click to back on the ordering page, it moves to suggestion page
 document.querySelector(".submitRightBack").addEventListener("click", function() {
-  updateFooter("step2"); });
+  updateFooter("step2"); 
+  pulseArrow(false);
+});

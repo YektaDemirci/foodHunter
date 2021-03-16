@@ -183,6 +183,10 @@ class MainPage(BasePage):
         step3Gif = ( self.driver.find_element(*MainPageLocators.BOX_STEP3).value_of_css_property("background-image") == "none" )
         return ( step2Gif and step3Gif )
 
+    def is_arrow_pulsing(self):
+        self.inputIngredientAndClickSubmit()
+        return ( self.driver.find_element(*MainPageLocators.MID_ARROW_RIGHT).value_of_css_property("animation-delay") != "0s" )
+
     # This was in selenium official tutorial, dont understand purpose of following function:
     # search_footer_element = SearchFooterElement()
 

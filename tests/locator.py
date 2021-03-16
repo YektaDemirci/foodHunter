@@ -21,6 +21,8 @@ class MainPageLocators(object):
     MID_BACK_BUTTON = (By.CLASS_NAME, "submitMidBack")
     RIGHT_BACK_BUTTON = (By.CLASS_NAME, "submitRightBack")
 
+    MID_ARROW_RIGHT = (By.ID, "step2-right-arrow-button")
+
     #Bar states
     BOX_ACTIVE_STYLE = "activeBox"
     BOX_DONE_STYLE = "doneBox"
