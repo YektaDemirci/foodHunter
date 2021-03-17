@@ -204,6 +204,18 @@ html,body { height:100%; }
   margin: 10px;
 }
 
+.slideShow{
+    max-width: 280px;
+    padding: 20px 20px 20px 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.exampleInputSlide{
+  width:100%;
+}
+
 #results{
   overflow-y: scroll;
   max-height: 350px;

@@ -76,6 +76,13 @@
 
         <div class="search-container">
 
+          <!-- Citation - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr -->
+          <div class="slideShow">
+            <img class="exampleInputSlide" src="./pics/Slide1.PNG">
+            <img class="exampleInputSlide" src="./pics/Slide2.PNG">
+            <img class="exampleInputSlide" src="./pics/Slide3.PNG">
+          </div>
+
           <h2>What are we craving?</h2>
           <input class="search-bar" id="search-bar-id" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
           <!-- Button to nagivate to suggestions -->
@@ -152,6 +159,30 @@
   <script src="index.js" charset="utf-utf-8"></script>
   <script src="./foodSearch.js"></script>
   <script src="./foodSelection.js"></script>
+
+  <!-- Citation - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr -->
+  <script>
+    
+    var slide_index_val = 0;
+    automatic_sample_slideshow();
+    
+    function automatic_sample_slideshow() {
+      
+      var iterator;
+      var current_single_slide = document.getElementsByClassName("exampleInputSlide");
+
+      for (iterator = 0; iterator < current_single_slide.length; iterator++) {
+        current_single_slide[iterator].style.display = "none";  
+      }
+      slide_index_val++;
+      if (slide_index_val > current_single_slide.length) {
+        slide_index_val = 1;
+      } 
+
+      current_single_slide[slide_index_val-1].style.display = "block";  
+      setTimeout(automatic_sample_slideshow, 4000);
+    }
+    </script>
 
   </body>
 
