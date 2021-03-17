@@ -169,17 +169,17 @@
     function automatic_sample_slideshow() {
       
       var iterator;
-      var current_single_slide = document.getElementsByClassName("exampleInputSlide");
+      var all_example_slides = document.getElementsByClassName("exampleInputSlide");
 
-      for (iterator = 0; iterator < current_single_slide.length; iterator++) {
-        current_single_slide[iterator].style.display = "none";  
+      for (iterator = 0; iterator < all_example_slides.length; iterator++) {
+        all_example_slides[iterator].style.display = "none";  
       }
       slide_index_val++;
-      if (slide_index_val > current_single_slide.length) {
+      if (slide_index_val > all_example_slides.length) {
         slide_index_val = 1;
       } 
 
-      current_single_slide[slide_index_val-1].style.display = "block";  
+      all_example_slides[slide_index_val-1].style.display = "block";  
       setTimeout(automatic_sample_slideshow, 4000);
     }
     </script>
