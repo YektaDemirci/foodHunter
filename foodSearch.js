@@ -1,7 +1,11 @@
 function food_search() {
 
-    let input = document.getElementById('search-bar-id').value
+    let input = document.getElementById('search-bar-id').value;
     document.getElementById('results').innerHTML  = "loading"; 
+    
+    let input_selections = document.getElementById('selected-ingredients');
+    let input_vert_list = input.replaceAll(",","<br>");
+    input_selections.innerHTML = "You're Looking For...<br>" + input_vert_list;
 
     let result_list_str = "";
 
