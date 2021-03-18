@@ -1,0 +1,16 @@
+.status-message{
+    font-size: small;
+    color: brown;
+    text-align: left;
+    padding-left: 12px;
+}
+
+/* Location styling */
+.location-header{
+    margin-top: 5px;
+}
+
+#location-map{
+    width: 100%;
+    min-height: 200px;
+}

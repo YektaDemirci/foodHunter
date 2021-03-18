@@ -54,7 +54,7 @@ class MainPage(BasePage):
         time.sleep(5)
         element3 = self.driver.find_element(*MainPageLocators.RESULTS).text
         if element3:
-            if element3 != 'we could not find anything, sorry.':
+            if element3 != 'Sorry, we could not find anything.':
                 return True
             else:
                 return False
@@ -73,7 +73,7 @@ class MainPage(BasePage):
             time.sleep(5)
             element3 = self.driver.find_element(*MainPageLocators.RESULTS).text
             if element3:
-                if element3 != 'we could not find anything, sorry.':
+                if element3 != 'Sorry, we could not find anything.':
                     check = True
                 else:
                     check = False
@@ -105,7 +105,7 @@ class MainPage(BasePage):
                             return True
                 counter = 0
 
-        if element3 == 'we could not find anything, sorry.':
+        if element3 == 'Sorry, we could not find anything.':
             return True
         else:
             return False
@@ -117,7 +117,7 @@ class MainPage(BasePage):
         time.sleep(5)
         element3 = self.driver.find_element(*MainPageLocators.RESULTS).text
         if element3:
-            if element3 != 'we could not find anything, sorry.':
+            if element3 != 'Sorry, we could not find anything.':
                 return True
             else:
                 return False
@@ -131,7 +131,7 @@ class MainPage(BasePage):
         time.sleep(5)
         element3 = self.driver.find_element(*MainPageLocators.RESULTS).text
         if element3:
-            if element3 == 'we could not find anything, sorry.':
+            if element3 == 'Sorry, we could not find anything.':
                 return True
             else:
                 return False
