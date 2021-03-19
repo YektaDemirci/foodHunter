@@ -42,3 +42,25 @@ Restaurant.insertMany(rests, function(err){
     console.log("Successfully saved the default items to DBs, please close the execution with CTRL+C");
   }
 });
+
+
+
+// const mongoose = require("mongoose");
+// mongoose.connect("mongodb+srv://foodHunter:1hunt1@cluster0.t1di3.mongodb.net/foodHunterDB",{useNewUrlParser: true});
+//
+// const restaurantSchema = {
+//   restaurant: String,
+//   product: String,
+//   ingredients: String,
+//   tags: String,
+//   address: String
+// };
+//
+// const Post = mongoose.model("Post", postSchema);
+//
+// Post.find(function(err, rest){
+//   if (err) {
+//     console.log(err);
+//   } else {
+//      console.log(rest);
+//   }

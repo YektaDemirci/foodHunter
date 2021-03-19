@@ -1,7 +1,7 @@
 function food_search() {
 
     let input = document.getElementById('search-bar-id').value
-    document.getElementById('results').innerHTML  = "loading"; 
+    document.getElementById('results').innerHTML  = "loading";
 
     let result_list_str = "";
 
@@ -21,7 +21,7 @@ function food_search() {
         else {
 
             for (i = 0; i < jsonFood.length; i++) {
-            
+
                 var ingredient_list_despaced = jsonFood[i].ingredients.replaceAll(" ", "");
                 var ingredient_list = ingredient_list_despaced.split(",");
 
@@ -29,7 +29,7 @@ function food_search() {
                 var foodTag_list = foodTag_list_despaced.split(",");
 
                 var ingredient_count = 0;
-                
+
                 input_split.forEach(function (ingredientVal) {
 
                     if(ingredient_list.indexOf(ingredientVal) >= 0 || foodTag_list.indexOf(ingredientVal) >= 0){
@@ -51,8 +51,5 @@ function food_search() {
         document.getElementById('results').innerHTML  = result_list_str;
 
     });
-
-    
-
 
 }
