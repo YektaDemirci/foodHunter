@@ -1,7 +1,7 @@
 function food_search() {
 
     let input = document.getElementById('search-bar-id').value
-    document.getElementById('results').innerHTML  = "loading";
+    document.getElementById('testYek').innerHTML  = "loading";
 
     let result_list_str = "";
 

@@ -74,12 +74,10 @@
         <div class="search-container">
 
           <h2>What are we craving?</h2>
+          <input class="search-bar" id="search-bar-id" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
+          <!-- Button to nagivate to suggestions -->
+          <button class="submitLeftNext btn btn-light" id = "submit_one" type="submit" onclick="food_search()">Submit</button>
 
-          <form action="/" method="post">
-            <input class="search-bar" id="search-bar-id" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
-            <!-- Button to nagivate to suggestions -->
-            <button class="submitLeftNext btn btn-light" id = "submit_one" type="submit" onclick="food_search()">Submit</button>
-          </form>
         </div>
 
         <p id="message_submit"></p>
@@ -94,7 +92,7 @@
               <button class="submitMidBack btn arrow" type="submit"><i class="fas fa-chevron-left"></i></button>
             </div>
             <div class="col-6 foundings">
-              <h2>What We Found:</h2>
+              <h2 id=testYek>What We Found:</h2>
               <p id = "results"></p>
             </div>
             <div class="col-3 rightArrow" id="step2-right-arrow">
@@ -145,6 +143,7 @@
   </footer>
 
   <script src="index.js" charset="utf-utf-8"></script>
+  <script src="./foodSearchMongo.js" charset="utf-utf-8"></script>
 
   </body>
 
