@@ -1,7 +1,11 @@
 function food_search() {
 
-    let input = document.getElementById('search-bar-id').value
+    let input = document.getElementById('search-bar-id').value;
     document.getElementById('results').innerHTML  = "loading"; 
+    
+    let input_selections = document.getElementById('selected-ingredients');
+    let input_vert_list = input.replaceAll(",","<br>");
+    input_selections.innerHTML = "You're Looking For...<br>" + input_vert_list;
 
     let result_list_str = "";
 
@@ -48,7 +52,7 @@ function food_search() {
                 });
 
                 if(ingredient_count == input_split_len){
-                    result_list_str = result_list_str + jsonFood[i].product + " at " + jsonFood[i].restaurant + "<br>";
+                    result_list_str = result_list_str + "<div class=\"result-div\">" + jsonFood[i].product + "<br>Location: " + jsonFood[i].restaurant + "<br>Address: " + jsonFood[i].address +  "<br><button type='button' onclick='food_selection(\"" + jsonFood[i].product + "??" + jsonFood[i].restaurant.replace("'", "[single-quote]") + "??" + jsonFood[i].address  + "\")'>Select Option</button></div>";
                 }
             }
         }

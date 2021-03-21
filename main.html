@@ -7,6 +7,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
+  <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+  <!-- Citation for trash icon and above script: https://www.w3schools.com/icons/-->
+
   <!-- Bootstrap CSS links -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -74,6 +77,14 @@
       <div class="box activeBox step1" id="box-step1">
 
         <div class="search-container">
+
+          <!-- Citation - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr -->
+          <div class="slideShow">
+            <img class="exampleInputSlide" src="./pics/Slide1.PNG">
+            <img class="exampleInputSlide" src="./pics/Slide2.PNG">
+            <img class="exampleInputSlide" src="./pics/Slide3.PNG">
+          </div>
+
           <h2>What are we craving?</h2>
           <input class="search-bar" id="search-bar-id" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
           <!-- Button to nagivate to suggestions -->
@@ -89,6 +100,7 @@
             <div id="location-status"></div>
             <iframe id="location-map" frameborder="0" src=""></iframe>
           </div>
+          <h6 id="selected-ingredients"></h6>
 
         </div>
 
@@ -122,7 +134,10 @@
             </div>
             <div class="col-9">
               <h2 class="vanished-text">Order Review:</h2>
-              <!-- <p>Some text..</p> -->
+              <div id="selections"></div>
+              <button class="submitLeftNext btn btn-light" id = "clear" type="submit" onclick="clear_selections()">Clear Selections 
+                <i class="fas fa-trash"></i>
+              </button>
             </div>
 
           </div>
@@ -159,6 +174,31 @@
   <script>
     init();
   </script>
+  <script src="./foodSelection.js"></script>
+
+  <!-- Citation - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr -->
+  <script>
+    
+    var slide_index_val = 0;
+    automatic_sample_slideshow();
+    
+    function automatic_sample_slideshow() {
+      
+      var iterator;
+      var all_example_slides = document.getElementsByClassName("exampleInputSlide");
+
+      for (iterator = 0; iterator < all_example_slides.length; iterator++) {
+        all_example_slides[iterator].style.display = "none";  
+      }
+      slide_index_val++;
+      if (slide_index_val > all_example_slides.length) {
+        slide_index_val = 1;
+      } 
+
+      all_example_slides[slide_index_val-1].style.display = "block";  
+      setTimeout(automatic_sample_slideshow, 4000);
+    }
+    </script>
 
   </body>
 
