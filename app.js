@@ -31,15 +31,23 @@ app.post("/", function(req,res){
     // The input is turned into lowerCase then parsed, based on comma, semicolumn, dot {\s for space}
     // The tests are "chicken,beef,PArsley" & "PARSLEY.chicKEn"
     // I can populate the tests
+    let result_list_str = "";
+
     var input = _.words([req.body.search.toLowerCase()], /[^,.;]+/g);
     console.log(input);
-     // Restaurant.find({ ingredients: input}, function (err, foundList) {
-     //   if(!err){
-     //     console.log(foundList);
-     //   } else {
-     //     console.log(err);
-     //   }
-     // });
+    Restaurant.find({ tags: { $all: input } }, function (err, foundList) {
+       if(!err){
+         if(foundList.length == 0){
+           result_list_str = "We could not find anything, sorry.";
+         } else{
+           for(i = 0; i < jsonFood.length; i++) {
+           result_list_str = result_list_str + foundList[i].product + " at " + foundList[i].restaurant + "<br>";
+           }
+         }
+       } else {
+         console.log(err);
+       }
+     });
 
 
   });
