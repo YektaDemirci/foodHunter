@@ -1,0 +1,85 @@
+db.inventory.find(
+    {$or:[
+        {ingredients:{ $in :["chicken"]}},
+        {tags:{ $in:["nonveg"]}}
+    ]}
+)
+
+
+// We need to install mongoose through <npm i mongoose>, a tool to access mongoDB via node
+const mongoose = require('mongoose');
+const fs = require('fs');
+const _ = require("lodash");
+
+
+// id:foodHunter
+// pw:1hunt1
+mongoose.connect("mongodb+srv://foodHunter:1hunt1@cluster0.t1di3.mongodb.net/fhDB",{useNewUrlParser: true});
+
+let jsonFood = fs.readFileSync('public/data_food_sample.json');
+let restaurants = JSON.parse(jsonFood);
+
+const ingredientSchema = {
+  ingredient: String
+};
+
+const tagSchema = {
+  tag: String
+};
+
+const Ingredient = mongoose.model("Ingredient", ingredientSchema);
+const Tag = mongoose.model("Tag", tagSchema);
+
+// The schema according to our json file
+const restaurantSchema = {
+  restaurant: String,
+	product: String,
+  ingredients: [ingredientSchema],
+	tags: [tagSchema],
+	address: String
+};
+
+const Restaurant = mongoose.model("Restaurant", restaurantSchema);
+
+
+const rests = [];
+
+for (const rest of restaurants){
+
+  var parsedIngredients = _.words([rest.ingredients.toLowerCase()], /[^,.;]+/g);
+  var parsedTags = _.words([rest.tags.toLowerCase()], /[^,.;]+/g);
+
+  ingsList = [];
+  for (const pi of parsedIngredients){
+    const ing = new Ingredient({
+      ingredient: pi
+    });
+    ingsList.push(ing);
+  }
+
+  tgList = [];
+  for (const pt of parsedTags){
+    const tg = new Tag({
+      ingredient: pt
+    });
+    tgList.push(tg);
+  }
+
+  const rest1 = new Restaurant({
+    restaurant: rest.restaurant,
+  	product: rest.product,
+  	ingredients: ingsList,
+  	tags: tgList,
+  	address: rest.address
+  });
+  rests.push(rest1);
+}
+
+Restaurant.insertMany(rests, function(err){
+  if(err){
+    console.log(err);
+  } else{
+    console.log("Successfully saved the default items to DBs, please close the execution with CTRL+C");
+  }
+});
+
