@@ -1,3 +1,7 @@
+//YEKTA//
+// It is not possible to connect to mongoDB from client's browser, therefore this approach will not work
+// However, I am keeping this code as a reference in case if we decide to implement a dynamic webpage
+
 function food_search(){
   document.getElementById('testYek').innerHTML  = "test1";
   var MongoClient = require('mongodb').MongoClient;
@@ -42,27 +46,3 @@ function food_search(){
 
   }
 }
-// document.getElementById('results').innerHTML  = result_list_str;
-
-//
-//  var input = _.words([req.body.search.toLowerCase()], /[^,.;]+/g);
-//  console.log(input);
-//  Restaurant.find({ tags: { $all: input } }, function (err, foundList) {
-//     if(!err){
-//       if(foundList.length == 0){
-//         result_list_str = "We could not find anything, sorry.";
-//       } else{
-//         for(i = 0; i < jsonFood.length; i++) {
-//         result_list_str = result_list_str + foundList[i].product + " at " + foundList[i].restaurant + "<br>";
-//         }
-//       }
-//     } else {
-//       console.log(err);
-//     }
-//   });
-//   res.send(result_list_str);
-//   // res.render{"matches", { foundItems:result_list_str }};
-//   // document.getElementById('results').innerHTML  = result_list_str;
-//
-//
-// });
