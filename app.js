@@ -48,6 +48,9 @@ app.post("/", function(req,res){
          console.log(err);
        }
      });
+     res.send(result_list_str);
+     // res.render{"matches", { foundItems:result_list_str }};
+     // document.getElementById('results').innerHTML  = result_list_str;
 
 
   });
