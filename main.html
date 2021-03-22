@@ -41,9 +41,9 @@
         <nav class="navbar">
           <!-- Copyright free + royalty free logo: https://favpng.com/png_view/spoon-spoon-chefs-uniform-fork-kitchen-utensil-royalty-free-png/aHDHqgFV -->
           <p><a class="navbar-brand" href="">Food</p><p><img src="./pics/logo651v1.png" id="logo"></p><p>Hunter</a></p>
-        
+
         <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> -->
-          
+
           <!-- <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
         </button> -->
 
@@ -64,7 +64,7 @@
        </div> -->
 
       </nav>
-      
+
     </div>
   </section>
 
@@ -114,7 +114,7 @@
               <button class="submitMidBack btn arrow" type="submit"><i class="fas fa-chevron-left"></i></button>
             </div>
             <div class="col-6 foundings">
-              <h2 class='vanished-text'>What We Found:</h2>
+              <h2 class='vanished-text' id ='yek'>What We Found:</h2>
               <p id = "results"></p>
             </div>
             <div class="col-3 rightArrow" id="step2-right-arrow">
@@ -135,7 +135,7 @@
             <div class="col-9">
               <h2 class="vanished-text">Order Review:</h2>
               <div id="selections"></div>
-              <button class="submitLeftNext btn btn-light" id = "clear" type="submit" onclick="clear_selections()">Clear Selections 
+              <button class="submitLeftNext btn btn-light" id = "clear" type="submit" onclick="clear_selections()">Clear Selections
                 <i class="fas fa-trash"></i>
               </button>
             </div>
@@ -178,24 +178,24 @@
 
   <!-- Citation - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr -->
   <script>
-    
+
     var slide_index_val = 0;
     automatic_sample_slideshow();
-    
+
     function automatic_sample_slideshow() {
-      
+
       var iterator;
       var all_example_slides = document.getElementsByClassName("exampleInputSlide");
 
       for (iterator = 0; iterator < all_example_slides.length; iterator++) {
-        all_example_slides[iterator].style.display = "none";  
+        all_example_slides[iterator].style.display = "none";
       }
       slide_index_val++;
       if (slide_index_val > all_example_slides.length) {
         slide_index_val = 1;
-      } 
+      }
 
-      all_example_slides[slide_index_val-1].style.display = "block";  
+      all_example_slides[slide_index_val-1].style.display = "block";
       setTimeout(automatic_sample_slideshow, 4000);
     }
     </script>
