@@ -8,7 +8,7 @@
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
   <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-  <!-- Citation for trash icon and above script: https://www.w3schools.com/icons/-->
+  <!-- Citation for trash icon and above script: https://www.w3schools.com/icons/ -->
 
   <!-- Bootstrap CSS links -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -64,6 +64,19 @@
        </div> -->
 
       </nav>
+
+      <div id="order_modal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Your Order...</p>
+          <div id="final-selections">
+
+          </div>
+        </div>
+      
+      </div>
       
     </div>
   </section>
@@ -138,6 +151,9 @@
               <button class="submitLeftNext btn btn-light" id = "clear" type="submit" onclick="clear_selections()">Clear Selections 
                 <i class="fas fa-trash"></i>
               </button>
+              <button class="submitLeftNext btn btn-light" id = "clear" type="submit" onclick="order_now()">Review + Place Order 
+                <i class="fas fa-shopping-cart"></i>
+              </button>
             </div>
 
           </div>
@@ -175,6 +191,7 @@
     init();
   </script>
   <script src="./foodSelection.js"></script>
+  <script src="./order_now.js"></script>
 
   <!-- Citation - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr -->
   <script>
