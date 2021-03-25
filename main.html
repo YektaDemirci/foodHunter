@@ -87,8 +87,9 @@
 
           <h2>What are we craving?</h2>
           <input class="search-bar" id="search-bar-id" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
-          <!-- Button to nagivate to suggestions -->
-          <button class="submitLeftNext btn btn-light" id = "submit_one" type="submit" onclick="food_search()">Submit</button>
+          <!-- Button to nagivate to suggestions  ALTERNATIVE HERE IS TO RUN AN AJAX CALL see link below-->
+          <!-- https://stackoverflow.com/questions/16164604/rest-ajax-request-to-mongodb -->
+          <button class="submitLeftNext btn btn-light" id = "submit_one" type="submit" onclick="get_html()">Submit</button>
           <div>
             <p id="message_submit"></p>
           </div>
@@ -170,6 +171,7 @@
   <script src="./util.js"></script>
   <script src="index.js" charset="utf-utf-8"></script>
   <script src="./foodSearch.js"></script>
+  <!-- <script src="./foodSearch_mongoDB.js"></script> -->
   <script src="./location.js"></script>
   <script>
     init();
@@ -198,6 +200,34 @@
       all_example_slides[slide_index_val-1].style.display = "block";  
       setTimeout(automatic_sample_slideshow, 4000);
     }
+    </script>
+
+    <script>
+      function get_html() {
+        console.log("trying to get HTML from Node Server here!!!!");
+        var valuesTest = "abcd";
+
+        $.ajax({
+          type:"GET",
+          dataType: 'jsonp',
+          url: 'http://localhost:3000/',
+          success: function(res){
+            console.log(res);
+            valuesTest = res;
+          },
+          error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            console.log(err);
+            console.log(xhr);
+            console.log(status);
+            console.log(error);
+          }
+        });
+
+        console.log("valuesTest...");
+        console.log(valuesTest);
+
+      }
     </script>
 
   </body>
