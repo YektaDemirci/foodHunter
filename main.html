@@ -6,6 +6,9 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+  <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+  <!-- Citation for trash icon and above script: https://www.w3schools.com/icons/-->
   
   <!-- Bootstrap CSS links -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -19,6 +22,8 @@
   <!-- CSS link (Moved after Bootstrap to override functions)-->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/step1.css">
+  <link rel="stylesheet" href="css/step2.css">
+  <link rel="stylesheet" href="css/step3.css">
 
   <!-- Font for the brand name -->
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
@@ -75,7 +80,14 @@
       <div class="box activeBox step1" id="box-step1">
 
         <div class="search-container">
+          
           <!-- Food Search -->
+          <!-- Citation - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr -->
+          <div class="slideShow">
+            <img class="exampleInputSlide" src="./pics/Slide1.PNG">
+            <img class="exampleInputSlide" src="./pics/Slide2.PNG">
+            <img class="exampleInputSlide" src="./pics/Slide3.PNG">
+          </div>
           <h2>What are we craving?</h2>
           <div class="input-group">
             <input class="form-control" id="search-bar-id" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
@@ -89,6 +101,8 @@
           <input class="form-control" id="location-input" type="text" placeholder="Enter an address" />
           <div class="status-message" id="location-status"></div>
           <iframe id="location-map" frameborder="0" src=""></iframe>
+
+          <h6 id="selected-ingredients"></h6>
         </div>
 
       </div>
@@ -103,10 +117,10 @@
             </div>
             <div class="col-6 foundings">
               <h2 class='vanished-text'>What We Found:</h2>
-              <p id = "results"></p>
+              <div id="results"></div>
             </div>
             <div class="col-3 rightArrow" id="step2-right-arrow">
-              <button class="submitMidNext btn arrow" type="submit"><i class="fas fa-chevron-right"></i></button>
+              <button class="submitMidNext btn arrow" type="submit" id="step2-right-arrow-button"><i class="fas fa-chevron-right"></i></button>
             </div>
           </div>
         </div>
@@ -124,7 +138,10 @@
             </div>
             <div class="col-9">
               <h2 class="vanished-text">Order Review:</h2>
-              <!-- <p>Some text..</p> -->
+              <div id="selections"></div>
+              <button class="submitLeftNext btn btn-light" id = "clear" type="submit" onclick="clear_selections()">Clear Selections 
+                <i class="fas fa-trash"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -156,7 +173,8 @@
 
   <script src="js/util.js"></script>
   <script src="js/index.js" charset="utf-utf-8"></script>
-  <script src="js/food_search.js"></script>
+  <script src="js/foodSearch.js"></script>
+  <script src="js/foodSelection.js"></script>
   <script src="js/location.js"></script>
   <script>
     init();

@@ -8,10 +8,12 @@ function food_search() {
         return;
     }
 
-    document.getElementById('results').innerHTML  = "loading"; 
+    document.getElementById('results').innerHTML = "loading"; 
 
     // get user input for ingredients
-    let input = document.getElementById('search-bar-id').value
+    let input = document.getElementById('search-bar-id').value;
+    document.getElementById('selected-ingredients').innerHTML = 
+        "You're Looking For...<br>" + input;
     input = input.toLowerCase();
     input = input.replaceAll(" ", "")
     let input_split = input.split(",");
@@ -22,23 +24,23 @@ function food_search() {
             "you forgot to type something into the search bar!";
         document.getElementById('message_submit').innerHTML = 
             "No input found";
+        return;
     }
+    
     // get food data
-    else{
-        $.getJSON("data_food_sample.json", function(jsonFood) {
-            document.getElementById('message_submit').innerHTML = "";
-            processData(jsonFood, input_split);
-            // no food that matches ingredient input
-            if(food_objects.length == 0){
-                document.getElementById('results').innerHTML = 
-                    "Sorry, we could not find anything.";
-            }
-            // sort food by restaurant distance and display them
-            else{
-                sortFoodObjectsByDistance();
-            }
-        });
-    }
+    $.getJSON("data_food_sample.json", function(jsonFood) {
+        document.getElementById('message_submit').innerHTML = "";
+        processData(jsonFood, input_split);
+        // no food that matches ingredient input
+        if(food_objects.length == 0){
+            document.getElementById('results').innerHTML = 
+                "Sorry, we could not find anything.";
+        }
+        // sort food by restaurant distance and display them
+        else{
+            sortFoodObjectsByDistance();
+        }
+    });
 }
 
 
@@ -172,9 +174,17 @@ function displayFoodObjects() {
 
     for(let i = 0; i < N; i++){
         let distanceText = food_objects[i].distance != null ?
-            " ("+(food_objects[i].distance/1000).toFixed(2)+" km)" : "";
-        result += food_objects[i].product + " @ " + food_objects[i].restaurant 
-            + distanceText + "<br>";
+            +(food_objects[i].distance/1000).toFixed(2)+" km" : "";
+        result += "<div class=\"result-div\">" 
+            + food_objects[i].product 
+            + "<br>Location: " + food_objects[i].restaurant
+            + "<br>Address: " + food_objects[i].address
+            + "<br>Distance: " + distanceText
+            + "<br><button type='button' onclick='food_selection(\"" 
+            + food_objects[i].product + "??" 
+            + food_objects[i].restaurant.replace("'", "[single-quote]") + "??" 
+            + food_objects[i].address  + "\")'>Select Option</button></div>";
+                
     }
     document.getElementById('results').innerHTML = result;
 }

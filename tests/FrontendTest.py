@@ -73,6 +73,12 @@ class FooterUI(unittest.TestCase):
     def test_gifsDisappear(self):
         mainPage = page.MainPage(self.driver)
         assert mainPage.is_gifsDisappear(), "\nGifs do not disappear when ingredients are input"
+
+    def test_arrowAnimation(self):
+        mainPage = page.MainPage(self.driver)
+        assert mainPage.is_arrow_pulsing(), "\nArrow is not pulsing to indicate next steps"
+
+
     
     @classmethod
     def tearDown(self):
