@@ -14,7 +14,7 @@ list_cur = list(cursor)
 # Converting to the JSON
 json_data = dumps(list_cur, indent = 2)
 
-# Writing data to file data.json
+# Over-Writing data to file data_food_sample.json
 with open('data_food_sample.json', 'w') as file:
     file.write(json_data)
 
