@@ -8,7 +8,7 @@
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
   <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-  <!-- Citation for trash icon and above script: https://www.w3schools.com/icons/-->
+  <!-- Citation for trash icon and above script: https://www.w3schools.com/icons/ -->
 
   <!-- Bootstrap CSS links -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,7 +20,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
   <!-- CSS link (Moved after Bootstrap to override functions)-->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/step1.css">
+  <link rel="stylesheet" href="css/step2.css">
+  <link rel="stylesheet" href="css/step3.css">
 
   <!-- Font for the brand name -->
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
@@ -65,6 +68,22 @@
 
       </nav>
 
+<<<<<<< HEAD
+=======
+      <div id="order_modal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Your Order...</p>
+          <div id="final-selections">
+
+          </div>
+        </div>
+      
+      </div>
+      
+>>>>>>> 5dd2eff89c03af8bfdf91bd8abc3493b99df4a55
     </div>
   </section>
 
@@ -77,55 +96,60 @@
       <div class="box activeBox step1" id="box-step1">
 
         <div class="search-container">
-
+          
+          <!-- Food Search -->
           <!-- Citation - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr -->
           <div class="slideShow">
             <img class="exampleInputSlide" src="./pics/Slide1.PNG">
             <img class="exampleInputSlide" src="./pics/Slide2.PNG">
             <img class="exampleInputSlide" src="./pics/Slide3.PNG">
           </div>
-
           <h2>What are we craving?</h2>
-          <input class="search-bar" id="search-bar-id" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
-          <!-- Button to nagivate to suggestions -->
-          <button class="submitLeftNext btn btn-light" id = "submit_one" type="submit" onclick="food_search()">Submit</button>
-          <div>
-            <p id="message_submit"></p>
+          <div class="input-group">
+            <input class="form-control" id="search-bar-id" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
+            <!-- Button to nagivate to suggestions -->
+            <button class="submitLeftNext btn btn-light" id="submit_one" type="submit" onclick="food_search()">Submit</button>
           </div>
-          <div id="user-loc-div">
-            <h2>Enter your location</h2>
-            <div class="search-bar">
-                <input class="search-bar" id="location-input" type="text" placeholder="Enter an address" />
-            </div>
-            <div id="location-status"></div>
-            <iframe id="location-map" frameborder="0" src=""></iframe>
-          </div>
-          <h6 id="selected-ingredients"></h6>
+          <div class="status-message" id="message_submit"></div>
 
+          <!-- User Location -->
+          <h2 class="location-header">Enter your location</h2>
+          <input class="form-control" id="location-input" type="text" placeholder="Enter an address" />
+          <div class="status-message" id="location-status"></div>
+          <iframe id="location-map" frameborder="0" src=""></iframe>
         </div>
 
       </div>
 
       <!-- Middle box, referred as suggestion page in the next sections -->
       <div class="box undoneBox step2" id="box-step2">
+        
         <div class="container">
           <div class="row flex-nowrap">
             <div class="col-3 align-middle leftArrow" id="step2-left-arrow">
               <button class="submitMidBack btn arrow" type="submit"><i class="fas fa-chevron-left"></i></button>
             </div>
             <div class="col-6 foundings">
+<<<<<<< HEAD
               <h2 class='vanished-text' id ='yek'>What We Found:</h2>
               <p id = "results"></p>
+=======
+              <h6 id="selected-ingredients"></h6>
+              <h2 class='vanished-text'>What We Found:</h2>
+              <div id="results"></div>
+>>>>>>> 5dd2eff89c03af8bfdf91bd8abc3493b99df4a55
             </div>
             <div class="col-3 rightArrow" id="step2-right-arrow">
               <button class="submitMidNext btn arrow" type="submit" id="step2-right-arrow-button"><i class="fas fa-chevron-right"></i></button>
             </div>
           </div>
         </div>
+
       </div>
 
       <!-- Right box, referred as ordering page in the next sections -->
       <div class="box undoneBox step3" id="box-step3">
+        
         <div class="container">
           <div class="row flex-nowrap">
             <!-- Button to navigate to suggestions -->
@@ -138,10 +162,13 @@
               <button class="submitLeftNext btn btn-light" id = "clear" type="submit" onclick="clear_selections()">Clear Selections
                 <i class="fas fa-trash"></i>
               </button>
+              <button class="submitLeftNext btn btn-light" id = "clear" type="submit" onclick="order_now()">Review + Place Order 
+                <i class="fas fa-shopping-cart"></i>
+              </button>
             </div>
-
           </div>
         </div>
+
       </div>
 
     <!-- End of sliding bar div row -->
@@ -167,14 +194,16 @@
     </div>
   </footer>
 
-  <script src="./util.js"></script>
-  <script src="index.js" charset="utf-utf-8"></script>
-  <script src="./foodSearch.js"></script>
-  <script src="./location.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/index.js" charset="utf-utf-8"></script>
+  <script src="js/foodSearch.js"></script>
+  <script src="js/foodSelection.js"></script>
+  <script src="js/location.js"></script>
   <script>
     init();
   </script>
-  <script src="./foodSelection.js"></script>
+  <script src="js/foodSelection.js"></script>
+  <script src="js/order_now.js"></script>
 
   <!-- Citation - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr -->
   <script>

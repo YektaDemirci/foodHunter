@@ -1,0 +1,11 @@
+#results{
+    overflow-y: scroll;
+    max-height: 350px;
+}
+
+.result-div{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border:4px solid black;
+    margin: 10px;
+}
