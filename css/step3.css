@@ -5,6 +5,10 @@
     margin: 10px;
 }
 
+#clear, #review{
+    display:none;
+}
+
 #selections{
     overflow-y: scroll;
     max-height: 350px;

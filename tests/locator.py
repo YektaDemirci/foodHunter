@@ -48,6 +48,9 @@ class MainPageLocators(object):
 
     SAMPLE_INGREDIENT = "chicken"
 
+    # Step 3 options
+    REVIEW_BUTTON = (By.ID, "review")
+    CLEAR_BUTTON = (By.ID, "clear")
 
     # Should these kind of const's be in another file?
     STEP_1_HIGHLIGHTED = [ 

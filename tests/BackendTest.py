@@ -16,7 +16,7 @@ def getDriver(driver_geo_option_arg):
 
     driver = webdriver.Firefox( \
         options=getDriverOption(driver_geo_option_arg), \
-        executable_path='tests/geckodriver', \
+        # executable_path='tests/geckodriver', \
         service_log_path='/dev/null')
     driver.get(PATH)
     driver.implicitly_wait(3)

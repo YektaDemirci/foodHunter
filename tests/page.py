@@ -236,6 +236,11 @@ class MainPage(BasePage):
         self.inputIngredientAndClickSubmit()
         return ( self.driver.find_element(*MainPageLocators.MID_ARROW_RIGHT).value_of_css_property("animation-delay") != "0s" )
 
+    def is_step3_options_invisible(self):
+        reviewButton = ( self.driver.find_element(*MainPageLocators.REVIEW_BUTTON).value_of_css_property("display") == "none" )
+        clearButton = ( self.driver.find_element(*MainPageLocators.CLEAR_BUTTON).value_of_css_property("display") == "none" )
+        return ( reviewButton and clearButton)
+
     # This was in selenium official tutorial, dont understand purpose of following function:
     # search_footer_element = SearchFooterElement()
 

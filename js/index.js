@@ -40,10 +40,16 @@ function updateFooter(activeStepID, activeBox) {
     }
   }
 
+  function showStep3Options(){
+    document.getElementById("clear").style.display="inline-block";
+    document.getElementById("review").style.display="inline-block";
+  }
+
 // If you click to submit on the welcoming page, it moves to suggestions page
 document.querySelector(".submitLeftNext").addEventListener("click", function() {
   updateFooter("step2");
   removeGifs(); 
+  showStep3Options();
   pulseArrow(true);
 });
 // If you click to back on the suggestion page, it goes back to welcoming page
