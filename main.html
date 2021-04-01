@@ -96,11 +96,6 @@
           
           <!-- Food Search -->
           <!-- Citation - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr -->
-          <div class="slideShow">
-            <img class="exampleInputSlide" src="./pics/Slide1.PNG">
-            <img class="exampleInputSlide" src="./pics/Slide2.PNG">
-            <img class="exampleInputSlide" src="./pics/Slide3.PNG">
-          </div>
           <h2>What are we craving?</h2>
           <div class="input-group">
             <input class="form-control" id="search-bar-id" type="text" placeholder="Type ingredients here. i.e. seaweed, shrimp, brown rice.." name="search">
@@ -108,9 +103,15 @@
             <button class="submitLeftNext btn btn-light" id="submit_one" type="submit" onclick="food_search()" spellcheck="true">Submit</button>
           </div>
           <div class="status-message" id="message_submit"></div>
-
+          <!-- Food Search -->
+          <!-- Citation - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr -->
+          <div class="slideShow">
+            <img class="exampleInputSlide" src="./pics/Slide1.PNG">
+            <img class="exampleInputSlide" src="./pics/Slide2.PNG">
+            <img class="exampleInputSlide" src="./pics/Slide3.PNG">
+          </div>
           <!-- User Location -->
-          <h2 class="location-header">Enter your location</h2>
+          <h2 class="location-header"><img src="./pics/Pin-location.png" id="location_pin">Location</h2>
           <input class="form-control" id="location-input" type="text" placeholder="Enter an address" />
           <div class="status-message" id="location-status"></div>
           <iframe id="location-map" frameborder="0" src=""></iframe>

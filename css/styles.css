@@ -252,12 +252,6 @@ html,body { height:100%; }
   width: 100%;
   min-height: 200px;
 }
-.result-div{
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border:4px solid black;
-  margin: 10px;
-}
 
 .selection-div-class{
   padding-top: 20px;
