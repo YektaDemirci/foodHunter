@@ -197,31 +197,7 @@
   </script>
   <script src="js/foodSelection.js"></script>
   <script src="js/order_now.js"></script>
-
-  <!-- Citation - https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr -->
-  <script>
-
-    var slide_index_val = 0;
-    automatic_sample_slideshow();
-
-    function automatic_sample_slideshow() {
-
-      var iterator;
-      var all_example_slides = document.getElementsByClassName("exampleInputSlide");
-
-      for (iterator = 0; iterator < all_example_slides.length; iterator++) {
-        all_example_slides[iterator].style.display = "none";
-      }
-      slide_index_val++;
-      if (slide_index_val > all_example_slides.length) {
-        slide_index_val = 1;
-      }
-
-      all_example_slides[slide_index_val-1].style.display = "block";
-      setTimeout(automatic_sample_slideshow, 4000);
-    }
-    </script>
-
+  
   </body>
 
 </html>

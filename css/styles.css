@@ -80,7 +80,7 @@ https://visme.co/blog/website-color-schemes/
 
 /* GIF URL: https://www.pinterest.ca/pin/478648266628052540/ */
 #box-step2 {
-  background-image: url('./pics/coffee2.gif');
+  background-image: url('../pics/coffee2.gif');
   background-repeat: no-repeat;
   background-size:100%;
   background-position: center;
@@ -88,7 +88,7 @@ https://visme.co/blog/website-color-schemes/
 
 /* GIF URL: https://dribbble.com/shots/2866160-Noodlez */
 #box-step3 {
-  background-image: url('./pics/noodleanimation.gif');
+  background-image: url('../pics/noodleanimation.gif');
   background-repeat: no-repeat;
   background-size:100%;
   background-position:center;
