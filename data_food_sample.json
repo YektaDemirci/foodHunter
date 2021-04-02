@@ -1,142 +1,14 @@
 [
   {
-    "restaurant": "Gol's Lanzhou Noodle",
-    "product": "Vegetable Chow Mein",
-    "ingredients": "noodle,veggie,broccoli,pepper,tomato",
-    "tags": "vegetarian, chinese",
-    "address": "150 University Ave W Unit 6B, Waterloo, ON N2L 3E4"
-  },
-  {
-    "restaurant": "Kinkaku",
-    "product": "California Roll",
-    "ingredients": "crab, rice, seaweed, avocado, cucumber",
-    "tags": "nonveg, seafood, sushi, japanese",
-    "address": "217 King St W, Kitchener, ON N2G 1B1"
+    "restaurant": "Starbucks",
+    "product": "Bacon, Gouda, & Egg Breakfast Sandwich",
+    "ingredients": "Applewood smoked bacon, gouda and Parmesan frittata. Served on an artisan roll.",
+    "address": "4001 East Stevens Way Northeast Seattle, WA 98195"
   },
   {
     "restaurant": "Starbucks",
-    "product": "Sausage, Cheddar & Egg Sandwich",
-    "ingredients": "sausage,egg,cheese,english muffin",
-    "tags": "nonveg, fast food, breakfast",
-    "address": "200 University Ave W, Waterloo, ON N2L 3G1"
-  },
-  {
-    "restaurant": "Panago Pizza",
-    "product": "BBQ Bacon Chicken Pizza",
-    "ingredients": "bbq sauce,chicken,bacon,onion,red pepper,cheese,crust",
-    "tags": "nonveg, italian",
-    "address": "668 Erb St W, Waterloo, ON N2T 2Z7"
-  },
-  {
-    "restaurant": "Starbucks",
-    "product": "Classic Oatmeal",
-    "ingredients": "oats,dried fruit,nuts,brown sugar",
-    "tags": "vegetarian, fast food, breakfast",
-    "address": "200 University Ave W, Waterloo, ON N2L 3G1"
-  },
-  {
-    "restaurant": "McDonald's",
-    "product": "Chicken McNuggets",
-    "ingredients": "chicken",
-    "tags": "nonveg, fast food",
-    "address": "362 King St N, Waterloo, ON N2J 2Z2"
-  },
-  {
-    "restaurant": "Ennio's Pasta House",
-    "product": "Rustica Pasta",
-    "ingredients": "sweet bell peppers, grape tomatoes, sliced roasted chicken, pasta",
-    "tags": "nonveg, italian",
-    "address": "384 King St N, Waterloo, ON N2J 2Z3"
-  },
-  {
-    "restaurant": "McDonald's",
-    "product": "Big Mac",
-    "ingredients": "beef, lettuce, mayo, cheese, bread",
-    "tags": "nonveg, fast food",
-    "address": "362 King St N, Waterloo, ON N2J 2Z2"
-  },
-  {
-    "restaurant": "Gol's Lanzhou Noodle",
-    "product": "Beef Tendon Noodle",
-    "ingredients": "noodle,beef,cilantro,sesame,scallion,soup",
-    "tags": "nonveg, chinese",
-    "address": "150 University Ave W Unit 6B, Waterloo, ON N2L 3E4"
-  },
-  {
-    "restaurant": "Mucho Burrito",
-    "product": "Regular Meat Burrito",
-    "ingredients": "meat,beans,rice,jalapeno,cheese,wrap",
-    "tags": "nonveg, mexican",
-    "address": "220 King St N, Waterloo, ON N2J 2Y7"
-  },
-  {
-    "restaurant": "Mucho Burrito",
-    "product": "Maple Chipotle",
-    "ingredients": "maple chipotle BBQ sauce, blackbeans, jalapeno, avocado crema, harvest veggie medley, cheese, chicken",
-    "tags": "nonveg, mexican",
-    "address": "220 King St N, Waterloo, ON N2J 2Y7"
-  },
-  {
-    "restaurant": "Ennio's Pasta House",
-    "product": "Arrabiata Pasta",
-    "ingredients": "sweet bell peppers, tomato sauce, penne noodles, pasta",
-    "tags": "vegetarian, italian",
-    "address": "384 King St N, Waterloo, ON N2J 2Z3"
-  },
-  {
-    "restaurant": "Boston Pizza",
-    "product": "Tropical Chicken Pizza",
-    "ingredients": "alfredo sauce,cheese,bacon,chicken,pineapple,crust",
-    "tags": "nonveg, italian",
-    "address": "597 King St N, Waterloo, ON N2V 2N3"
-  },
-  {
-    "restaurant": "Tim Hortons",
-    "product": "Ham & Cheddar Sandwich",
-    "ingredients": "ham,cheese,tomato,lettuce,bread",
-    "tags": "nonveg, fast food",
-    "address": "200 University Ave W, Waterloo, ON N2C 3G1"
-  },
-  {
-    "restaurant": "Kim's Kitchen",
-    "product": "Deep-Fried Boneless Chicken",
-    "ingredients": "chicken, rice",
-    "tags": "nonveg",
-    "address": "258 King St N Unit #2, Waterloo, ON N2J 2Y9"
-  },
-  {
-    "restaurant": "Lazeez",
-    "product": "Shawarma Wrap",
-    "ingredients": "chicken, pickle, tomato, onion, bread, lettuce",
-    "tags": "nonveg, middle eastern",
-    "address": "170 University Ave W, Waterloo, ON N2L 3E9"
-  },
-  {
-    "restaurant": "Tim Hortons",
-    "product": "Chicken Caesar Wrap",
-    "ingredients": "chicken,bacon,tomato,lettuce,wrap",
-    "tags": "nonveg, fast food",
-    "address": "200 University Ave W, Waterloo, ON N2C 3G1"
-  },
-  {
-    "restaurant": "Panago Pizza",
-    "product": "Hawaiian Pizza",
-    "ingredients": "tomato sauce,bacon,ham,pineapple,cheese,crust",
-    "tags": "nonveg, italian",
-    "address": "668 Erb St W, Waterloo, ON N2T 2Z7"
-  },
-  {
-    "restaurant": "Boston Pizza",
-    "product": "Bourbon BBQ Chicken Pizza",
-    "ingredients": "bbq sauce,chicken,red onion,cheese,bacon,crust",
-    "tags": "nonveg, italian",
-    "address": "597 King St N, Waterloo, ON N2V 2N3"
-  },
-  {
-    "restaurant": "Mucho Burrito",
-    "product": "Regular Veggie Burrito",
-    "ingredients": "veggie,pepper,onion,beans,rice,jalapeno,cheese,wrap",
-    "tags": "vegetarian, mexican",
-    "address": "220 King St N, Waterloo, ON N2J 2Y7"
+    "product": "Reduced-Fat Turkey Bacon & Cage Free Egg White Sandwich",
+    "ingredients": "Sizzling reduced-fat turkey bacon and wholesome cage-free egg whites are paired with the rich creaminess of melted, reduced-fat white cheddar cheese on an organic wheat English muffin.",
+    "address": "4001 East Stevens Way Northeast Seattle, WA 98195"
   }
 ]
