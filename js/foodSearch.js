@@ -4,26 +4,26 @@ function food_search() {
     let error_status = false;
     // Error: user geolocation is unavailable
     if(user_geolocation.lat==undefined || user_geolocation.lng==undefined) {
-        document.getElementById('results').innerHTML = 
+        document.getElementById('results').innerHTML =
             "Sorry, your geolocation is not available. Please select a location.";
         error_status = true;
     }
 
-    document.getElementById('results').innerHTML = "loading"; 
+    document.getElementById('results').innerHTML = "loading";
 
     // get user input for ingredients
     let input = document.getElementById('search-bar-id').value;
     // Error: no user input for ingredients
     if (!input || input == null) {
-        document.getElementById('results').innerHTML = 
+        document.getElementById('results').innerHTML =
             "you forgot to type something into the search bar!";
-        document.getElementById('message_submit').innerHTML = 
+        document.getElementById('message_submit').innerHTML =
             "No input found";
         error_status = true;
     }
     if(error_status)    return;
 
-    document.getElementById('selected-ingredients').innerHTML = 
+    document.getElementById('selected-ingredients').innerHTML =
         "You're Looking For...<br>" + input;
     input = input.toLowerCase();
     input = input.replaceAll(" ", "")
@@ -35,7 +35,7 @@ function food_search() {
         processData(jsonFood, input_split);
         // no food that matches ingredient input
         if(food_objects.length == 0){
-            document.getElementById('results').innerHTML = 
+            document.getElementById('results').innerHTML =
                 "Sorry, we could not find anything.";
         }
         // sort food by restaurant distance and display them
@@ -57,17 +57,14 @@ function processData(data, input_ingredients){
     food_objects = [];
 
     for (i = 0; i < data.length; i++) {
-        
+
         var ingredient_list_despaced = data[i].ingredients.replaceAll(" ", "");
         var ingredient_list = ingredient_list_despaced.split(",");
 
-        var foodTag_list_despaced = data[i].tags.replaceAll(" ", "");
-        var foodTag_list = foodTag_list_despaced.split(",");
-
         var ingredient_count = 0;
-        
+
         input_ingredients.forEach(function (ingredientVal) {
-            if(ingredient_list.indexOf(ingredientVal) >= 0 || foodTag_list.indexOf(ingredientVal) >= 0){
+            if(ingredient_list.indexOf(ingredientVal) >= 0 ){
                 ingredient_count++;
             }
         });
@@ -177,16 +174,16 @@ function displayFoodObjects() {
     for(let i = 0; i < N; i++){
         let distanceText = food_objects[i].distance != null ?
             +(food_objects[i].distance/1000).toFixed(2)+" km" : "";
-        result += "<div class=\"result-div\">" 
-            + food_objects[i].product 
+        result += "<div class=\"result-div\">"
+            + food_objects[i].product
             + "<br>Location: " + food_objects[i].restaurant
             + "<br>Address: " + food_objects[i].address
             + "<br>Distance: " + distanceText
-            + "<br><button type='button' onclick='food_selection(\"" 
-            + food_objects[i].product + "??" 
-            + food_objects[i].restaurant.replace("'", "[single-quote]") + "??" 
+            + "<br><button type='button' onclick='food_selection(\""
+            + food_objects[i].product + "??"
+            + food_objects[i].restaurant.replace("'", "[single-quote]") + "??"
             + food_objects[i].address  + "\")'>Select Option</button></div>";
-                
+
     }
     document.getElementById('results').innerHTML = result;
 }

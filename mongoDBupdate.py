@@ -2,6 +2,7 @@ import requests
 import json
 import math
 import pymongo
+import re
 
 key = "a7e037de3731e07c5ad9ebbaedcf25da";
 #The centre is University of Washington acc to lat and lon
@@ -22,7 +23,7 @@ totalPage = totalPage+1;
 
 mongo_list = []
 
-for page in range(1,2):
+for page in range(1,totalPage):
     url = "https://api.documenu.com/v2/restaurants/search/geo?lat="+lat+"&lon="+lon+"&distance="+dist+"&page="+str(page)+"&fullmenu&key="+key;
     r =requests.get(url)
     d_dict = r.json()
@@ -34,9 +35,9 @@ for page in range(1,2):
                         dish={
                         "restaurant": i["restaurant_name"],
                         "product": l["name"],
-                        "ingredients": l["description"],
-                        "address": i["address"]["formatted"]
-                        #"price": l["price"]
+                        "ingredients": re.sub("[ .;:]", ",", l["description"].lower()),
+                        "address": i["address"]["formatted"],
+                        "price": l["price"]
                         }
                         mongo_list.append(dish)
     print("Page "+str(page)+" is completed, total page number is: "+str(totalPage))
