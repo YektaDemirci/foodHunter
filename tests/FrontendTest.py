@@ -55,15 +55,15 @@ class FooterUI(unittest.TestCase):
     def test_boxStep2(self):
         mainPage = page.FrontendPage(self.driver)
         assert mainPage.is_box_step2_highlighted(), "\nStyling for box 2nd step is incorrect"
-    
+
     def test_boxStep3(self):
         mainPage = page.FrontendPage(self.driver)
         assert mainPage.is_box_step3_highlighted(), "\nStyling for box 3th step is incorrect"
-    
+
     def test_boxStep2re(self):
         mainPage = page.FrontendPage(self.driver)
         assert mainPage.is_box_step2_rehighlighted(), "\nStyling for box 2nd re-step is incorrect"
-    
+
     def test_boxStep1re(self):
         mainPage = page.FrontendPage(self.driver)
         assert mainPage.is_box_step1_rehighlighted(), "\nStyling for box 1st re-step is incorrect"
