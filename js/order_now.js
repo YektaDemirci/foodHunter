@@ -23,51 +23,57 @@ $.ajax(settings).done(function (response) {
 
 function order_now(value){
 
-    /**
-        CITATION (IEEE FORMATTED)
-        w3schools, Modal Example. N/A: w3schools, N/A. [webpage].
-        Link: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
-
-    **/
-
-    var modal = document.getElementById("order_modal");
-    modal.style.display = "block";
-
-    // selections
-    var selectionBox = document.getElementById("final-selections");
-    var selectionsFinal = "";
-
-    // selection-div-class
-    var selectionList = document.getElementsByClassName("selection-div-class");
-
-    console.log(selectionList);
-
-    /**
-        CITATION (IEEE FORMATTED)
-        C. C. Salvado and P. Mortensen, Loop through an array in JavaScript. N/A: stakoverflow, 2010. [webpage].
-        Link: https://stackoverflow.com/questions/3010840/loop-through-an-array-in-javascript
-
-    **/
-
-    for (var i = 0; i < selectionList.length; i++) {
-        console.log(selectionList[i].innerText);
-        selectionsFinal += "<p>" + selectionList[i].innerText + "</p>";
-    }
-
-    selectionBox.innerHTML = selectionsFinal;
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // citation:
-    // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
-    console.log("HERE ORDER YES");
-
     console.log(value);
     var value_split = value.split("??");
     q = value_split[1] + " " + value_split[2];
     place_order(q);
 
+
+//    /**
+//        CITATION (IEEE FORMATTED)
+//        w3schools, Modal Example. N/A: w3schools, N/A. [webpage].
+//        Link: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+//
+//    **/
+//
+//    var modal = document.getElementById("order_modal");
+//    modal.style.display = "block";
+//
+//    // selections
+//    var selectionBox = document.getElementById("final-selections");
+//    var selectionsFinal = "";
+//
+//    // selection-div-class
+//    var selectionList = document.getElementsByClassName("selection-div-class");
+//
+//    console.log(selectionList);
+//
+//    /**
+//        CITATION (IEEE FORMATTED)
+//        C. C. Salvado and P. Mortensen, Loop through an array in JavaScript. N/A: stakoverflow, 2010. [webpage].
+//        Link: https://stackoverflow.com/questions/3010840/loop-through-an-array-in-javascript
+//
+//    **/
+//
+//    for (var i = 0; i < selectionList.length; i++) {
+//        console.log(selectionList[i].innerText);
+//        selectionsFinal += "<p>" + selectionList[i].innerText + "</p>";
+//    }
+//
+//    selectionBox.innerHTML = selectionsFinal;
+//
+//    // Get the <span> element that closes the modal
+//    var span = document.getElementsByClassName("close")[0];
+//
+//    // citation:
+//    // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+//    console.log("HERE ORDER YES");
+//
+//    console.log(value);
+//    var value_split = value.split("??");
+//    q = value_split[1] + " " + value_split[2];
+//    place_order(q);
+//
 
 //    var modal = document.getElementById("order_modal");
 //    modal.style.display = "block";

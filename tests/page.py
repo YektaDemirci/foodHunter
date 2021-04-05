@@ -75,13 +75,8 @@ class MainPage(BasePage):
         return check
 
     def is_output_valid(self):
-<<<<<<< HEAD
         self.search_bar_element = 'tomato sauce,bacon,ham'
-        required = ["tomato sauce","bacon","ham"]
-=======
-        self.search_bar_element = 'tomato sauce,bacon,ham,cheese,brocolli'
         required = ["tomato sauce", "bacon", "ham"]
->>>>>>> origin/link-to-delivery
         element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
         element.click()
         time.sleep(5)
@@ -101,14 +96,10 @@ class MainPage(BasePage):
                         if element2.text == result_str:
                             return True
                 counter = 0
-<<<<<<< HEAD
-        if element2.text == 'Sorry, we could not find anything.':
-=======
         element3 = self.driver.find_elements_by_css_selector('div.result-div')
         if len(element3) > 0:
             return True
         elif len(element3) == 0 and element2.text == "Sorry, we could not find anything.":
->>>>>>> origin/link-to-delivery
             return True
         else:
             return False
@@ -131,12 +122,6 @@ class MainPage(BasePage):
         self.search_bar_element = 'asdfgh'
         element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
         element.click()
-<<<<<<< HEAD
-        time.sleep(5)
-        element2 = self.driver.find_element(*MainPageLocators.RESULTS)
-        if element2.text:
-            if element2.text == 'Sorry, we could not find anything.':
-=======
         time.sleep(5)
         element2 = self.driver.find_element(*MainPageLocators.RESULTS)
         if element2.text:
@@ -164,7 +149,6 @@ class MainPage(BasePage):
             count = len(element4)
 
             if count == len(element3):
->>>>>>> origin/link-to-delivery
                 return True
             else:
                 return False
