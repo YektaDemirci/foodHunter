@@ -180,7 +180,7 @@ function displayFoodObjects() {
             + "<br>Location: " + food_objects[i].restaurant
             + "<br>Address: " + food_objects[i].address
             + "<br>Distance: " + distanceText
-            + "<br><button type='button' onclick='food_selection(\"" 
+            + "<br><button type='button' class='selection-button' onclick='food_selection(\""
             + food_objects[i].product + "??" 
             + food_objects[i].restaurant.replace("'", "[single-quote]") + "??" 
             + food_objects[i].address  + "\")'>Select Option</button></div>";
