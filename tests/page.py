@@ -235,12 +235,6 @@ class FrontendPage(BasePage):
         clearButton = ( self.driver.find_element(*FrontendLocators.CLEAR_BUTTON).value_of_css_property("display") == "none" )
         return ( reviewButton and clearButton)
 
-    # This was in selenium official tutorial, dont understand purpose of following function:
-    # search_footer_element = SearchFooterElement()
-
-#########################
-####### HELPER FUNCTIONS
-#########################
     def isStepHighlighted(self,step,style):
         element = self.driver.find_element(*step)
         className = element.get_attribute("class")
