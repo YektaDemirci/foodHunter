@@ -1,7 +1,11 @@
 function order_now(value){
 
-    // citation:
-    // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+    /**
+        CITATION (IEEE FORMATTED)
+        w3schools, Modal Example. N/A: w3schools, N/A. [webpage].
+        Link: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+
+    **/
 
     var modal = document.getElementById("order_modal");
     modal.style.display = "block";
@@ -15,7 +19,13 @@ function order_now(value){
 
     console.log(selectionList);
 
-    // citation - https://stackoverflow.com/questions/3010840/loop-through-an-array-in-javascript
+    /**
+        CITATION (IEEE FORMATTED)
+        C. C. Salvado and P. Mortensen, Loop through an array in JavaScript. N/A: stakoverflow, 2010. [webpage].
+        Link: https://stackoverflow.com/questions/3010840/loop-through-an-array-in-javascript
+
+    **/
+
     for (var i = 0; i < selectionList.length; i++) {
         console.log(selectionList[i].innerText);
         selectionsFinal += "<p>" + selectionList[i].innerText + "</p>";

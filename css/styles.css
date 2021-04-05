@@ -1,7 +1,11 @@
-/* Modelling color pallette after #39 "Rich and Powerful"
-https://visme.co/blog/website-color-schemes/
- */
- :root {
+/* 
+  CITATION (IEEE FORMATTED)
+  N. Chibana, 50 Gorgeous Color Schemes From Award-Winning Websites: 39 Rich and Colorful. N/A: visme, N/A. [webpage - article].
+  Link: https://visme.co/blog/website-color-schemes/
+*/
+
+
+:root {
   --font-family:'Lobster', cursive;
 
   --header-color:#ececec;
@@ -262,8 +266,9 @@ html,body { height:100%; }
 }
 
 /*
-    citation for Modal stylings:
-    https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+    CITATION (IEEE FORMATTED)
+    w3schools, Modal Example. N/A: w3schools, N/A. [webpage].
+    Link: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
 */
 .modal {
   display: none;
