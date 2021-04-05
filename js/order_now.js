@@ -23,7 +23,6 @@ $.ajax(settings).done(function (response) {
 
 function order_now(value){
 
-<<<<<<< HEAD
     /**
         CITATION (IEEE FORMATTED)
         w3schools, Modal Example. N/A: w3schools, N/A. [webpage].
@@ -59,7 +58,7 @@ function order_now(value){
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-=======
+
     // citation:
     // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
     console.log("HERE ORDER YES");
@@ -68,7 +67,7 @@ function order_now(value){
     var value_split = value.split("??");
     q = value_split[1] + " " + value_split[2];
     place_order(q);
->>>>>>> origin/link-to-delivery
+
 
 //    var modal = document.getElementById("order_modal");
 //    modal.style.display = "block";
