@@ -1,32 +1,34 @@
 function food_search() {
     // get user geolocation
     let user_geolocation = getSessionGeolocation();
+    let error_status = false;
     // Error: user geolocation is unavailable
     if(user_geolocation.lat==undefined || user_geolocation.lng==undefined) {
         document.getElementById('results').innerHTML = 
             "Sorry, your geolocation is not available. Please select a location.";
-        return;
+        error_status = true;
     }
 
     document.getElementById('results').innerHTML = "loading"; 
 
     // get user input for ingredients
     let input = document.getElementById('search-bar-id').value;
-    document.getElementById('selected-ingredients').innerHTML = 
-        "You're Looking For...<br>" + input;
-    input = input.toLowerCase();
-    input = input.replaceAll(" ", "")
-    let input_split = input.split(",");
-
-    // no user input for ingredients
+    // Error: no user input for ingredients
     if (!input || input == null) {
         document.getElementById('results').innerHTML = 
             "you forgot to type something into the search bar!";
         document.getElementById('message_submit').innerHTML = 
             "No input found";
-        return;
+        error_status = true;
     }
-    
+    if(error_status)    return;
+
+    // document.getElementById('selected-ingredients').innerHTML = 
+    //     "You're Looking For...<br>" + input;
+    input = input.toLowerCase();
+    input = input.replaceAll(" ", "")
+    let input_split = input.split(",");
+
     // get food data
     $.getJSON("data_food_sample.json", function(jsonFood) {
         document.getElementById('message_submit').innerHTML = "";

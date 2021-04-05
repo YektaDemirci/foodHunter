@@ -16,6 +16,7 @@
 
 .exampleInputSlide{
     width:100%;
+    border-radius:25px;
 }
 
 /* Location styling */
@@ -26,4 +27,8 @@
 #location-map{
     width: 100%;
     min-height: 200px;
+}
+
+#location_pin{
+    width:45px;
 }

@@ -6,10 +6,7 @@ https://visme.co/blog/website-color-schemes/
 
   --header-color:#ececec;
   --step1-color:#f3d250;
-  /* --step2-color:#90ccf4; */
-  /* Temporary color 2 & 3 (unable to make gif background transparent */
   --step2-color:#7DCDBA;
-  /* --step3-color:#f78888; */
   --step3-color:#C6E4E4;
 
   --logo-shadow-color:#9494947e;
@@ -31,7 +28,6 @@ https://visme.co/blog/website-color-schemes/
 
   --sliding-transition:width 2s, background-color 0.5s ease-out;
 
-  /* TODO: Need help centering logo img and putting text food hunter relative to it */
   --header-logo-position: -5%;
 
   --logo-text-size:8vh;
@@ -40,7 +36,6 @@ https://visme.co/blog/website-color-schemes/
   --footer-font-size:1.5vw;
 }
 
-/* TODO: Unable to remove clicked boundry-box of arrows */
 .arrow{
   color:var(--arrow-color);
   font-size:var(--arrow-size);
@@ -80,7 +75,7 @@ https://visme.co/blog/website-color-schemes/
 
 /* GIF URL: https://www.pinterest.ca/pin/478648266628052540/ */
 #box-step2 {
-  background-image: url('./pics/coffee2.gif');
+  background-image: url('../pics/coffee2.gif');
   background-repeat: no-repeat;
   background-size:100%;
   background-position: center;
@@ -88,7 +83,7 @@ https://visme.co/blog/website-color-schemes/
 
 /* GIF URL: https://dribbble.com/shots/2866160-Noodlez */
 #box-step3 {
-  background-image: url('./pics/noodleanimation.gif');
+  background-image: url('../pics/noodleanimation.gif');
   background-repeat: no-repeat;
   background-size:100%;
   background-position:center;
@@ -140,22 +135,6 @@ html,body { height:100%; }
 }
 
 .navbar-brand:hover{ color: var(--active-text-color); }
-
-/* .navbar-nav{
-  margin-left: 60%;
-} */
-
-/* .nav-link{
-  color: var(--done-color);
-  opacity: 0.8;
-  margin-right: 5%;
-  font-size: 1.1rem;
-} */
-
-/* .nav-link:hover{
-  color: var(--done-color);
-  opacity: 1;
-} */
 
 .box{
   height:var(--panels-height);
@@ -251,12 +230,6 @@ html,body { height:100%; }
 #location-map{
   width: 100%;
   min-height: 200px;
-}
-.result-div{
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border:4px solid black;
-  margin: 10px;
 }
 
 .selection-div-class{

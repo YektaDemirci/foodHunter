@@ -18,6 +18,12 @@ class MainPageLocators(object):
     LOCATION_IFRAME_PLACE_NAME = (By.CLASS_NAME, "place-name")
     LOCATION_IFRAME_PLACE_ADDRESS = (By.CLASS_NAME, "address")
 
+    REVIEW_SUMMARY = (By.ID, "order_modal")
+    REVIEW_SUMMARY_CLOSE = (By.CLASS_NAME, "close")
+
+
+class FrontendLocators(object):
+
     # footer prefixes because step# by className returned panel divs instead of footer
     FOOTER_STEP1 = (By.ID, "footer-step1")
     FOOTER_STEP2 = (By.ID, "footer-step2")
@@ -28,7 +34,6 @@ class MainPageLocators(object):
     BOX_STEP2 = (By.ID, "box-step2")
     BOX_STEP3 = (By.ID, "box-step3")
 
-    SEARCH_BOX = (By.CLASS_NAME, "search-bar")
     SUBMIT_BUTTON = (By.CLASS_NAME, "submitLeftNext")
     MID_NEXT_BUTTON = (By.CLASS_NAME, "submitMidNext")
     MID_BACK_BUTTON = (By.CLASS_NAME, "submitMidBack")
