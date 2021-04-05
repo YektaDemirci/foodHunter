@@ -230,67 +230,15 @@ html,body { height:100%; }
   padding-top:0.1em;
 }
 
-/* Location styling */
-
-#user-loc-div{
-  margin-top: 10px;
-}
-
-.search-bar{
-  padding: 4px 0 5px 0;
-}
-
-#location-input{
-  width: 100%;
-}
-
-#location-status{
-  font-size: small;
-}
-
-#location-map{
-  width: 100%;
-  min-height: 200px;
-}
-
-.selection-div-class{
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border:4px solid black;
-  margin: 10px;
-}
-
-.slideShow{
-    max-width: 250px;
-    padding: 20px 20px 20px 20px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
-.exampleInputSlide{
-  width:100%;
-}
-
-#results{
-  overflow-y: scroll;
-  max-height: 350px;
-}
-
-#selections{
-  overflow-y: scroll;
-  max-height: 350px;
-}
-
 /*
-    citation for Modal stylings:
-    https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
-*/
+ * citation for Modal stylings:
+ * https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+ */
 .modal {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 15%;
+  padding-top: 5%;
   padding-left: 10%;
   padding-right: 10%;
   left: 0;
@@ -298,23 +246,29 @@ html,body { height:100%; }
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.7);
 }
 
 .modal-content {
-  background-color: #e1afee;
+  background-color: white;
   margin: auto;
   padding: 20px;
-  border: 1px solid rgb(60, 28, 28);
-  width: 100%;
+  border: 1px solid rgba(0,0,0,0.7);
+  width: 90%;
+}
+
+.modal-title {
+  text-align: center;
+  font-size: larger;
+  margin-bottom: 10px;
 }
 
 .close {
-  color: #807e7e;
+  color: rgba(0,0,0,0.7);
   float: right;
   font-size: 35px;
   font-weight: bold;
+  line-height: 4px;
 }
 
 .close:hover,

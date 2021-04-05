@@ -23,7 +23,45 @@ function init() {
   $(document).ready(function() {
     // ask for permission to get geolocation
     initGeolocation();
+    initLocationModal();
   })
+}
+
+
+function initLocationModal() {
+  // Get the modal
+  const modal = document.getElementById("location-modal");
+  // Get the button that opens the modal
+  const btn = document.getElementById("location-button");
+  // Get the <span> element that closes the modal
+  const span = document.getElementById("location-modal-close");
+
+  // Open the modal at the beginning
+  showModal();
+
+  // When the user clicks the button, open the modal 
+  btn.onclick = function() {
+    showModal();
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    hideModal();
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      hideModal();
+    }
+  }
+
+  function showModal() {
+    modal.style.display = "block";
+  }
+  function hideModal() {
+    modal.style.display = "none";
+  }
 }
 
 
@@ -67,7 +105,6 @@ function initGeolocation() {
     myMap.src = "";
   }
 }
-
 
 function initLocationSearch() {
   const myMap = document.getElementById("location-map");

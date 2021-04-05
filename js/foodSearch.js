@@ -8,9 +8,6 @@ function food_search() {
             "Sorry, your geolocation is not available. Please select a location.";
         error_status = true;
     }
-
-    document.getElementById('results').innerHTML = "loading"; 
-
     // get user input for ingredients
     let input = document.getElementById('search-bar-id').value;
     // Error: no user input for ingredients
@@ -23,12 +20,13 @@ function food_search() {
     }
     if(error_status)    return;
 
+    document.getElementById('results').innerHTML = "Loading..."; 
     document.getElementById('selected-ingredients').innerHTML = 
         "You're Looking For...<br>" + input;
     input = input.toLowerCase();
     input = input.replaceAll(" ", "")
     let input_split = input.split(",");
-
+    
     // get food data
     $.getJSON("data_food_sample.json", function(jsonFood) {
         document.getElementById('message_submit').innerHTML = "";

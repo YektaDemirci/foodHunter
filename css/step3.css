@@ -14,5 +14,8 @@
 #selections{
     overflow-y: scroll;
     max-height: 350px;
-    
+}
+
+#order-modal-content{
+    background-color: lavender;
 }
