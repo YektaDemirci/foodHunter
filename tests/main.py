@@ -1,15 +1,16 @@
 import unittest
-from BackendTest import FirstPageUI, FirstPageUI_GeoDenied, FirstPageUI_GeoDisabled
+from BackendTest import FirstPageUI, LocationPageUI, LocationPageUI_GeoDenied, LocationPageUI_GeoDisabled
 from FrontendTest import FooterUI
 
 # get all tests from backend and frontend
-search_text = unittest.TestLoader().loadTestsFromTestCase(FirstPageUI)
-search_text_geo_denied = unittest.TestLoader().loadTestsFromTestCase(FirstPageUI_GeoDenied)
-search_text_geo_disabled = unittest.TestLoader().loadTestsFromTestCase(FirstPageUI_GeoDisabled)
+main_test = unittest.TestLoader().loadTestsFromTestCase(FirstPageUI)
+location_test = unittest.TestLoader().loadTestsFromTestCase(LocationPageUI)
+location_test_geo_denied = unittest.TestLoader().loadTestsFromTestCase(LocationPageUI_GeoDenied)
+location_test_geo_disabled = unittest.TestLoader().loadTestsFromTestCase(LocationPageUI_GeoDisabled)
 footer_test = unittest.TestLoader().loadTestsFromTestCase(FooterUI)
 
-# create a test suite combining search_text and home_page_test
-test_suite = unittest.TestSuite([footer_test, search_text, search_text_geo_denied, search_text_geo_disabled])
+# create a test suite
+test_suite = unittest.TestSuite([main_test, location_test, location_test_geo_denied, location_test_geo_disabled, footer_test])
 
 # run the suite
 unittest.TextTestRunner(verbosity=2).run(test_suite)

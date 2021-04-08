@@ -79,6 +79,17 @@ class FirstPageUI(unittest.TestCase):
         mainPage = page.MainPage(self.driver)
         assert mainPage.is_all_div_deleted()
 
+    @classmethod
+    def tearDown(self):
+        self.driver.close()
+        self.driver.quit()
+
+
+class LocationPageUI(unittest.TestCase):
+    @classmethod
+    def setUp(self):
+        self.driver = getDriver()
+
     def test_geolocation_access_allowed(self):
         mainPage = page.LocationModalPage(self.driver)
         assert mainPage.is_geolocation_access_allowed()
@@ -93,7 +104,7 @@ class FirstPageUI(unittest.TestCase):
         self.driver.quit()
 
 
-class FirstPageUI_GeoDenied(unittest.TestCase):
+class LocationPageUI_GeoDenied(unittest.TestCase):
     @classmethod
     def setUp(self):
         self.driver = getDriver("denied")
@@ -112,7 +123,7 @@ class FirstPageUI_GeoDenied(unittest.TestCase):
         self.driver.quit()
 
 
-class FirstPageUI_GeoDisabled(unittest.TestCase):
+class LocationPageUI_GeoDisabled(unittest.TestCase):
     @classmethod
     def setUp(self):
         self.driver = getDriver("disabled")

@@ -22,6 +22,7 @@ class LocationSearchBarElement(BasePageElement):
 class BasePage(object):
     def __init__(self, driver):
         self.driver = driver
+        self.driver.implicitly_wait(2)
     
     def close_location_modal(self):
         element = self.driver.find_element(*MainPageLocators.LOCATION_MODAL_CLOSE)
