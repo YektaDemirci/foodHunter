@@ -23,6 +23,16 @@ totalPage = totalPage+1;
 
 mongo_list = []
 
+test={
+"restaurant": "restaurantTest",
+"product": "productTest",
+"ingredients": "ing1, ing2, ing3",
+"address": "adressTest",
+"price": 10
+}
+mongo_list.append(test)
+
+
 for page in range(1,totalPage):
     url = "https://api.documenu.com/v2/restaurants/search/geo?lat="+lat+"&lon="+lon+"&distance="+dist+"&page="+str(page)+"&fullmenu&key="+key;
     r =requests.get(url)
@@ -40,7 +50,7 @@ for page in range(1,totalPage):
                         "price": l["price"]
                         }
                         mongo_list.append(dish)
-    print("Page "+str(page)+" is completed, total page number is: "+str(totalPage))
+    print("Page "+str(page)+" is completed, numbe of total page is: "+str(totalPage))
 
 myclient = pymongo.MongoClient("mongodb+srv://foodHunter:1hunt1@cluster0.t1di3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 mydb = myclient["foodHunterDB"]
