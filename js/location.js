@@ -1,8 +1,21 @@
 /* 
- * Reference: 
- * https://developers.google.com/maps/documentation/javascript/geolocation#maps_map_geolocation-javascript
- * https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr
- */
+    References: 
+    https://developers.google.com/maps/documentation/javascript/geolocation#maps_map_geolocation-javascript
+    https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr
+*/
+
+/**
+        CITATION (IEEE FORMATTED)
+        Google Maps Platform, Geolocation: Displaying User or Device Position on Maps. N/A: Google Maps Platform, N/A. [webpage].
+        Link: https://developers.google.com/maps/documentation/javascript/geolocation#maps_map_geolocation-javascript
+**/
+
+/**
+        CITATION (IEEE FORMATTED)
+        w3schools, Automatic Slideshow. N/A: w3schools, N/A. [webpage].
+        Link: https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_rr 
+**/
+
 
 function init() {
   sessionStorage.clear();

@@ -76,7 +76,7 @@ class MainPage(BasePage):
 
     def is_output_valid(self):
         self.search_bar_element = 'tomato sauce,bacon,ham'
-        required = ["tomato sauce","bacon","ham"]
+        required = ["tomato sauce", "bacon", "ham"]
         element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
         element.click()
         time.sleep(5)
@@ -96,7 +96,10 @@ class MainPage(BasePage):
                         if element2.text == result_str:
                             return True
                 counter = 0
-        if element2.text == 'Sorry, we could not find anything.':
+        element3 = self.driver.find_elements_by_css_selector('div.result-div')
+        if len(element3) > 0:
+            return True
+        elif len(element3) == 0 and element2.text == "Sorry, we could not find anything.":
             return True
         else:
             return False
@@ -128,6 +131,78 @@ class MainPage(BasePage):
                 return False
         else:
             return False
+
+    # Step3: delete elements
+    def is_div_present(self):
+        self.search_bar_element = 'chicken'
+        element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
+        element.click()
+        time.sleep(5)
+        element2 = self.driver.find_element(*MainPageLocators.RESULTS)
+        element3 = self.driver.find_elements_by_css_selector('div.result-div')
+        if len(element3) > 0:
+            buttons = self.driver.find_elements_by_css_selector('button.selection-button')
+            for button in buttons:
+                button.click()
+
+            element4 = self.driver.find_elements_by_css_selector('div.selection-div-class')
+            count = len(element4)
+
+            if count == len(element3):
+                return True
+            else:
+                return False
+        elif len(element3) == 0 and element2.text == 'Sorry, we could not find anything.':
+            return True
+
+        else:
+            return False
+
+    def is_div_deleted(self):
+        self.search_bar_element = 'chicken'
+        element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
+        element.click()
+        time.sleep(5)
+        element2 = self.driver.find_element(*MainPageLocators.RESULTS)
+        element3 = self.driver.find_elements_by_css_selector('div.result-div')
+        element4 = self.driver.find_elements_by_css_selector('div.selection-div-class')
+        if len(element4) > 0:
+            total_divs = len(element4)
+            delete_button = self.driver.find_elements_by_css_selector('button.clear-button')
+            delete_button[0].click()
+
+            divs_after_1_deletion = len(self.driver.find_elements_by_css_selector('div.selection-div-class'))
+
+            if divs_after_1_deletion + 1 == total_divs:
+                return True
+            else:
+                return False
+
+        else:
+            return True
+
+    def is_all_div_deleted(self):
+        self.search_bar_element = 'chicken'
+        element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
+        element.click()
+        time.sleep(5)
+        element2 = self.driver.find_element(*MainPageLocators.RESULTS)
+        element3 = self.driver.find_elements_by_css_selector('div.result-div')
+        element4 = self.driver.find_elements_by_css_selector('div.selection-div-class')
+        if len(element4) > 0:
+            total_divs = len(element4)
+            clear_all_button = self.driver.find_element(*MainPageLocators.CLEAR_BUTTON)
+            clear_all_button.click()
+
+            divs_after_1_deletion = len(self.driver.find_elements_by_css_selector('div.selection-div-class'))
+
+            if divs_after_1_deletion == 0:
+                return True
+            else:
+                return False
+
+        else:
+            return True
 
     # location
     def get_location_status(self):
@@ -235,12 +310,6 @@ class FrontendPage(BasePage):
         clearButton = ( self.driver.find_element(*FrontendLocators.CLEAR_BUTTON).value_of_css_property("display") == "none" )
         return ( reviewButton and clearButton)
 
-    # This was in selenium official tutorial, dont understand purpose of following function:
-    # search_footer_element = SearchFooterElement()
-
-#########################
-####### HELPER FUNCTIONS
-#########################
     def isStepHighlighted(self,step,style):
         element = self.driver.find_element(*step)
         className = element.get_attribute("class")

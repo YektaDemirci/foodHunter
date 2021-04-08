@@ -18,6 +18,9 @@ class MainPageLocators(object):
     LOCATION_IFRAME_PLACE_NAME = (By.CLASS_NAME, "place-name")
     LOCATION_IFRAME_PLACE_ADDRESS = (By.CLASS_NAME, "address")
 
+    REVIEW_SUMMARY = (By.ID, "order_modal")
+    REVIEW_SUMMARY_CLOSE = (By.CLASS_NAME, "close")
+
 
 class FrontendLocators(object):
 

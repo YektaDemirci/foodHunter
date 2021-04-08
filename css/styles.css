@@ -1,15 +1,15 @@
-/* Modelling color pallette after #39 "Rich and Powerful"
-https://visme.co/blog/website-color-schemes/
- */
- :root {
+/* 
+  CITATION (IEEE FORMATTED)
+  N. Chibana, 50 Gorgeous Color Schemes From Award-Winning Websites: 39 Rich and Colorful. N/A: visme, N/A. [webpage - article].
+  Link: https://visme.co/blog/website-color-schemes/
+*/
+
+:root {
   --font-family:'Lobster', cursive;
 
   --header-color:#ececec;
   --step1-color:#f3d250;
-  /* --step2-color:#90ccf4; */
-  /* Temporary color 2 & 3 (unable to make gif background transparent */
   --step2-color:#7DCDBA;
-  /* --step3-color:#f78888; */
   --step3-color:#C6E4E4;
 
   --logo-shadow-color:#9494947e;
@@ -31,7 +31,6 @@ https://visme.co/blog/website-color-schemes/
 
   --sliding-transition:width 2s, background-color 0.5s ease-out;
 
-  /* TODO: Need help centering logo img and putting text food hunter relative to it */
   --header-logo-position: -5%;
 
   --logo-text-size:8vh;
@@ -40,7 +39,6 @@ https://visme.co/blog/website-color-schemes/
   --footer-font-size:1.5vw;
 }
 
-/* TODO: Unable to remove clicked boundry-box of arrows */
 .arrow{
   color:var(--arrow-color);
   font-size:var(--arrow-size);
@@ -141,22 +139,6 @@ html,body { height:100%; }
 
 .navbar-brand:hover{ color: var(--active-text-color); }
 
-/* .navbar-nav{
-  margin-left: 60%;
-} */
-
-/* .nav-link{
-  color: var(--done-color);
-  opacity: 0.8;
-  margin-right: 5%;
-  font-size: 1.1rem;
-} */
-
-/* .nav-link:hover{
-  color: var(--done-color);
-  opacity: 1;
-} */
-
 .box{
   height:var(--panels-height);
   display: flex;
@@ -231,9 +213,11 @@ html,body { height:100%; }
 }
 
 /*
- * citation for Modal stylings:
- * https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
- */
+    CITATION (IEEE FORMATTED)
+    w3schools, Modal Example. N/A: w3schools, N/A. [webpage].
+    Link: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
+*/
+
 .modal {
   display: none;
   position: fixed;

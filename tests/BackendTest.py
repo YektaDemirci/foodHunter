@@ -68,6 +68,21 @@ class FirstPageUI(unittest.TestCase):
         time.sleep(5)
         assert mainPage.is_output_err()
 
+    def test_selection_present(self):
+        mainPage = page.MainPage(self.driver)
+        time.sleep(5)
+        assert mainPage.is_div_present()
+
+    def test_selection_deleted(self):
+        mainPage = page.MainPage(self.driver)
+        time.sleep(5)
+        assert mainPage.is_div_deleted()
+
+    def test_clear_all(self):
+        mainPage = page.MainPage(self.driver)
+        time.sleep(5)
+        assert mainPage.is_all_div_deleted()
+
     def test_geolocation_access_allowed(self):
         mainPage = page.MainPage(self.driver)
         self.driver.implicitly_wait(1)
@@ -75,7 +90,7 @@ class FirstPageUI(unittest.TestCase):
         time.sleep(5)
         placeName, _ = mainPage.get_location_map_place_name_and_address()
         self.assertEqual(placeName, '''43°28'23.9"N 80°32'27.6"W''')
-    
+
     def test_location_search_bar_with_place_address(self):
         mainPage = page.MainPage(self.driver)
         mainPage.location_search_bar_element = "200 University Ave W, Waterloo, ON"
@@ -104,7 +119,7 @@ class FirstPageUI_GeoDenied(unittest.TestCase):
         self.driver.implicitly_wait(1)
         self.assertEqual(mainPage.get_location_status(), \
             "Error: The Geolocation service failed.")
-    
+
     def test_location_search_bar_with_postal_code(self):
         mainPage = page.MainPage(self.driver)
         mainPage.location_search_bar_element = "N2L 3E9"
