@@ -6,6 +6,7 @@ class MainPageLocators(object):
     SUBMIT = (By.ID, "submit_one")
     SUBMIT_MESSAGE = (By.ID, "message_submit")
     RESULTS = (By.ID, "results")
+    RESULT_DIV = (By.CLASS_NAME, "result-div")
 
     # location
     LOCATION_INPUT = (By.ID, "location-input")

@@ -31,8 +31,6 @@ class BasePage(object):
         time.sleep(3)
 
 
-# define 1 class for 1 page or 3 classes for 3 panels?
-
 class MainPage(BasePage):
     search_bar_element = SearchBarElement()
 
@@ -104,43 +102,59 @@ class MainPage(BasePage):
             return False
 
     '''
-        This function doesn't actually validate results because it only checks 
-        if there is response in step 2, which has been already tested.
-        Needs to be changed!
+        Step 2
     '''
-    def is_output_valid(self):
-        required = ["tomato sauce", "bacon", "ham"]
+    def is_output_with_matching_ingredients(self):
+        required = ['tomato sauce', 'bacon', 'ham']
         self.search_bar_element = 'tomato sauce,bacon,ham'
         self.submit()
         self.wait_for_results()
-        element = self.driver.find_element(*MainPageLocators.RESULTS)
-        '''
-            The following code works for old output format but has been ignored now.
-        '''
-        '''
-        counter = 0
+        elements = self.driver.find_elements(*MainPageLocators.RESULT_DIV)
+        # expected exactly 1 result
+        if len(elements) != 1:
+            return False
+        # get product, restaurant, and address of the result
+        result_split = elements[0].text.split('\n')
+        result_product = result_split[0]
+        result_restaurant = result_split[1].replace('Location: ','')
+        result_address = result_split[2].replace('Address: ','')
+        check = True
         with open("data_food_sample.json", "r") as file:
             data = json.load(file)
             for entry in data:
+                counter = 0
                 ingredients = entry['ingredients'].split(",")
                 ingredients = [x.lower() for x in ingredients]
+                # check how many required ingredients does current item have
                 for req in required:
                     if req.lower() in ingredients:
                         counter += 1
-                if counter == len(required):
-                    result_str = entry["product"] + " at " + entry["restaurant"]
-                    if element.text:
-                        if element.text == result_str:
-                            return True
-                counter = 0
-        '''
-        element2 = self.driver.find_elements_by_css_selector('div.result-div')
-        if len(element2) > 0:
-            return True
-        elif len(element2) == 0 and element.text == "Sorry, we could not find anything.":
-            return True
-        else:
-            return False
+                # matched item: should have all the ingredients
+                if (entry['product'] == result_product) and (entry['restaurant'] == result_restaurant) \
+                    and (entry['address'] == result_address):
+                    check &= (counter == len(required))
+                # unmatched item: should not have all the ingredients
+                else:
+                    check &= (counter < len(required))
+        return check
+    
+    def is_output_sorted_by_distance(self):
+        self.search_bar_element = 'cheese'
+        self.submit()
+        self.wait_for_results()
+        elements = self.driver.find_elements(*MainPageLocators.RESULT_DIV)
+        previous_distance = None
+        for element in elements:
+            # get distance of the result
+            result_split = element.text.split('\n')
+            result_distance_split = result_split[3].split()
+            result_distance = float(result_distance_split[1])
+            if previous_distance != None:
+                # current distance is expected to be larger
+                if result_distance < previous_distance:
+                    return False
+            previous_distance = result_distance
+        return True
 
     '''
         Step 3: delete elements
@@ -226,7 +240,7 @@ class LocationModalPage(BasePage):
     '''
     def get_location_status(self):
         return self.driver.find_element(*MainPageLocators.LOCATION_STATUS_DIV) \
-            .get_attribute("innerHTML")
+            .get_attribute('innerHTML')
 
     def get_location_map_place_name_and_address(self):
         locationIframe = self.driver.find_element(*MainPageLocators.LOCATION_IFRAME)
@@ -234,12 +248,12 @@ class LocationModalPage(BasePage):
         # due to container size, map may not display full place card
         try:
             placeNameElement = self.driver.find_element(*MainPageLocators.LOCATION_IFRAME_PLACE_NAME)
-            placeName = placeNameElement.get_attribute("innerHTML")
+            placeName = placeNameElement.get_attribute('innerHTML')
         except:
             placeName = None
         try:
             placeAddressElement = self.driver.find_element(*MainPageLocators.LOCATION_IFRAME_PLACE_ADDRESS)
-            placeAddress = placeAddressElement.get_attribute("innerHTML")
+            placeAddress = placeAddressElement.get_attribute('innerHTML')
         except:
             placeAddress = None
         self.driver.switch_to.default_content()

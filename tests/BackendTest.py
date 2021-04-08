@@ -16,7 +16,7 @@ def getDriver(driver_geo_option_arg="allowed"):
 
     driver = webdriver.Firefox( \
         options=getDriverOption(driver_geo_option_arg), \
-        #executable_path='tests/geckodriver', \
+        executable_path='tests/geckodriver', \
         service_log_path='/dev/null')
     driver.get(PATH)
     driver.implicitly_wait(3)
@@ -59,14 +59,13 @@ class FirstPageUI(unittest.TestCase):
         mainPage = page.MainPage(self.driver)
         assert mainPage.has_no_output_for_bad_input()
 
-    '''
-        This function doesn't actually validate results because it only checks 
-        if there is response in step 2, which has been already tested.
-        Needs to be changed!
-    '''
-    def test_data_valid(self):
+    def test_output_matching_input_ingredients(self):
         mainPage = page.MainPage(self.driver)
-        assert mainPage.is_output_valid()
+        assert mainPage.is_output_with_matching_ingredients()
+    
+    def test_output_sorted_by_distance(self):
+        mainPage = page.MainPage(self.driver)
+        assert mainPage.is_output_sorted_by_distance()
 
     def test_selection_present(self):
         mainPage = page.MainPage(self.driver)
