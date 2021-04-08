@@ -29,7 +29,7 @@ class FirstPageUI(unittest.TestCase):
     def setUp(self):
         # Geckodriver in tests folder doesnt work for me (I think its computer architecture specific)
         '''
-        Might be just due to different executable_path for geckodriver. 
+        Might be just due to different executable_path for geckodriver.
         Should be solved now because test/geckodriver is not in gitignore.
         '''
         # self.driver = webdriver.Firefox(options=options, executable_path="/usr/local/bin/geckodriver", service_log_path = '/dev/null')
@@ -68,10 +68,10 @@ class FirstPageUI(unittest.TestCase):
         time.sleep(5)
         assert mainPage.is_output_err()
 
-    def test_selection_present(self):
-        mainPage = page.MainPage(self.driver)
-        time.sleep(5)
-        assert mainPage.is_div_present()
+    # def test_selection_present(self):
+    #     mainPage = page.MainPage(self.driver)
+    #     time.sleep(5)
+    #     assert mainPage.is_div_present()
 
     def test_selection_deleted(self):
         mainPage = page.MainPage(self.driver)
@@ -148,7 +148,7 @@ class FirstPageUI_GeoDisabled(unittest.TestCase):
         self.driver.implicitly_wait(1)
         self.assertEqual(mainPage.get_location_status(), \
             "Error: Your browser doesn't support geolocation.")
-    
+
     @classmethod
     def tearDown(self):
         self.driver.close()

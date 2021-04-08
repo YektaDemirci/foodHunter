@@ -23,8 +23,8 @@ function food_search() {
     }
     if(error_status)    return;
 
-    // document.getElementById('selected-ingredients').innerHTML =
-    //     "You're Looking For...<br>" + input;
+    document.getElementById('selected-ingredients').innerHTML =
+        "You're Looking For...<br>" + input;
     input = input.toLowerCase();
     input = input.replaceAll(" ", "")
     let input_split = input.split(",");
@@ -61,10 +61,13 @@ function processData(data, input_ingredients){
         var ingredient_list_despaced = data[i].ingredients.replaceAll(" ", "");
         var ingredient_list = ingredient_list_despaced.split(",");
 
+        var foodTag_list_despaced = data[i].tags.replaceAll(" ", "");
+        var foodTag_list = foodTag_list_despaced.split(",");
+
         var ingredient_count = 0;
 
         input_ingredients.forEach(function (ingredientVal) {
-            if(ingredient_list.indexOf(ingredientVal) >= 0 ){
+            if(ingredient_list.indexOf(ingredientVal) >= 0 || foodTag_list.indexOf(ingredientVal) >= 0){
                 ingredient_count++;
             }
         });
@@ -179,15 +182,9 @@ function displayFoodObjects() {
             + "<br>Location: " + food_objects[i].restaurant
             + "<br>Address: " + food_objects[i].address
             + "<br>Distance: " + distanceText
-<<<<<<< HEAD
-            + "<br><button type='button' class='selection-button' onclick='food_selection(\""
-            + food_objects[i].product + "??"
-            + food_objects[i].restaurant.replace("'", "[single-quote]") + "??"
-=======
             + "<br><button type='button' onclick='food_selection(\""
             + food_objects[i].product + "??"
             + food_objects[i].restaurant.replace("'", "[single-quote]") + "??"
->>>>>>> updateMongoDB
             + food_objects[i].address  + "\")'>Select Option</button></div>";
 
     }

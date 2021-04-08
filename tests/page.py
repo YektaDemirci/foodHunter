@@ -56,7 +56,7 @@ class MainPage(BasePage):
 
     def is_output_options(self):
         #'bbq sauce/chicken/bacon', 'bbq sauce chicken bacon'
-        ingredients = ['chicken', 'rice', 'bacon', 'cheese,chicken', 'rice, chicken','tomato sauce,bacon,ham' ]
+        ingredients = ['ing1', 'ing2', 'ing3' ]
         check = True
         element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
         element2 = self.driver.find_element(*MainPageLocators.RESULTS)
@@ -103,7 +103,7 @@ class MainPage(BasePage):
             return True
         else:
             return False
-    
+
     def is_output_spacing(self):
         self.search_bar_element = '  beef , cheese   '
         element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
@@ -132,7 +132,7 @@ class MainPage(BasePage):
         else:
             return False
 
-    # Step3: delete elements
+    #Step3: delete elements
     def is_div_present(self):
         self.search_bar_element = 'chicken'
         element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
@@ -248,7 +248,7 @@ class FrontendPage(BasePage):
 
     def is_footer_step1_highlighted(self):
         return ( self.isStylingCorrect(FrontendLocators.STEP_1_HIGHLIGHTED) )
-    
+
     def is_footer_step2_highlighted(self):
         self.inputIngredientAndClickSubmit()
         return ( self.isStylingCorrect(FrontendLocators.STEP_2_HIGHLIGHTED) )
@@ -258,11 +258,11 @@ class FrontendPage(BasePage):
         nextButtonElement = self.driver.find_element(*FrontendLocators.MID_NEXT_BUTTON)
         nextButtonElement.click()
         return ( self.isStylingCorrect(FrontendLocators.STEP_3_HIGHLIGHTED) )
-    
+
     #The test to check if the boxes have right styles in step 1
     def is_box_step1_highlighted(self):
         return ( self.isStylingCorrect(FrontendLocators.STEP_1_BOX) )
-    
+
     #Test to check if the boxes have right styles: step1->step2
     def is_box_step2_highlighted(self):
         self.inputIngredientAndClickSubmit()

@@ -22,17 +22,26 @@ totalPage = math.ceil(totalRest/25)
 totalPage = totalPage+1;
 
 mongo_list = []
-
+#For the sake of database tests
 test={
 "restaurant": "restaurantTest",
 "product": "productTest",
 "ingredients": "ing1, ing2, ing3",
-"address": "adressTest",
-"price": 10
+"tags": "",
+"address": "adressTest"
+}
+#For the sake of location tests
+test2={
+    "restaurant": "Starbucks",
+    "product": "Sausage, Cheddar & Egg Sandwich",
+    "ingredients": "sausage,egg,cheese,english muffin",
+    "tags": "nonveg, fast food, breakfast",
+    "address": "200 University Ave W, Waterloo, ON N2L 3G1"
 }
 mongo_list.append(test)
+mongo_list.append(test2)
 
-
+#tag is a duplication of ingredients, however I keep it because of the backend tests
 for page in range(1,totalPage):
     url = "https://api.documenu.com/v2/restaurants/search/geo?lat="+lat+"&lon="+lon+"&distance="+dist+"&page="+str(page)+"&fullmenu&key="+key;
     r =requests.get(url)
@@ -46,8 +55,9 @@ for page in range(1,totalPage):
                         "restaurant": i["restaurant_name"],
                         "product": l["name"],
                         "ingredients": re.sub("[ .;:]", ",", l["description"].lower()),
-                        "address": i["address"]["formatted"],
-                        "price": l["price"]
+                        "tags": "",
+                        "address": i["address"]["formatted"]
+                        # "price": l["price"]
                         }
                         mongo_list.append(dish)
     print("Page "+str(page)+" is completed, numbe of total page is: "+str(totalPage))

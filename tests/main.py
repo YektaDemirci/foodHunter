@@ -12,7 +12,7 @@ db_test = unittest.TestLoader().loadTestsFromTestCase(DBTest)
 
 
 # create a test suite combining search_text and home_page_test
-test_suite = unittest.TestSuite([footer_test, search_text, search_text_geo_denied, search_text_geo_disabled, db_test])
+test_suite = unittest.TestSuite([footer_test,search_text, search_text_geo_denied, search_text_geo_disabled, db_test])
 
 # run the suite
 unittest.TextTestRunner(verbosity=2).run(test_suite)
