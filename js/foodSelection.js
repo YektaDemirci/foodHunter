@@ -5,10 +5,17 @@ function food_selection(value) {
     console.log(count);
     value = value.replace("[single-quote]", "'");
     var value_split = value.split("??");
-    var selection_str = "<div class=\"selection-div-class\" id=\"number-"+count+"\">" + value_split[0] + " from " + value_split[1] + " located at " + value_split[2] + "<br>";
     value = value.replace("'", "");
-    selection_str += "<button class=\"submitLeftNext btn btn-light\" type=\"submit\" onclick=\"order_now('" + value + "')\">Place Order <i class=\"fas fa-shopping-cart\"></i></button>";
-    selection_str += "<button class=\"submitLeftNext btn btn-light\" id=\"clear-button\" type=\"submit\" onclick=\"clear_selection('number-" + count + "')\">Clear selection <i class=\"fas fa-trash\"></i></button>";
+    var selection_str = "<div class=\"selection-div-class\" id=\"number-"+count+"\">";
+    selection_str += value_split[0] + " from " + value_split[1] + " located at " + value_split[2] + "<br>";
+    selection_str += "<button class=\"btn btn-light\" type=\"submit\""
+        + " onclick=\"order_now('" + value + "')\">"
+        + "Place Order <i class=\"fas fa-shopping-cart\"></i>"
+        +"</button>";
+    selection_str += "<button class=\"btn btn-light\" id=\"clear-button\" type=\"submit\""
+        + " onclick=\"clear_selection('number-" + count + "')\">"
+        + "Clear selection <i class=\"fas fa-trash\"></i>"
+        + "</button>";
     selection_str += "</div>";
     console.log(selection_str);
     var selections = document.getElementById('selections').innerHTML;

@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 class MainPageLocators(object):
     # ingredient
     SEARCH_BAR = (By.ID, "search-bar-id")
-    SUBMIT_EMPTY = (By.ID, "submit_one")
+    SUBMIT = (By.ID, "submit_one")
     SUBMIT_MESSAGE = (By.ID, "message_submit")
     RESULTS = (By.ID, "results")
 
@@ -11,6 +11,7 @@ class MainPageLocators(object):
     LOCATION_INPUT = (By.ID, "location-input")
     LOCATION_IFRAME = (By.ID, "location-map")
     LOCATION_STATUS_DIV = (By.ID, "location-status")
+    LOCATION_MODAL_CLOSE = (By.ID, "location-modal-close")
     # class name assigned by Google API
     LOCATION_DROPDOWN = (By.CLASS_NAME, "pac-container")
     LOCATION_DROPDOWN_ITEM = (By.CLASS_NAME, "pac-item")

@@ -18,7 +18,7 @@ def getDriver():
 
     driver = webdriver.Firefox( \
         options=options, \
-        # executable_path='tests/geckodriver', \
+        #executable_path='tests/geckodriver', \
         service_log_path='/dev/null')
     driver.get(PATH)
     warnings.filterwarnings(action="ignore", message="unclosed", category=ResourceWarning)

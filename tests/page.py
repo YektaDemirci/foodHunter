@@ -5,6 +5,12 @@ from selenium.webdriver.common.keys import Keys
 from locator import MainPageLocators, FrontendLocators
 from element import BasePageElement
 
+'''
+    SearchBarElement: 
+    only used for search bars (defined in element.py)
+    search_bar_element = "USER_INPUT" <==> search_bar_element.send_keys("USER_INPUT")
+    user_input = search_bar_element <==> user_input = search_bar_element.get_attribute("value")
+'''
 class SearchBarElement(BasePageElement):
     def __init__(self):
         self.locator = MainPageLocators.SEARCH_BAR
@@ -16,71 +22,102 @@ class LocationSearchBarElement(BasePageElement):
 class BasePage(object):
     def __init__(self, driver):
         self.driver = driver
+    
+    def close_location_modal(self):
+        element = self.driver.find_element(*MainPageLocators.LOCATION_MODAL_CLOSE)
+        element.click()
+    
+    def wait_for_geolocation(self):
+        time.sleep(3)
 
-# define 1 class for 1 page or 3 classes for 3 panels
+
+# define 1 class for 1 page or 3 classes for 3 panels?
 
 class MainPage(BasePage):
-    '''
-    Only used for search bars (defined in element.py):
-    search_bar_element = "USER_INPUT" <==> search_bar_element.send_keys("USER_INPUT")
-    user_input = search_bar_element <==> user_input = search_bar_element.get_attribute("value")
-    '''
     search_bar_element = SearchBarElement()
-    location_search_bar_element = LocationSearchBarElement()
 
-    # ingredient
-    def is_search_bar_empty(self):
-        search_text = self.search_bar_element
-        return not(search_text)
-
-    def is_submit_empty(self):
-        element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.wait_for_geolocation()
+        self.close_location_modal()
+        
+    '''
+        Helper functions
+    '''
+    def submit(self):
+        element = self.driver.find_element(*MainPageLocators.SUBMIT)
         element.click()
-        time.sleep(1)
-        element2 = self.driver.find_element(*MainPageLocators.SUBMIT_MESSAGE)
-        return (element2.text == 'No input found')
 
-    def is_output(self):
-        self.search_bar_element = 'chicken'
-        element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
-        element.click()
+    def wait_for_results(self):
         time.sleep(5)
-        element2 = self.driver.find_element(*MainPageLocators.RESULTS)
-        if element2.text:
-            if element2.text != 'Sorry, we could not find anything.':
+
+    def has_output_for_input(self, search_input):
+        self.search_bar_element = search_input
+        self.submit()
+        self.wait_for_results()
+        element = self.driver.find_element(*MainPageLocators.RESULTS)
+        if element.text:
+            if element.text != 'Sorry, we could not find anything.':
                 return True
             else:
                 return False
         else:
             return False
 
-    def is_output_options(self):
-        #'bbq sauce/chicken/bacon', 'bbq sauce chicken bacon'
-        ingredients = ['chicken', 'rice', 'bacon', 'cheese,chicken', 'rice, chicken','tomato sauce,bacon,ham' ]
-        check = True
-        element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
-        element2 = self.driver.find_element(*MainPageLocators.RESULTS)
-        for ingredient in ingredients:
-            self.search_bar_element = ingredient
-            element.click()
-            time.sleep(5)
-            if element2.text:
-                if element2.text != 'Sorry, we could not find anything.':
-                    check &= True
-                else:
-                    check &= False
-            else:
-                check &= False
-            time.sleep(1)
-        return check
+    '''
+        Ingredient
+    '''
+    def is_input_empty(self):
+        self.submit()
+        element = self.driver.find_element(*MainPageLocators.SUBMIT_MESSAGE)
+        return (element.text == 'No input found')
 
+    def has_output_for_one_ingredient(self):
+        return self.has_output_for_input('chicken')
+
+    def has_output_for_multiple_ingredients(self):
+        return self.has_output_for_input('tomato sauce,bacon,ham')
+
+    def has_output_for_different_inputs(self):
+        #'bbq sauce/chicken/bacon', 'bbq sauce chicken bacon'
+        different_inputs = ['chicken', 'rice', 'bacon', 'cheese,chicken', 'rice, chicken','tomato sauce,bacon,ham' ]
+        for one_input in different_inputs:
+            # return False if current input has no output
+            if not self.has_output_for_input(one_input):
+                return False
+        return True
+
+    def has_output_for_input_with_spacing(self):
+        return self.has_output_for_input('  beef , cheese   ')
+
+    def has_no_output_for_bad_input(self):
+        self.search_bar_element = 'asdfgh'
+        self.submit()
+        self.wait_for_results()
+        element = self.driver.find_element(*MainPageLocators.RESULTS)
+        if element.text:
+            if element.text == 'Sorry, we could not find anything.':
+                return True
+            else:
+                return False
+        else:
+            return False
+
+    '''
+        This function doesn't actually validate results because it only checks 
+        if there is response in step 2, which has been already tested.
+        Needs to be changed!
+    '''
     def is_output_valid(self):
-        self.search_bar_element = 'tomato sauce,bacon,ham'
         required = ["tomato sauce", "bacon", "ham"]
-        element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
-        element.click()
-        time.sleep(5)
-        element2 = self.driver.find_element(*MainPageLocators.RESULTS)
+        self.search_bar_element = 'tomato sauce,bacon,ham'
+        self.submit()
+        self.wait_for_results()
+        element = self.driver.find_element(*MainPageLocators.RESULTS)
+        '''
+            The following code works for old output format but has been ignored now.
+        '''
+        '''
         counter = 0
         with open("data_food_sample.json", "r") as file:
             data = json.load(file)
@@ -92,52 +129,26 @@ class MainPage(BasePage):
                         counter += 1
                 if counter == len(required):
                     result_str = entry["product"] + " at " + entry["restaurant"]
-                    if element2.text:
-                        if element2.text == result_str:
+                    if element.text:
+                        if element.text == result_str:
                             return True
                 counter = 0
-        element3 = self.driver.find_elements_by_css_selector('div.result-div')
-        if len(element3) > 0:
+        '''
+        element2 = self.driver.find_elements_by_css_selector('div.result-div')
+        if len(element2) > 0:
             return True
-        elif len(element3) == 0 and element2.text == "Sorry, we could not find anything.":
+        elif len(element2) == 0 and element.text == "Sorry, we could not find anything.":
             return True
-        else:
-            return False
-    
-    def is_output_spacing(self):
-        self.search_bar_element = '  beef , cheese   '
-        element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
-        element.click()
-        time.sleep(5)
-        element2 = self.driver.find_element(*MainPageLocators.RESULTS)
-        if element2.text:
-            if element2.text != 'Sorry, we could not find anything.':
-                return True
-            else:
-                return False
         else:
             return False
 
-    def is_output_err(self):
-        self.search_bar_element = 'asdfgh'
-        element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
-        element.click()
-        time.sleep(5)
-        element2 = self.driver.find_element(*MainPageLocators.RESULTS)
-        if element2.text:
-            if element2.text == 'Sorry, we could not find anything.':
-                return True
-            else:
-                return False
-        else:
-            return False
-
-    # Step3: delete elements
+    '''
+        Step 3: delete elements
+    '''
     def is_div_present(self):
         self.search_bar_element = 'chicken'
-        element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
-        element.click()
-        time.sleep(5)
+        self.submit()
+        self.wait_for_results()
         element2 = self.driver.find_element(*MainPageLocators.RESULTS)
         element3 = self.driver.find_elements_by_css_selector('div.result-div')
         if len(element3) > 0:
@@ -160,9 +171,8 @@ class MainPage(BasePage):
 
     def is_div_deleted(self):
         self.search_bar_element = 'chicken'
-        element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
-        element.click()
-        time.sleep(5)
+        self.submit()
+        self.wait_for_results()
         element2 = self.driver.find_element(*MainPageLocators.RESULTS)
         element3 = self.driver.find_elements_by_css_selector('div.result-div')
         element4 = self.driver.find_elements_by_css_selector('div.selection-div-class')
@@ -183,15 +193,14 @@ class MainPage(BasePage):
 
     def is_all_div_deleted(self):
         self.search_bar_element = 'chicken'
-        element = self.driver.find_element(*MainPageLocators.SUBMIT_EMPTY)
-        element.click()
-        time.sleep(5)
+        self.submit()
+        self.wait_for_results()
         element2 = self.driver.find_element(*MainPageLocators.RESULTS)
         element3 = self.driver.find_elements_by_css_selector('div.result-div')
         element4 = self.driver.find_elements_by_css_selector('div.selection-div-class')
         if len(element4) > 0:
             total_divs = len(element4)
-            clear_all_button = self.driver.find_element(*MainPageLocators.CLEAR_BUTTON)
+            clear_all_button = self.driver.find_element(*FrontendLocators.CLEAR_BUTTON)
             clear_all_button.click()
 
             divs_after_1_deletion = len(self.driver.find_elements_by_css_selector('div.selection-div-class'))
@@ -203,8 +212,18 @@ class MainPage(BasePage):
 
         else:
             return True
+            
 
-    # location
+class LocationModalPage(BasePage):
+    location_search_bar_element = LocationSearchBarElement()
+
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.wait_for_geolocation()
+    
+    '''
+        Helper functions
+    '''
     def get_location_status(self):
         return self.driver.find_element(*MainPageLocators.LOCATION_STATUS_DIV) \
             .get_attribute("innerHTML")
@@ -231,7 +250,7 @@ class MainPage(BasePage):
             .find_element(*MainPageLocators.LOCATION_DROPDOWN_ITEM)
         placeName = firstDropdownItem \
             .find_element(*MainPageLocators.LOCATION_DROPDOWN_ITEM_PLACE_INFO).text
-        placeAddress = firstDropdownItem.text.replace(placeName,"")
+        placeAddress = firstDropdownItem.text.replace(placeName,'')
         return (placeName, placeAddress)
 
     def click_location_first_dropdown_item(self):
@@ -239,12 +258,58 @@ class MainPage(BasePage):
         location_input.send_keys(Keys.DOWN)
         location_input.send_keys(Keys.RETURN)
 
-# define 1 class for 1 page or 3 classes for 3 panels?
+    '''
+        Location
+    '''
+    def is_geolocation_access_disabled(self):
+        return (self.get_location_status() == "Error: Your browser doesn't support geolocation.")
+
+    def is_geolocation_access_denied(self):
+        return (self.get_location_status() == "Error: The Geolocation service failed.")
+    
+    def is_geolocation_access_allowed(self):
+        if self.get_location_status() != "":
+            return False
+        time.sleep(2)
+        placeName, _ = self.get_location_map_place_name_and_address()
+        return (placeName == '''43°28'23.9"N 80°32'27.6"W''')
+
+    def is_location_output_valid(self, input_option):
+        if input_option == "postal_code":
+            searchInput = 'N2L 3E9'
+            expectedFirstItemName = 'N2L 3E9'
+            expectedFirstItemAddress = 'Waterloo, ON, Canada'
+            expectedPlaceName = 'Waterloo, ON N2L 3E9'
+            expectedPlaceAddress = None
+        elif input_option == "address":
+            searchInput = '200 University Ave W, Waterloo, ON'
+            expectedFirstItemName = '200 University Ave W'
+            expectedFirstItemAddress = 'Waterloo, Ontario, Canada'
+            expectedPlaceName = 'Engineering 5'
+            expectedPlaceAddress = None
+        else:
+            return False
+        self.location_search_bar_element = searchInput
+        time.sleep(3)
+        firstItemName, firstItemAddress = self.get_location_first_dropdown_item_name_and_address()
+        if (firstItemName != expectedFirstItemName) or (firstItemAddress != expectedFirstItemAddress):
+            return False
+        self.click_location_first_dropdown_item()
+        time.sleep(5)
+        placeName, placeAddress = self.get_location_map_place_name_and_address()
+        if (expectedPlaceName != None) and (placeName != expectedPlaceName):
+            return False
+        if (expectedPlaceAddress != None) and (placeAddress != expectedPlaceAddress):
+            return False
+        return True
 
 
 class FrontendPage(BasePage):
-
     search_bar_element = SearchBarElement()
+
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.close_location_modal()
 
     def is_footer_step1_highlighted(self):
         return ( self.isStylingCorrect(FrontendLocators.STEP_1_HIGHLIGHTED) )
