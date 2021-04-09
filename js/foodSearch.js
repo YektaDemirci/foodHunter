@@ -94,6 +94,12 @@ function sortFoodObjectsByDistance(){
     }
     total_count = food_objects.length;
     current_count = 0;
+    // Temporary for now: disable distance when there are more than 50 objects
+    if(total_count >= 50) {
+        console.log('Too much data: distance feature is disabled.');
+        displayFoodObjects();
+        return;
+    }
     // get distance for the restaurant of each food
     for(let i = 0; i < total_count; i++){
         // Geocode API: convert address to geolocation (lat&lng)
@@ -175,13 +181,13 @@ function displayFoodObjects() {
     let result = "";
 
     for(let i = 0; i < N; i++){
-        let distanceText = food_objects[i].distance != null ?
-            +(food_objects[i].distance/1000).toFixed(2)+" km" : "";
+        let distanceText = (food_objects[i].distance != null) ?
+            "<br>Distance: " + (food_objects[i].distance/1000).toFixed(2)+" km" : "";
         result += "<div class=\"result-div\">"
             + food_objects[i].product
             + "<br>Location: " + food_objects[i].restaurant
             + "<br>Address: " + food_objects[i].address
-            + "<br>Distance: " + distanceText
+            + distanceText
             + "<br><button type='button' onclick='food_selection(\""
             + food_objects[i].product + "??"
             + food_objects[i].restaurant.replace("'", "[single-quote]") + "??"
