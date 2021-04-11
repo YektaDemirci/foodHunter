@@ -197,21 +197,12 @@ function displayFoodObjects() {
             + food_objects[i].product
             + "<br>Location: " + food_objects[i].restaurant
             + "<br>Address: " + food_objects[i].address
-<<<<<<< HEAD
-            + "<br>Distance: " + distanceText
+            + distanceText
             + "<br><button type='button' class='btn btn-light selection-button' onclick='food_selection(\""
             + food_objects[i].product + "??" 
             + food_objects[i].restaurant.replace("'", "[single-quote]") + "??" 
             + food_objects[i].address  + "\")'>Select</button></div>";
                 
-=======
-            + distanceText
-            + "<br><button type='button' onclick='food_selection(\""
-            + food_objects[i].product + "??"
-            + food_objects[i].restaurant.replace("'", "[single-quote]") + "??"
-            + food_objects[i].address  + "\")'>Select Option</button></div>";
-
->>>>>>> master
     }
     document.getElementById('results').innerHTML = result;
 }
