@@ -143,6 +143,16 @@ function updateStatusForDistanceData(){
 /*
  * Get distance from origin (user geolocation) to destination (restaurant geolocation)
  */
+/**
+        CITATION (IEEE FORMATTED)
+        Google Maps Platform, Geolocation: Displaying User or Device Position on Maps. N/A: Google Maps Platform, N/A. [webpage].
+        Link: https://developers.google.com/maps/documentation/javascript/geolocation#maps_map_geolocation-javascript
+**/
+/**
+        CITATION (IEEE FORMATTED)
+        Google Maps Platform, Distance Matrix Service. N/A: Google Maps Platform, N/A. [webpage].
+        Link: https://developers.google.com/maps/documentation/javascript/distancematrix
+**/
 function getDistance(originGeolocation, destinationGeolocation, index) {
     // convert geolocation(lat&lng) to google maps LatLng
     let origin = new google.maps.LatLng(

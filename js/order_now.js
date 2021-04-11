@@ -1,3 +1,6 @@
+// RapidAPI citation
+
+
 function place_order(query){
     query = query.replace(/\s+/g, '+');
     const settings = {

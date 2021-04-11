@@ -4,6 +4,10 @@ import math
 import pymongo
 import re
 
+# Citation (IEEE FORMATTED)
+# Documenu, Getting Started. N/A: Documenu, N/A. [webpage].
+# https://documenu.com/docs#get_search_restaurants_geo
+
 key = "a7e037de3731e07c5ad9ebbaedcf25da";
 #The centre is University of Washington acc to lat and lon
 lat = "47.655548";
