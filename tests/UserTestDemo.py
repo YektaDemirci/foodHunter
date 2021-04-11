@@ -50,15 +50,17 @@ warnings.filterwarnings(action="ignore", message="unclosed", category=ResourceWa
 
 
 def inputIngredientAndClickSubmit():
+    time.sleep(5)
+
     search_bar_element = driver.find_element(*MainPageLocators.SEARCH_BAR)
     search_bar_element.send_keys(FrontendLocators.SAMPLE_INGREDIENT)
 
-    time.sleep(1)
+    time.sleep(2)
 
     submitElement = driver.find_element(*FrontendLocators.SUBMIT_BUTTON)
     submitElement.click()  
 
-    time.sleep(2)
+    time.sleep(3)
 
 def selectFirstAndLastResult():
     resultsElem = driver.find_element(*MainPageLocators.RESULTS)
@@ -79,11 +81,30 @@ def selectFirstAndLastResult():
 
 
 def showResults():
-    reviewButton = driver.find_element(*FrontendLocators.REVIEW_BUTTON)
-    reviewButton.click()
-    time.sleep(3)
-    closeReview = driver.find_element(*MainPageLocators.REVIEW_SUMMARY_CLOSE)
-    closeReview.click()
+    driver.find_element(By.CSS_SELECTOR, "#number-0 > .submitLeftNext:nth-child(2)").click()
+    time.sleep(10)
+    driver.switch_to.window(driver.window_handles[-1])
+    time.sleep(2)
+    for i in range(3):
+        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
+        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
+        time.sleep(2)
+    time.sleep(4)
+
+    driver.switch_to.window(driver.window_handles[0])    
+
+    driver.find_element(By.CSS_SELECTOR, "#number-1 > .submitLeftNext:nth-child(2)").click()
+    time.sleep(10)
+    driver.switch_to.window(driver.window_handles[1])
+    time.sleep(2)
+    for i in range(3):
+        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
+        driver.find_element_by_tag_name('body').send_keys(Keys.PAGE_DOWN)
+        time.sleep(2)
+    time.sleep(4)
+
+    driver.switch_to.window(driver.window_handles[0])
+    time.sleep(4)
 
 
 inputIngredientAndClickSubmit()

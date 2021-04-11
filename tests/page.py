@@ -78,8 +78,7 @@ class MainPage(BasePage):
         return self.has_output_for_input('tomato sauce,bacon,ham')
 
     def has_output_for_different_inputs(self):
-        #'bbq sauce/chicken/bacon', 'bbq sauce chicken bacon'
-        different_inputs = ['chicken', 'rice', 'bacon', 'cheese,chicken', 'rice, chicken','tomato sauce,bacon,ham' ]
+        different_inputs = ['ing1', 'ing2', 'ing3']
         for one_input in different_inputs:
             # return False if current input has no output
             if not self.has_output_for_input(one_input):
@@ -111,9 +110,6 @@ class MainPage(BasePage):
         self.submit()
         self.wait_for_results()
         elements = self.driver.find_elements(*MainPageLocators.RESULT_DIV)
-        # expected exactly 1 result
-        if len(elements) != 1:
-            return False
         # get product, restaurant, and address of the result
         result_split = elements[0].text.split('\n')
         result_product = result_split[0]
@@ -134,13 +130,11 @@ class MainPage(BasePage):
                 if (entry['product'] == result_product) and (entry['restaurant'] == result_restaurant) \
                     and (entry['address'] == result_address):
                     check &= (counter == len(required))
-                # unmatched item: should not have all the ingredients
-                else:
-                    check &= (counter < len(required))
+                    break
         return check
     
     def is_output_sorted_by_distance(self):
-        self.search_bar_element = 'cheese'
+        self.search_bar_element = 'cheese, tomato'
         self.submit()
         self.wait_for_results()
         elements = self.driver.find_elements(*MainPageLocators.RESULT_DIV)
@@ -328,7 +322,7 @@ class FrontendPage(BasePage):
 
     def is_footer_step1_highlighted(self):
         return ( self.isStylingCorrect(FrontendLocators.STEP_1_HIGHLIGHTED) )
-    
+
     def is_footer_step2_highlighted(self):
         self.inputIngredientAndClickSubmit()
         return ( self.isStylingCorrect(FrontendLocators.STEP_2_HIGHLIGHTED) )
@@ -338,11 +332,11 @@ class FrontendPage(BasePage):
         nextButtonElement = self.driver.find_element(*FrontendLocators.MID_NEXT_BUTTON)
         nextButtonElement.click()
         return ( self.isStylingCorrect(FrontendLocators.STEP_3_HIGHLIGHTED) )
-    
+
     #The test to check if the boxes have right styles in step 1
     def is_box_step1_highlighted(self):
         return ( self.isStylingCorrect(FrontendLocators.STEP_1_BOX) )
-    
+
     #Test to check if the boxes have right styles: step1->step2
     def is_box_step2_highlighted(self):
         self.inputIngredientAndClickSubmit()

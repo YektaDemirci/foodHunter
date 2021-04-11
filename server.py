@@ -6,7 +6,8 @@ from bson.json_util import dumps, loads
 
 myclient = pymongo.MongoClient("mongodb+srv://foodHunter:1hunt1@cluster0.t1di3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 mydb = myclient["foodHunterDB"]
-mycol = mydb["restaurants"]
+mycol = mydb["restaurantsExtended"]
+#mycol = mydb["restaurants"]
 
 cursor = mycol.find({}, {'_id': False, '__v': False})
 list_cur = list(cursor)

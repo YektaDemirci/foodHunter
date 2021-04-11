@@ -4,24 +4,27 @@ function food_search() {
     let error_status = false;
     // Error: user geolocation is unavailable
     if(user_geolocation.lat==undefined || user_geolocation.lng==undefined) {
-        document.getElementById('results').innerHTML = 
+        document.getElementById('results').innerHTML =
             "Sorry, your geolocation is not available. Please select a location.";
         error_status = true;
     }
+
     // get user input for ingredients
     let input = document.getElementById('search-bar-id').value;
     // Error: no user input for ingredients
     if (!input || input == null) {
-        document.getElementById('results').innerHTML = 
+        document.getElementById('results').innerHTML =
             "you forgot to type something into the search bar!";
-        document.getElementById('message_submit').innerHTML = 
+        document.getElementById('message_submit').innerHTML =
             "No input found";
         error_status = true;
     }
     if(error_status)    return;
 
-    // document.getElementById('selected-ingredients').innerHTML = 
-    //     "You're Looking For...<br>" + input;
+    document.getElementById('results').innerHTML = "loading";
+
+    document.getElementById('selected-ingredients').innerHTML =
+        "You're Looking For...<br>" + input;
     input = input.toLowerCase();
     input = input.replaceAll(" ", "")
     let input_split = input.split(",");
@@ -32,7 +35,7 @@ function food_search() {
         processData(jsonFood, input_split);
         // no food that matches ingredient input
         if(food_objects.length == 0){
-            document.getElementById('results').innerHTML = 
+            document.getElementById('results').innerHTML =
                 "Sorry, we could not find anything.";
         }
         // sort food by restaurant distance and display them
@@ -54,7 +57,7 @@ function processData(data, input_ingredients){
     food_objects = [];
 
     for (i = 0; i < data.length; i++) {
-        
+
         var ingredient_list_despaced = data[i].ingredients.replaceAll(" ", "");
         var ingredient_list = ingredient_list_despaced.split(",");
 
@@ -62,7 +65,7 @@ function processData(data, input_ingredients){
         var foodTag_list = foodTag_list_despaced.split(",");
 
         var ingredient_count = 0;
-        
+
         input_ingredients.forEach(function (ingredientVal) {
             if(ingredient_list.indexOf(ingredientVal) >= 0 || foodTag_list.indexOf(ingredientVal) >= 0){
                 ingredient_count++;
@@ -91,6 +94,12 @@ function sortFoodObjectsByDistance(){
     }
     total_count = food_objects.length;
     current_count = 0;
+    // Temporary for now: disable distance when there are 50 or more objects
+    if(total_count >= 50) {
+        console.log('Too much data: distance feature is disabled.');
+        displayFoodObjects();
+        return;
+    }
     // get distance for the restaurant of each food
     for(let i = 0; i < total_count; i++){
         // Geocode API: convert address to geolocation (lat&lng)
@@ -134,6 +143,16 @@ function updateStatusForDistanceData(){
 /*
  * Get distance from origin (user geolocation) to destination (restaurant geolocation)
  */
+/**
+        CITATION (IEEE FORMATTED)
+        Google Maps Platform, Geolocation: Displaying User or Device Position on Maps. N/A: Google Maps Platform, N/A. [webpage].
+        Link: https://developers.google.com/maps/documentation/javascript/geolocation#maps_map_geolocation-javascript
+**/
+/**
+        CITATION (IEEE FORMATTED)
+        Google Maps Platform, Distance Matrix Service. N/A: Google Maps Platform, N/A. [webpage].
+        Link: https://developers.google.com/maps/documentation/javascript/distancematrix
+**/
 function getDistance(originGeolocation, destinationGeolocation, index) {
     // convert geolocation(lat&lng) to google maps LatLng
     let origin = new google.maps.LatLng(
@@ -172,18 +191,27 @@ function displayFoodObjects() {
     let result = "";
 
     for(let i = 0; i < N; i++){
-        let distanceText = food_objects[i].distance != null ?
-            +(food_objects[i].distance/1000).toFixed(2)+" km" : "";
-        result += "<div class=\"result-div\">" 
-            + food_objects[i].product 
+        let distanceText = (food_objects[i].distance != null) ?
+            "<br>Distance: " + (food_objects[i].distance/1000).toFixed(2)+" km" : "";
+        result += "<div class=\"result-div\">"
+            + food_objects[i].product
             + "<br>Location: " + food_objects[i].restaurant
             + "<br>Address: " + food_objects[i].address
+<<<<<<< HEAD
             + "<br>Distance: " + distanceText
             + "<br><button type='button' class='btn btn-light selection-button' onclick='food_selection(\""
             + food_objects[i].product + "??" 
             + food_objects[i].restaurant.replace("'", "[single-quote]") + "??" 
             + food_objects[i].address  + "\")'>Select</button></div>";
                 
+=======
+            + distanceText
+            + "<br><button type='button' onclick='food_selection(\""
+            + food_objects[i].product + "??"
+            + food_objects[i].restaurant.replace("'", "[single-quote]") + "??"
+            + food_objects[i].address  + "\")'>Select Option</button></div>";
+
+>>>>>>> master
     }
     document.getElementById('results').innerHTML = result;
 }

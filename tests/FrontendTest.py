@@ -76,13 +76,13 @@ class FooterUI(unittest.TestCase):
         mainPage = page.FrontendPage(self.driver)
         assert mainPage.is_gifsDisappear(), "\nGifs do not disappear when ingredients are input"
 
-    def test_arrowAnimation(self):
-        mainPage = page.FrontendPage(self.driver)
-        assert mainPage.is_arrow_pulsing(), "\nArrow is not pulsing to indicate next steps"
+    # def test_arrowAnimation(self):
+    #     mainPage = page.FrontendPage(self.driver)
+    #     assert mainPage.is_arrow_pulsing(), "\nArrow is not pulsing to indicate next steps"
 
-    def test_step3Options(self):
-        mainPage = page.FrontendPage(self.driver)
-        assert mainPage.is_step3_options_invisible(), "\nStep 3 options should not be visible on home-page"
+    # def test_step3Options(self):
+    #     mainPage = page.FrontendPage(self.driver)
+    #     assert mainPage.is_step3_options_invisible(), "\nStep 3 options should not be visible on home-page"
 
     
     @classmethod
