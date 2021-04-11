@@ -53,8 +53,6 @@ class FrontendLocators(object):
     FOOTER_DONE_STYLE = "done-step"
     FOOTER_UNDONE_STYLE = "undone-step"
 
-    SAMPLE_INGREDIENT = "chicken"
-
     # Step 3 options
     REVIEW_BUTTON = (By.ID, "review")
     CLEAR_BUTTON = (By.ID, "clear")
@@ -91,4 +89,13 @@ class FrontendLocators(object):
         [BOX_STEP1, BOX_DONE_STYLE],
         [BOX_STEP2, BOX_DONE_STYLE],
         [BOX_STEP3, BOX_ACTIVE_STYLE] ]
+
+
+class TestSampleLocators(object):
+    SAMPLE_INGREDIENT = 'pop'
+    SAMPLE_INGREDIENTS = 'tomato,bacon,ham'
+    SAMPLE_INGREDIENTS_LIST = ['tomato','bacon','ham']
+    SAMPLE_DIFFERENT_INPUTS = ['ing1', 'ing2', 'ing3']
+    SAMPLE_INGREDIENTS_SPACING = '  tomato  ,  bacon  ,  ham  '
+    BAD_SAMPLE = 'asdfgh'
     

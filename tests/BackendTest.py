@@ -149,9 +149,9 @@ def getDriverOption(argument):
     elif argument == "allowed":
         option.set_preference('geo.prompt.testing', True)
         option.set_preference('geo.prompt.testing.allow', True)
-        # set mock geolocation to University of Waterloo Station
+        # set mock geolocation to University of Washington
         option.set_preference('geo.provider.network.url',
-            'data:application/json,{"location": {"lat": 43.4733, "lng": -80.5410}, "accuracy": 100.0}')
+            'data:application/json,{"location": {"lat": 47.6553, "lng": -122.3035}, "accuracy": 100.0}')
     return option
 
 

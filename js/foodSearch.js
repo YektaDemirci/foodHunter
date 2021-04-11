@@ -94,6 +94,7 @@ function sortFoodObjectsByDistance(){
     }
     total_count = food_objects.length;
     current_count = 0;
+    console.log('# Results: '+total_count);
     // Temporary for now: disable distance when there are 50 or more objects
     if(total_count >= 50) {
         console.log('Too much data: distance feature is disabled.');

@@ -2,7 +2,7 @@ import time
 import json
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from locator import MainPageLocators, FrontendLocators
+from locator import MainPageLocators, FrontendLocators, TestSampleLocators
 from element import BasePageElement
 
 '''
@@ -72,24 +72,23 @@ class MainPage(BasePage):
         return (element.text == 'No input found')
 
     def has_output_for_one_ingredient(self):
-        return self.has_output_for_input('chicken')
+        return self.has_output_for_input(TestSampleLocators.SAMPLE_INGREDIENT)
 
     def has_output_for_multiple_ingredients(self):
-        return self.has_output_for_input('tomato sauce,bacon,ham')
+        return self.has_output_for_input(TestSampleLocators.SAMPLE_INGREDIENTS)
 
     def has_output_for_different_inputs(self):
-        different_inputs = ['ing1', 'ing2', 'ing3']
-        for one_input in different_inputs:
+        for one_input in TestSampleLocators.SAMPLE_DIFFERENT_INPUTS:
             # return False if current input has no output
             if not self.has_output_for_input(one_input):
                 return False
         return True
 
     def has_output_for_input_with_spacing(self):
-        return self.has_output_for_input('  beef , cheese   ')
+        return self.has_output_for_input(TestSampleLocators.SAMPLE_INGREDIENTS_SPACING)
 
     def has_no_output_for_bad_input(self):
-        self.search_bar_element = 'asdfgh'
+        self.search_bar_element = TestSampleLocators.BAD_SAMPLE
         self.submit()
         self.wait_for_results()
         element = self.driver.find_element(*MainPageLocators.RESULTS)
@@ -105,8 +104,8 @@ class MainPage(BasePage):
         Step 2
     '''
     def is_output_with_matching_ingredients(self):
-        required = ['tomato sauce', 'bacon', 'ham']
-        self.search_bar_element = 'tomato sauce,bacon,ham'
+        required = TestSampleLocators.SAMPLE_INGREDIENTS_LIST
+        self.search_bar_element = TestSampleLocators.SAMPLE_INGREDIENTS
         self.submit()
         self.wait_for_results()
         elements = self.driver.find_elements(*MainPageLocators.RESULT_DIV)
@@ -134,7 +133,7 @@ class MainPage(BasePage):
         return check
     
     def is_output_sorted_by_distance(self):
-        self.search_bar_element = 'cheese, tomato'
+        self.search_bar_element = TestSampleLocators.SAMPLE_INGREDIENTS
         self.submit()
         self.wait_for_results()
         elements = self.driver.find_elements(*MainPageLocators.RESULT_DIV)
@@ -155,7 +154,7 @@ class MainPage(BasePage):
         Step 3: delete elements
     '''
     def is_div_present(self):
-        self.search_bar_element = 'chicken'
+        self.search_bar_element = TestSampleLocators.SAMPLE_INGREDIENTS
         self.submit()
         self.wait_for_results()
         element2 = self.driver.find_element(*MainPageLocators.RESULTS)
@@ -179,7 +178,7 @@ class MainPage(BasePage):
             return False
 
     def is_div_deleted(self):
-        self.search_bar_element = 'chicken'
+        self.search_bar_element = TestSampleLocators.SAMPLE_INGREDIENTS
         self.submit()
         self.wait_for_results()
         element2 = self.driver.find_element(*MainPageLocators.RESULTS)
@@ -201,7 +200,7 @@ class MainPage(BasePage):
             return True
 
     def is_all_div_deleted(self):
-        self.search_bar_element = 'chicken'
+        self.search_bar_element = TestSampleLocators.SAMPLE_INGREDIENTS
         self.submit()
         self.wait_for_results()
         element2 = self.driver.find_element(*MainPageLocators.RESULTS)
@@ -281,20 +280,21 @@ class LocationModalPage(BasePage):
             return False
         time.sleep(2)
         placeName, _ = self.get_location_map_place_name_and_address()
-        return (placeName == '''43°28'23.9"N 80°32'27.6"W''')
+        
+        return (placeName == '''47°39'19.1"N 122°18'12.6"W''')
 
     def is_location_output_valid(self, input_option):
         if input_option == "postal_code":
-            searchInput = 'N2L 3E9'
-            expectedFirstItemName = 'N2L 3E9'
-            expectedFirstItemAddress = 'Waterloo, ON, Canada'
-            expectedPlaceName = 'Waterloo, ON N2L 3E9'
+            searchInput = '98195'
+            expectedFirstItemName = '98195'
+            expectedFirstItemAddress = 'Seattle,WA,USA'
+            expectedPlaceName = 'Seattle, WA 98195'
             expectedPlaceAddress = None
         elif input_option == "address":
-            searchInput = '200 University Ave W, Waterloo, ON'
-            expectedFirstItemName = '200 University Ave W'
-            expectedFirstItemAddress = 'Waterloo, Ontario, Canada'
-            expectedPlaceName = 'Engineering 5'
+            searchInput = '1410 NE Campus Pkwy, Seattle, WA 98195, United States'
+            expectedFirstItemName = '1410Northeast Campus Parkway'
+            expectedFirstItemAddress = 'Seattle, WA, USA'
+            expectedPlaceName = '1410 NE Campus Pkwy'
             expectedPlaceAddress = None
         else:
             return False
@@ -396,7 +396,7 @@ class FrontendPage(BasePage):
         return True if False not in correctStyle else False
 
     def inputIngredientAndClickSubmit(self):
-        self.search_bar_element = FrontendLocators.SAMPLE_INGREDIENT
+        self.search_bar_element = TestSampleLocators.SAMPLE_INGREDIENT
 
         submitElement = self.driver.find_element(*FrontendLocators.SUBMIT_BUTTON)
         submitElement.click()
