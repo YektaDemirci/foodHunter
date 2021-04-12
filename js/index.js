@@ -28,6 +28,8 @@ function updateFooter(activeStepID, activeBox) {
     var arrows = document.getElementsByClassName('arrow');
     for (var i=0; i<vanishedText.length;i++) { vanishedText[i].style.display="block";}
     for (var i=0; i<arrows.length;i++) { arrows[i].style.display="inline-block";}
+    document.getElementById("results").style.display="block";
+    document.getElementById("selections").style.display="block";
   }
 
   function pulseArrow(pulse){

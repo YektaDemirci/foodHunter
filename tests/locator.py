@@ -98,4 +98,5 @@ class TestSampleLocators(object):
     SAMPLE_DIFFERENT_INPUTS = ['ing1', 'ing2', 'ing3']
     SAMPLE_INGREDIENTS_SPACING = '  tomato  ,  bacon  ,  ham  '
     BAD_SAMPLE = 'asdfgh'
+    SAMPLE_INGREDIENT_2 = 'chicken'
     

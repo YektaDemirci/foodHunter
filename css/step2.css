@@ -16,6 +16,7 @@
     overflow-y: scroll;
     height: 90%;
     width: 100%;
+    display: none;
 }
 
 .result-div{

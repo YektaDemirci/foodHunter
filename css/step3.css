@@ -9,6 +9,7 @@
 #selections{
     overflow-y: scroll;
     height: 80%;
+    display:none;
 }
 
 .step3-buttons{

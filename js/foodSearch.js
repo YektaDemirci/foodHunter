@@ -38,8 +38,8 @@ function food_search() {
 
     document.getElementById('results').innerHTML = "loading";
 
-    document.getElementById('selected-ingredients').innerHTML =
-        "You're Looking For...<br>" + input;
+    // document.getElementById('selected-ingredients').innerHTML =
+    //     "You're Looking For...<br>" + input;
     input = input.toLowerCase();
     input = input.replaceAll(" ", "")
     let input_split = input.split(",");
