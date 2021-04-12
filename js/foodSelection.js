@@ -12,7 +12,7 @@ function food_selection(value) {
         + " onclick=\"order_now('" + value + "')\">"
         + "Place Order <i class=\"fas fa-shopping-cart\"></i>"
         +"</button>";
-    selection_str += "<button class=\"btn btn-light\" id=\"clear-button\" type=\"submit\""
+    selection_str += "<button class=\"btn btn-light clear-button\" type=\"submit\""
         + " onclick=\"clear_selection('number-" + count + "')\">"
         + "Clear selection <i class=\"fas fa-trash\"></i>"
         + "</button>";

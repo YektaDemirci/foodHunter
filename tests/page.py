@@ -91,6 +91,7 @@ class MainPage(BasePage):
         self.search_bar_element = TestSampleLocators.BAD_SAMPLE
         self.submit()
         self.wait_for_results()
+        time.sleep(2)
         element = self.driver.find_element(*MainPageLocators.RESULTS)
         if element.text:
             if element.text == 'Sorry, we could not find anything.':
@@ -109,27 +110,28 @@ class MainPage(BasePage):
         self.submit()
         self.wait_for_results()
         elements = self.driver.find_elements(*MainPageLocators.RESULT_DIV)
-        # get product, restaurant, and address of the result
-        result_split = elements[0].text.split('\n')
-        result_product = result_split[0]
-        result_restaurant = result_split[1].replace('Location: ','')
-        result_address = result_split[2].replace('Address: ','')
-        check = True
-        with open("data_food_sample.json", "r") as file:
-            data = json.load(file)
-            for entry in data:
-                counter = 0
-                ingredients = entry['ingredients'].split(",")
-                ingredients = [x.lower() for x in ingredients]
-                # check how many required ingredients does current item have
-                for req in required:
-                    if req.lower() in ingredients:
-                        counter += 1
-                # matched item: should have all the ingredients
-                if (entry['product'] == result_product) and (entry['restaurant'] == result_restaurant) \
-                    and (entry['address'] == result_address):
-                    check &= (counter == len(required))
-                    break
+        for element in elements: 
+            # get product, restaurant, and address of the result
+            result_split = element.text.split('\n')
+            result_product = result_split[0]
+            result_restaurant = result_split[1].replace('Location: ','')
+            result_address = result_split[2].replace('Address: ','')
+            check = True
+            with open("data_food_sample.json", "r") as file:
+                data = json.load(file)
+                for entry in data:
+                    counter = 0
+                    ingredients = entry['ingredients'].split(",")
+                    ingredients = [x.lower() for x in ingredients]
+                    # check how many required ingredients does current item have
+                    for req in required:
+                        if req.lower() in ingredients:
+                            counter += 1
+                    # matched item: should have all the ingredients
+                    if (entry['product'] == result_product) and (entry['restaurant'] == result_restaurant) \
+                        and (entry['address'] == result_address):
+                        check &= (counter == len(required))
+                        break
         return check
     
     def is_output_sorted_by_distance(self):
@@ -151,7 +153,7 @@ class MainPage(BasePage):
         return True
 
     '''
-        Step 3: delete elements
+        Step 3
     '''
     def is_div_present(self):
         self.search_bar_element = TestSampleLocators.SAMPLE_INGREDIENTS
@@ -161,6 +163,8 @@ class MainPage(BasePage):
         element3 = self.driver.find_elements_by_css_selector('div.result-div')
         if len(element3) > 0:
             buttons = self.driver.find_elements_by_css_selector('button.selection-button')
+            '''
+            # cannot click selection buttons after the first one because footer obscures it
             for button in buttons:
                 button.click()
 
@@ -171,9 +175,14 @@ class MainPage(BasePage):
                 return True
             else:
                 return False
+            '''
+            # check if first selection in step 2 shows up in step 3
+            buttons[0].click()
+            time.sleep(1)
+            element4 = self.driver.find_elements_by_css_selector('div.selection-div-class')
+            return len(element4) == 1
         elif len(element3) == 0 and element2.text == 'Sorry, we could not find anything.':
             return True
-
         else:
             return False
 
@@ -183,21 +192,39 @@ class MainPage(BasePage):
         self.wait_for_results()
         element2 = self.driver.find_element(*MainPageLocators.RESULTS)
         element3 = self.driver.find_elements_by_css_selector('div.result-div')
-        element4 = self.driver.find_elements_by_css_selector('div.selection-div-class')
-        if len(element4) > 0:
-            total_divs = len(element4)
-            delete_button = self.driver.find_elements_by_css_selector('button.clear-button')
-            delete_button[0].click()
+        if len(element3) > 0:
+            buttons = self.driver.find_elements_by_css_selector('button.selection-button')
+            buttons[0].click()
+            time.sleep(1)
+            element4 = self.driver.find_elements_by_css_selector('div.selection-div-class')
+            '''
+            if len(element4) > 0:
+                total_divs = len(element4)
+                delete_button = self.driver.find_elements_by_css_selector('button.clear-button')
+                delete_button[0].click()
 
-            divs_after_1_deletion = len(self.driver.find_elements_by_css_selector('div.selection-div-class'))
+                divs_after_1_deletion = len(self.driver.find_elements_by_css_selector('div.selection-div-class'))
 
-            if divs_after_1_deletion + 1 == total_divs:
-                return True
+                if divs_after_1_deletion + 1 == total_divs:
+                    return True
+                else:
+                    return False
             else:
-                return False
-
-        else:
+                return True
+            '''
+            if len(element4) == 1:
+                delete_buttons = self.driver.find_elements_by_css_selector('button.clear-button')
+                delete_buttons[0].click()
+                time.sleep(1)
+                divs_after_1_deletion = len(self.driver.find_elements_by_css_selector('div.selection-div-class'))
+                if divs_after_1_deletion == 0:
+                    return True
+            return False
+        elif len(element3) == 0 and element2.text == 'Sorry, we could not find anything.':
             return True
+        else:
+            return False
+
 
     def is_all_div_deleted(self):
         self.search_bar_element = TestSampleLocators.SAMPLE_INGREDIENTS
@@ -287,12 +314,12 @@ class LocationModalPage(BasePage):
         if input_option == "postal_code":
             searchInput = '98195'
             expectedFirstItemName = '98195'
-            expectedFirstItemAddress = 'Seattle,WA,USA'
+            expectedFirstItemAddress = 'Seattle, WA, USA'
             expectedPlaceName = 'Seattle, WA 98195'
             expectedPlaceAddress = None
         elif input_option == "address":
             searchInput = '1410 NE Campus Pkwy, Seattle, WA 98195, United States'
-            expectedFirstItemName = '1410Northeast Campus Parkway'
+            expectedFirstItemName = '1410 Northeast Campus Parkway'
             expectedFirstItemAddress = 'Seattle, WA, USA'
             expectedPlaceName = '1410 NE Campus Pkwy'
             expectedPlaceAddress = None
