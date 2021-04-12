@@ -1,3 +1,18 @@
+var rest_dict = null;       // restaurant address -> geolocation (lat&lng) dictionary
+
+/* 
+ * Get restaurant geolocation dictionary
+ */
+function init_restaurant_geolocation_dict() {
+    $.getJSON("restaurant_location/restaurant_location.json", function(response) {
+        rest_dict = response;
+        console.log(rest_dict);
+    });
+}
+ 
+/* 
+ * Provide results in step 2 based on input ingredients in step 1
+ */
 function food_search() {
     // get user geolocation
     let user_geolocation = getSessionGeolocation();
@@ -47,11 +62,15 @@ function food_search() {
 
 
 // global variables for asynchronous calls to retrieve distance data
-var food_objects = null;
-var total_count = 0;
-var current_count = 0;
+var food_objects = null;    // stores food objects with matching ingredients
+var total_count = 0;        // total # objects
+var current_count = 0;      // current # object being processed
+var distance_dict = null;   // stores distance to restaurants (to reduce # of Google Maps API
+                            // requests for multiple food objects in the same restaurant)
 
-
+/*
+ * Find food objects with matching ingredients (saved in food_objects)
+ */
 function processData(data, input_ingredients){
     //let result = "";
     food_objects = [];
@@ -87,6 +106,10 @@ function processData(data, input_ingredients){
 }
 
 
+/*
+ * Sort food objects (in food_objects) based on distance (from user to restaurant)
+ * Note: limited to 50 food objects to reduce # of Google Maps API requests
+ */
 function sortFoodObjectsByDistance(){
     let user_geolocation = getSessionGeolocation();
     if(user_geolocation.lat==undefined || user_geolocation.lng==undefined) {
@@ -94,30 +117,35 @@ function sortFoodObjectsByDistance(){
     }
     total_count = food_objects.length;
     current_count = 0;
-    console.log('# Results: '+total_count);
-    // Temporary for now: disable distance when there are 50 or more objects
-    if(total_count >= 50) {
-        console.log('Too much data: distance feature is disabled.');
-        displayFoodObjects();
-        return;
+    distance_dict = {};
+    console.log('# matched results: '+total_count);
+    // limited to 50 objects (to reduce # of API requests)
+    if(total_count > 50) {
+        food_objects = food_objects.slice(0,50);
+        total_count = 50;
+        console.log('Truncated to 50 results.');
     }
-    // get distance for the restaurant of each food
+    // get distance for the restaurant of each object
     for(let i = 0; i < total_count; i++){
-        // Geocode API: convert address to geolocation (lat&lng)
-        let geocode_json_url = GEOCODE_API_URL
-            +"&address="+food_objects[i].address.replace(/ /g, "+");
-        $.getJSON(geocode_json_url, function(response) {
-            if (response.status !== "OK") {
-                console.log(i, "Error-geocode: " + response.status);
+        let restAddress = food_objects[i].address;
+        // shouldn't happen
+        if(!(restAddress in rest_dict)){
+            console.log(i, "Error: not data for restaurant @ " + restAddress);
+            updateStatusForDistanceData();
+        }
+        else{
+            // get restaurant geolocation (lat&lng)
+            let restGeolocation = rest_dict[restAddress];
+            // test data in data_food_sample.json
+            if(restGeolocation == null){
+                console.log(i, "Error: test data for restaurant @ " + restAddress);
                 updateStatusForDistanceData();
-            } else {
-                //console.log(i,"geocode_response:",response.results);
-                // get restaurant geolocation (lat&lng)
-                restGeolocation = response.results[0].geometry.location;
+            }
+            else{
                 // get distance from user geolocation to restaurant geolocation
                 getDistance(user_geolocation, restGeolocation, i);
             }
-        });
+        }
     }
 }
 
@@ -143,6 +171,7 @@ function updateStatusForDistanceData(){
 
 /*
  * Get distance from origin (user geolocation) to destination (restaurant geolocation)
+ * Save distance in distance_dict (to reduce # of Google Maps API requests for same restaurants)
  */
 /**
         CITATION (IEEE FORMATTED)
@@ -155,6 +184,13 @@ function updateStatusForDistanceData(){
         Link: https://developers.google.com/maps/documentation/javascript/distancematrix
 **/
 function getDistance(originGeolocation, destinationGeolocation, index) {
+    // check if distance is already obtained
+    var distance = getDistanceFromDict(index);
+    if(distance != null){
+        setDistance(index, distance);
+        updateStatusForDistanceData();
+        return;
+    }
     // convert geolocation(lat&lng) to google maps LatLng
     let origin = new google.maps.LatLng(
         originGeolocation.lat, originGeolocation.lng);
@@ -176,10 +212,27 @@ function getDistance(originGeolocation, destinationGeolocation, index) {
             /*distanceLabel.innerHTML = "distance = "+response.rows[0].elements[0].distance.text
                 + ", duration = " + response.rows[0].elements[0].duration.text;*/
             //console.log(index,"distance_response:",response)
-            food_objects[index].distance = response.rows[0].elements[0].distance.value;
+            distance = response.rows[0].elements[0].distance.value;
+            setDistance(index, distance);
+            setDistanceForDict(index, distance);
         }
         updateStatusForDistanceData();
     });
+
+    function getDistanceFromDict(i){
+        let restAddress = food_objects[i].address;
+        return (restAddress in distance_dict) ? 
+            distance_dict[restAddress] : null;
+    }
+
+    function setDistanceForDict(i, distance){
+        let restAddress = food_objects[i].address;
+        distance_dict[restAddress] = distance;
+    }
+
+    function setDistance(i, distance){
+        food_objects[i].distance = distance;
+    }
 }
 
 

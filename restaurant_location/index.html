@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="../js/util.js"></script>
+  <script src="restaurant_location.js"></script>
+</head>
+
+<body>
+  <button onclick="init()">Start</button><br><br>
+  Total # of data: <p id="num_total"></p><br>
+  Current progress: <p id="num_progress"></p><br>
+  <hr>
+  Total # of restaurants: <p id="num_rest"></p><br>
+  Processed # of restaurants: <p id="num_processed"></p><br>
+  Failed: <p id="num_failed"></p><br><br>
+  <p id="status"></p>
+  <div id="link-div" style="display:none;">
+    <a id="link" target="_blank" download="restaurant_location.json">Download</a>
+  </div>
+
+</body>
+
+</html>
