@@ -1,6 +1,6 @@
-#The socketserver.TCPserver methods are implemented by following the
-#following web-site: 
-#https://hallessandro.github.io/programming/http_server_with_python.html 
+# Citation (IEEE FORMATTED)
+# hallessandro, How to create a HTTP server with Python . Hallessandro D´villa  [webpage]
+# https://hallessandro.github.io/programming/http_server_with_python.html 
 
 # You need to install pymongo and dnspython library for Python
 import http.server

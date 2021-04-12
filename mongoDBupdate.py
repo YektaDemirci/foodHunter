@@ -1,3 +1,7 @@
+# Citation (IEEE FORMATTED)
+# pymongo, Tutorial. N/A: pymongo, NA [webpage]
+# https://pymongo.readthedocs.io/en/stable/tutorial.html
+
 import requests
 import json
 import math
