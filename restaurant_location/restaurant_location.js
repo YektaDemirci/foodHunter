@@ -89,9 +89,11 @@ function getGeolocation(address) {
     }
 }
 
-/*
- * https://stackoverflow.com/questions/2897619/using-html5-javascript-to-generate-and-save-a-file
- */
+/**
+        CITATION (IEEE FORMATTED)
+        Toji, Using HTML5/JavaScript to generate and save a file. N/A: stackoverflow, 2010. [webpage].
+        Link: https://stackoverflow.com/questions/2897619/using-html5-javascript-to-generate-and-save-a-file
+**/
 function saveData() {
     document.getElementById("status").innerHTML = "Completed";
     var dictstring = JSON.stringify(dict);
